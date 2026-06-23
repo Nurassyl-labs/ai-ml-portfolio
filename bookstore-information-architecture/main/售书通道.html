@@ -1,0 +1,517 @@
+
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>北京大学二手书交易平台 - 发布售书</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://code.iconify.design/3/3.1.1/iconify.min.js"></script>
+<script src="js/app.js"></script>
+<style>
+    .hide-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .hide-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    @layer components {
+      .pkured {
+        background-color: #990000;
+      }
+      .academicblue {
+        background-color: #0066CC;
+      }
+    }
+  </style>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            pkured: '#990000',
+            academicblue: '#0066CC'
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col">
+<!-- 顶部导航栏 -->
+<header class="bg-white shadow-sm sticky top-0 z-50">
+<div class="container mx-auto px-6">
+<div class="flex items-center justify-between h-20">
+<!-- Logo区域 -->
+<div class="flex items-center">
+<!--
+<img alt="Peking University Logo" class="h-12 w-12 mr-3" id="1" src="https://modao.cc/agent-py/media/generated_images/2025-12-06/74e82723ccbb4c7db8380dc2df47e4bc.jpg"/>
+<h1 class="text-xl font-bold text-pkured">北京大学二手书交易平台</h1>
+-->
+<img src="./logo.png" alt="" style="width: 150px; height: 50px;">
+</div>
+<!-- 主导航菜单 -->
+<nav class="hidden md:flex space-x-8">
+  <a class="font-medium text-gray-700 hover:text-pku-red transition" href="首页.html">首页</a>
+  <a class="font-medium text-gray-700 hover:text-pku-red transition" href="购书通道.html">购书通道</a>
+  <a class="font-medium text-gray-700 hover:text-pku-red transition" href="售书通道.html">售书通道</a>
+  <a class="font-medium text-gray-700 hover:text-pku-red transition" href="论坛.html">论坛</a>
+  <a class="font-medium text-gray-700 hover:text-pku-red transition" href="图书漂流.html">图书漂流</a>
+  <a class="font-medium text-gray-700 hover:text-pku-red transition" href="个人中心.html">个人中心</a>
+</nav>
+<!-- 用户操作区 -->
+<div class="flex items-center space-x-4">
+<button class="relative">
+<span class="iconify text-2xl text-gray-500" data-icon="mdi:bell-outline"></span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>
+</button>
+<div class="flex items-center">
+<img alt="User Avatar" class="w-10 h-10 rounded-full border-2 border-pkured" id="2" src="https://modao.cc/agent-py/media/generated_images/2025-12-06/bae5690b441d40c3a1586a4e74f3cb18.jpg"/>
+<span class="ml-2 text-gray-700">张同学</span>
+</div>
+</div>
+</div>
+</div>
+</header>
+<!-- 发布流程指示器 -->
+<div class="container mx-auto px-6 py-4">
+<div class="flex items-center justify-center">
+<div class="flex items-center">
+<div class="w-8 h-8 rounded-full bg-pkured flex items-center justify-center">
+<span class="text-white font-bold">1</span>
+</div>
+<div class="ml-2 font-medium text-pkured">书籍信息</div>
+</div>
+<div class="h-1 w-16 bg-gray-300 mx-2"></div>
+<div class="flex items-center">
+<div class="w-8 h-8 rounded-full border-2 border-pkured flex items-center justify-center">
+<span class="text-pkured font-bold">2</span>
+</div>
+<div class="ml-2 font-medium text-gray-500">图片管理</div>
+</div>
+<div class="h-1 w-16 bg-gray-300 mx-2"></div>
+<div class="flex items-center">
+<div class="w-8 h-8 rounded-full border-2 border-pkured flex items-center justify-center">
+<span class="text-pkured font-bold">3</span>
+</div>
+<div class="ml-2 font-medium text-gray-500">交易设置</div>
+</div>
+<div class="h-1 w-16 bg-gray-300 mx-2"></div>
+<div class="flex items-center">
+<div class="w-8 h-8 rounded-full border-2 border-pkured flex items-center justify-center">
+<span class="text-pkured font-bold">4</span>
+</div>
+<div class="ml-2 font-medium text-gray-500">发布确认</div>
+</div>
+</div>
+</div>
+<!-- 主体内容区 -->
+<main class="flex-1 container mx-auto px-6 py-6">
+<div class="bg-white rounded-2xl shadow-lg p-8">
+<!-- 书籍信息表单 -->
+<section>
+<h2 class="text-2xl font-bold text-pkured mb-6 flex items-center">
+<span class="iconify mr-3" data-icon="mdi:book-open"></span>
+          书籍基本信息
+        </h2>
+<div class="grid grid-cols-2 gap-8">
+<!-- ISBN输入 -->
+<div>
+<label class="block text-lg font-medium text-gray-800 mb-3">ISBN号</label>
+<div class="relative">
+<span class="iconify absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-xl" data-icon="mdi:barcode"></span>
+<input class="w-full pl-12 pr-4 py-4 bg-gray-50 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-academicblue focus:border-academicblue outline-none text-lg" placeholder="扫描或输入书籍ISBN号" type="text"/>
+</div>
+<p class="mt-2 text-gray-500 text-sm">输入ISBN后系统将自动填充书籍信息</p>
+</div>
+<!-- 自动填充提示 -->
+<div class="flex items-center justify-center mt-6">
+<div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-center w-4/5">
+<div class="flex items-center justify-center mb-2">
+<span class="iconify text-blue-600 text-3xl mr-2" data-icon="mdi:auto-fix"></span>
+<span class="font-medium text-blue-800">输入ISBN自动填充</span>
+</div>
+<p class="text-sm text-blue-700">识别后系统将自动获取书名、作者和出版社信息</p>
+</div>
+</div>
+<!-- 书名 -->
+<div class="mt-4">
+<label class="block text-lg font-medium text-gray-800 mb-3">书名</label>
+<div class="relative">
+<span class="iconify absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-xl" data-icon="mdi:format-title"></span>
+<input class="w-full pl-12 pr-4 py-4 bg-gray-50 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-academicblue focus:border-academicblue outline-none text-lg" placeholder="请输入书名" type="text"/>
+</div>
+</div>
+<!-- 作者 -->
+<div class="mt-4">
+<label class="block text-lg font-medium text-gray-800 mb-3">作者</label>
+<div class="relative">
+<span class="iconify absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-xl" data-icon="mdi:account-edit"></span>
+<input class="w-full pl-12 pr-4 py-4 bg-gray-50 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-academicblue focus:border-academicblue outline-none text-lg" placeholder="请输入作者" type="text"/>
+</div>
+</div>
+<!-- 出版社 -->
+<div class="mt-4">
+<label class="block text-lg font-medium text-gray-800 mb-3">出版社</label>
+<div class="relative">
+<span class="iconify absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-xl" data-icon="mdi:office-building"></span>
+<input class="w-full pl-12 pr-4 py-4 bg-gray-50 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-academicblue focus:border-academicblue outline-none text-lg" placeholder="请输入出版社" type="text"/>
+</div>
+</div>
+<!-- 课程标签 -->
+<div class="mt-4">
+<label class="block text-lg font-medium text-gray-800 mb-3">课程标签</label>
+<div class="relative">
+<span class="iconify absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-xl" data-icon="mdi:tag"></span>
+<input class="w-full pl-12 pr-4 py-4 bg-gray-50 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-academicblue focus:border-academicblue outline-none text-lg" placeholder="输入相关课程名称" type="text"/>
+</div>
+<div class="flex flex-wrap gap-2 mt-3">
+<span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full flex items-center">
+<span>中国哲学史</span>
+<span class="iconify ml-1 cursor-pointer" data-icon="mdi:close"></span>
+</span>
+<span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full flex items-center">
+<span>人文经典阅读</span>
+<span class="iconify ml-1 cursor-pointer" data-icon="mdi:close"></span>
+</span>
+</div>
+</div>
+<!-- 新旧程度 1-10 滑块 -->
+<div class="mt-4">
+  <label for="condition" class="block text-lg font-medium text-gray-800 mb-3">新旧程度</label>
+  <div class="flex items-center space-x-4">
+    <input 
+      type="range" 
+      id="condition" 
+      name="condition" 
+      min="1" 
+      max="10" 
+      value="10" 
+      class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-pkured"
+      oninput="this.nextElementSibling.value = this.value">
+    <output class="w-8 text-center font-medium text-gray-800">10</output>
+  </div>
+  <div class="flex justify-between text-sm text-gray-500 mt-1">
+    <span>最差</span>
+    <span>最好</span>
+  </div>
+</div>
+<!-- 书籍描述 -->
+<div class="mt-4 col-span-2">
+<label class="block text-lg font-medium text-gray-800 mb-3">书籍描述</label>
+<textarea class="w-full h-40 p-4 bg-gray-50 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-academicblue focus:border-academicblue outline-none text-lg" placeholder="描述书籍使用情况、笔记情况、是否有破损等详细信息"></textarea>
+</div>
+</div>
+</section>
+<div class="border-t border-gray-200 my-8"></div>
+<!-- 图片上传管理 -->
+<section>
+<h2 class="text-2xl font-bold text-pkured mb-6 flex items-center">
+<span class="iconify mr-3" data-icon="mdi:image-multiple"></span>
+          书籍图片管理
+        </h2>
+<div class="grid grid-cols-3 gap-6">
+<!-- 上传方式选择 -->
+<div class="col-span-1">
+<div class="bg-gray-50 rounded-xl p-6 border-2 border-dashed border-gray-300 h-full flex flex-col justify-center">
+<h3 class="text-lg font-medium mb-4 text-center">选择上传方式</h3>
+<div class="space-y-4">
+<button class="w-full py-4 bg-white border-2 border-academicblue rounded-xl flex flex-col items-center justify-center hover:bg-blue-50 transition-colors">
+<span class="iconify text-academicblue text-4xl mb-2" data-icon="mdi:camera"></span>
+<span class="text-academicblue font-medium">拍照上传</span>
+</button>
+<button class="w-full py-4 bg-white border-2 border-academicblue rounded-xl flex flex-col items-center justify-center hover:bg-blue-50 transition-colors">
+<span class="iconify text-academicblue text-4xl mb-2" data-icon="mdi:folder-image"></span>
+<span class="text-academicblue font-medium">相册选择</span>
+</button>
+<button class="w-full py-4 bg-white border-2 border-academicblue rounded-xl flex flex-col items-center justify-center hover:bg-blue-50 transition-colors">
+<span class="iconify text-academicblue text-4xl mb-2" data-icon="mdi:cloud-upload"></span>
+<span class="text-academicblue font-medium">电脑上传</span>
+</button>
+</div>
+<div class="mt-8 text-center">
+<p class="text-sm text-gray-500">最多可上传10张图片</p>
+<p class="text-sm text-gray-500">建议展示书籍封面、内页和细节</p>
+</div>
+</div>
+</div>
+<!-- 图片预览区域 -->
+<div class="col-span-2">
+<div class="grid grid-cols-3 gap-4">
+<!-- 图片1 -->
+<div class="relative group">
+<img alt="Book cover image" class="w-full h-48 object-cover rounded-xl border-2 border-gray-200" id="3" src="https://modao.cc/agent/placeholder.svg"/>
+<div class="absolute inset-0 bg-black bg-opacity-50 rounded-xl flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<div class="flex space-x-2">
+<button class="bg-white p-2 rounded-full">
+<span class="iconify text-gray-800" data-icon="mdi:delete"></span>
+</button>
+<button class="bg-white p-2 rounded-full">
+<span class="iconify text-gray-800" data-icon="mdi:pencil"></span>
+</button>
+<button class="bg-white p-2 rounded-full">
+<span class="iconify text-gray-800" data-icon="mdi:crop"></span>
+</button>
+</div>
+</div>
+<div class="bg-gray-800 bg-opacity-70 text-white text-xs py-1 px-2 rounded absolute top-2 left-2">
+                  封面
+                </div>
+</div>
+<!-- 图片2 -->
+<div class="relative group">
+<img alt="Book page image" class="w-full h-48 object-cover rounded-xl border-2 border-gray-200" id="4" src="https://modao.cc/agent-py/media/generated_images/2025-12-06/ee6be8f1643042828fa895da7c46a199.jpg"/>
+<div class="absolute inset-0 bg-black bg-opacity-50 rounded-xl flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<div class="flex space-x-2">
+<button class="bg-white p-2 rounded-full">
+<span class="iconify text-gray-800" data-icon="mdi:delete"></span>
+</button>
+<button class="bg-white p-2 rounded-full">
+<span class="iconify text-gray-800" data-icon="mdi:pencil"></span>
+</button>
+<button class="bg-white p-2 rounded-full">
+<span class="iconify text-gray-800" data-icon="mdi:crop"></span>
+</button>
+</div>
+</div>
+</div>
+<!-- 图片3 -->
+<div class="relative group">
+<img alt="Book detail image" class="w-full h-48 object-cover rounded-xl border-2 border-gray-200" id="5" src="https://modao.cc/agent-py/media/generated_images/2025-12-06/c08cfdd37656493b88857488ba114977.jpg"/>
+<div class="absolute inset-0 bg-black bg-opacity-50 rounded-xl flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<div class="flex space-x-2">
+<button class="bg-white p-2 rounded-full">
+<span class="iconify text-gray-800" data-icon="mdi:delete"></span>
+</button>
+<button class="bg-white p-2 rounded-full">
+<span class="iconify text-gray-800" data-icon="mdi:pencil"></span>
+</button>
+<button class="bg-white p-2 rounded-full">
+<span class="iconify text-gray-800" data-icon="mdi:crop"></span>
+</button>
+</div>
+</div>
+</div>
+<!-- 添加更多图片 -->
+<div class="border-2 border-dashed border-gray-300 rounded-xl flex flex-col items-center justify-center h-48 cursor-pointer hover:border-pkured transition-colors">
+<span class="iconify text-gray-400 text-5xl" data-icon="mdi:plus"></span>
+<span class="mt-2 text-gray-500">添加图片</span>
+</div>
+</div>
+<!-- 图片排序区域 -->
+<div class="mt-6 bg-gray-50 rounded-xl p-4">
+<h3 class="font-medium mb-3">图片排序 (拖动调整顺序)</h3>
+<div class="flex space-x-3">
+<div class="w-16 h-16 rounded-lg border-2 border-gray-300 relative">
+<img alt="Thumbnail 1" class="w-full h-full object-cover rounded" id="6" src="https://modao.cc/agent-py/media/generated_images/2025-12-06/fd4ec6e0fcdb4f3eae95ede395f34af6.jpg"/>
+<div class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white text-xs text-center py-1">1</div>
+</div>
+<div class="w-16 h-16 rounded-lg border-2 border-gray-300 relative">
+<img alt="Thumbnail 2" class="w-full h-full object-cover rounded" id="7" src="https://modao.cc/agent-py/media/generated_images/2025-12-06/7e7d663b0e5d4d87935b360c952bb109.jpg"/>
+<div class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white text-xs text-center py-1">2</div>
+</div>
+<div class="w-16 h-16 rounded-lg border-2 border-gray-300 relative">
+<img alt="Thumbnail 3" class="w-full h-full object-cover rounded" id="8" src="https://modao.cc/agent-py/media/generated_images/2025-12-06/d3cf8be0f4644fb1a7046d931c52f6c6.jpg"/>
+<div class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white text-xs text-center py-1">3</div>
+</div>
+<div class="w-16 h-16 rounded-lg border-2 border-dashed border-gray-300 flex items-center justify-center">
+<span class="iconify text-gray-400" data-icon="mdi:plus"></span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<div class="border-t border-gray-200 my-8"></div>
+<!-- 价格与交易设置 -->
+<section>
+<h2 class="text-2xl font-bold text-pkured mb-6 flex items-center">
+<span class="iconify mr-3" data-icon="mdi:cash"></span>
+          价格与交易设置
+        </h2>
+<div class="grid grid-cols-2 gap-8">
+<!-- 价格区域 -->
+<div>
+<label class="block text-lg font-medium text-gray-800 mb-3">定价</label>
+<div class="relative">
+<span class="iconify absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-xl" data-icon="mdi:currency-cny"></span>
+<input class="w-full pl-12 pr-4 py-4 bg-gray-50 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-academicblue focus:border-academicblue outline-none text-lg" placeholder="请输入价格" type="number"/>
+</div>
+<!-- 价格建议 -->
+<div class="mt-4 bg-blue-50 border border-blue-200 rounded-xl p-4">
+<div class="flex items-center mb-2">
+<span class="iconify text-blue-600 mr-2" data-icon="mdi:lightbulb-on"></span>
+<span class="font-medium text-blue-800">价格建议</span>
+</div>
+<p class="text-blue-700">
+                同类书籍平均售价：<span class="font-bold">¥48</span>，最高售价：<span class="font-bold">¥65</span><br/>
+                建议定价区间：<span class="font-bold">¥38-¥55</span>
+</p>
+</div>
+</div>
+<!-- 交易方式 -->
+<div>
+<label class="block text-lg font-medium text-gray-800 mb-3">交易方式</label>
+<div class="space-y-4">
+<div class="flex items-center">
+<input checked="" class="w-5 h-5 text-academicblue" id="face" name="transaction" type="radio"/>
+<label class="ml-3 text-lg" for="face">
+<span class="font-medium">校内面对面交易</span>
+<p class="text-sm text-gray-500 mt-1">校内指定地点当面交易，安全可靠</p>
+</label>
+</div>
+<div class="flex items-center">
+<input class="w-5 h-5 text-academicblue" id="delivery" name="transaction" type="radio"/>
+<label class="ml-3 text-lg" for="delivery">
+<span class="font-medium">快递邮寄</span>
+<p class="text-sm text-gray-500 mt-1">买家承担运费，通过平台担保交易</p>
+</label>
+</div>
+</div>
+<!-- 面交地点 -->
+<div class="mt-6">
+<label class="block text-lg font-medium text-gray-800 mb-3">面交地点</label>
+<div class="relative">
+<span class="iconify absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-xl" data-icon="mdi:map-marker"></span>
+<select class="w-full pl-12 pr-4 py-4 bg-gray-50 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-academicblue focus:border-academicblue outline-none text-lg appearance-none">
+<option>选择交易地点</option>
+<option>图书馆1楼咖啡厅</option>
+<option>二教一楼大厅</option>
+<option>三角地书报亭</option>
+<option>新太阳学生中心</option>
+<option>农园食堂入口</option>
+</select>
+<span class="iconify absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 text-xl" data-icon="mdi:chevron-down"></span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<div class="border-t border-gray-200 my-8"></div>
+<!-- 发布确认 -->
+<section>
+<h2 class="text-2xl font-bold text-pkured mb-6 flex items-center">
+<span class="iconify mr-3" data-icon="mdi:check-circle"></span>
+          发布确认
+        </h2>
+<div class="bg-gray-50 rounded-xl p-6 mb-6">
+<div class="flex justify-between items-start">
+<div class="flex-1">
+<h3 class="text-xl font-bold text-gray-800 mb-2">《中国哲学简史》</h3>
+<div class="flex items-center text-gray-600 mb-2">
+<span>冯友兰 著 · 北京大学出版社</span>
+<span class="mx-2">•</span>
+<span class="text-amber-500 flex items-center">
+<span class="iconify" data-icon="mdi:star"></span>
+<span class="iconify" data-icon="mdi:star"></span>
+<span class="iconify" data-icon="mdi:star"></span>
+<span class="iconify" data-icon="mdi:star"></span>
+<span class="iconify" data-icon="mdi:star-half-full"></span>
+<span class="ml-1">九成新</span>
+</span>
+</div>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full">中国哲学史</span>
+<span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full">人文经典阅读</span>
+</div>
+<p class="text-gray-700">教材使用一年，无笔记无划线，保存完好，仅封面有轻微折痕。</p>
+</div>
+<div class="w-40">
+<img alt="Book cover preview" class="w-full rounded-lg" id="9" src="https://modao.cc/agent-py/media/generated_images/2025-12-06/9fea502df8b84bf0bf4c92450a2044c1.jpg"/>
+</div>
+</div>
+<div class="border-t border-gray-200 my-4"></div>
+<div class="grid grid-cols-3 gap-4">
+<div>
+<p class="text-gray-600">定价</p>
+<p class="text-2xl font-bold text-pkured">¥45</p>
+</div>
+<div>
+<p class="text-gray-600">交易方式</p>
+<p class="font-medium">校内面对面交易</p>
+<p class="text-sm text-gray-500">图书馆1楼咖啡厅</p>
+</div>
+<div>
+<p class="text-gray-600">库存</p>
+<p class="font-medium">1本</p>
+</div>
+</div>
+</div>
+<!-- 发布选项 -->
+<div class="flex justify-between">
+<div class="flex items-center">
+<input class="w-5 h-5 text-pkured" id="agree" type="checkbox"/>
+<label class="ml-2 text-gray-700" for="agree">我同意遵守平台<u class="cursor-pointer text-academicblue">交易规则</u></label>
+</div>
+<div class="flex space-x-4">
+<button class="px-8 py-4 bg-white border-2 border-academicblue text-academicblue font-medium rounded-xl hover:bg-blue-50 transition-colors flex items-center">
+<span class="iconify mr-2" data-icon="mdi:content-save"></span>
+              保存草稿
+            </button>
+<button class="px-8 py-4 bg-pkured text-white font-medium rounded-xl hover:bg-red-900 transition-colors flex items-center">
+<span class="iconify mr-2" data-icon="mdi:check"></span>
+              立即发布
+            </button>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- 底部页脚 -->
+<footer class="bg-white border-t border-gray-200 py-10 mt-10">
+<div class="container mx-auto px-6">
+<div class="grid grid-cols-4 gap-8">
+<div>
+<h3 class="font-bold text-lg text-gray-800 mb-4">关于我们</h3>
+<ul class="space-y-2">
+<li><a class="text-gray-600 hover:text-pkured" href="#">平台简介</a></li>
+<li><a class="text-gray-600 hover:text-pkured" href="#">团队介绍</a></li>
+<li><a class="text-gray-600 hover:text-pkured" href="#">加入我们</a></li>
+<li><a class="text-gray-600 hover:text-pkured" href="#">联系方式</a></li>
+</ul>
+</div>
+<div>
+<h3 class="font-bold text-lg text-gray-800 mb-4">帮助中心</h3>
+<ul class="space-y-2">
+<li><a class="text-gray-600 hover:text-pkured" href="#">发布指南</a></li>
+<li><a class="text-gray-600 hover:text-pkured" href="#">常见问题</a></li>
+<li><a class="text-gray-600 hover:text-pkured" href="#">交易规则</a></li>
+<li><a class="text-gray-600 hover:text-pkured" href="#">纠纷处理</a></li>
+</ul>
+</div>
+<div>
+<h3 class="font-bold text-lg text-gray-800 mb-4">友情链接</h3>
+<ul class="space-y-2">
+<li><a class="text-gray-600 hover:text-pkured" href="#">北京大学官网</a></li>
+<li><a class="text-gray-600 hover:text-pkured" href="#">教材中心</a></li>
+<li><a class="text-gray-600 hover:text-pkured" href="#">图书馆系统</a></li>
+<li><a class="text-gray-600 hover:text-pkured" href="#">课程论坛</a></li>
+</ul>
+</div>
+<div>
+<h3 class="font-bold text-lg text-gray-800 mb-4">联系我们</h3>
+<div class="space-y-2">
+<p class="flex items-center text-gray-600">
+<span class="iconify mr-2" data-icon="mdi:email"></span>
+              books@pku.edu.cn
+            </p>
+<p class="flex items-center text-gray-600">
+<span class="iconify mr-2" data-icon="mdi:phone"></span>
+              010-6275XXXX
+            </p>
+<p class="flex items-start text-gray-600">
+<span class="iconify mr-2 mt-1" data-icon="mdi:map-marker"></span>
+              北京市海淀区颐和园路5号<br/>北京大学新太阳中心
+            </p>
+</div>
+</div>
+</div>
+<div class="border-t border-gray-200 mt-8 pt-6 text-center text-gray-500">
+<p>© 2025 北京大学二手书交易平台 | 京ICP备2025000001号</p>
+</div>
+</div>
+</footer>
+</body>
+</html>

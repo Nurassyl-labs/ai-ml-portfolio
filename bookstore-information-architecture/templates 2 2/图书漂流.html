@@ -1,0 +1,511 @@
+
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>书籍漂流 - 北京大学二手书交易平台</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://code.iconify.design/3/3.1.1/iconify.min.js"></script>
+<style>
+    .hide-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .hide-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col">
+<!-- 顶部导航栏 -->
+<header class="bg-white shadow-sm sticky top-0 z-50">
+<div class="container mx-auto px-6">
+<div class="flex items-center justify-between h-20">
+<!-- Logo区域 -->
+<div class="flex items-center">
+<img alt="Peking University Logo" class="h-12 w-12 mr-3" id="1" src="https://modao.cc/agent-py/media/generated_images/2025-12-06/74e82723ccbb4c7db8380dc2df47e4bc.jpg"/>
+<h1 class="text-xl font-bold text-pkured">北京大学二手书交易平台</h1>
+</div>
+<!-- 主导航菜单 -->
+<nav class="hidden md:flex space-x-8">
+  <a class="font-medium text-gray-700 hover:text-pku-red transition" href="首页.html">首页</a>
+  <a class="font-medium text-gray-700 hover:text-pku-red transition" href="购书通道.html">购书通道</a>
+  <a class="font-medium text-gray-700 hover:text-pku-red transition" href="售书通道.html">售书通道</a>
+  <a class="font-medium text-gray-700 hover:text-pku-red transition" href="论坛.html">论坛</a>
+  <a class="font-medium text-gray-700 hover:text-pku-red transition" href="图书漂流.html">图书漂流</a>
+  <a class="font-medium text-gray-700 hover:text-pku-red transition" href="个人中心.html">个人中心</a>
+</nav>
+<!-- 用户操作区 -->
+<div class="flex items-center space-x-4">
+<button class="relative">
+<span class="iconify text-2xl text-gray-500" data-icon="mdi:bell-outline"></span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>
+</button>
+<div class="flex items-center">
+<img alt="User Avatar" class="w-10 h-10 rounded-full border-2 border-pkured" id="2" src="https://modao.cc/agent-py/media/generated_images/2025-12-06/bae5690b441d40c3a1586a4e74f3cb18.jpg"/>
+<span class="ml-2 text-gray-700">张同学</span>
+</div>
+</div>
+</div>
+</div>
+</header>
+<!-- 页面标题 -->
+<div class="bg-gradient-to-r from-green-50 to-blue-50 py-12">
+<div class="container mx-auto px-6 text-center">
+<h1 class="text-3xl font-bold text-gray-800 mb-2">图书漂流</h1>
+<p class="text-gray-600">知识共享 · 爱心传递</p>
+</div>
+</div>
+<!-- 主内容区 -->
+<main class="container mx-auto px-6 py-8">
+<div class="flex flex-col lg:flex-row gap-8">
+<!-- 左侧筛选面板 -->
+<div class="lg:w-1/4 bg-white rounded-lg shadow p-6 h-fit">
+<h2 class="text-lg font-semibold text-gray-800 mb-4">高级筛选</h2>
+<!-- 学科分类 -->
+<div class="mb-6">
+<h3 class="font-medium text-gray-700 mb-2">按学科分类</h3>
+<div class="space-y-2">
+<label class="flex items-center">
+<input class="rounded text-green-600" type="checkbox"/>
+<span class="ml-2 text-gray-600">人文社会科学</span>
+</label>
+<label class="flex items-center">
+<input class="rounded text-green-600" type="checkbox"/>
+<span class="ml-2 text-gray-600">理学</span>
+</label>
+<label class="flex items-center">
+<input checked="" class="rounded text-green-600" type="checkbox"/>
+<span class="ml-2 text-gray-600">信息与工程科学</span>
+</label>
+<label class="flex items-center">
+<input class="rounded text-green-600" type="checkbox"/>
+<span class="ml-2 text-gray-600">医学</span>
+</label>
+<label class="flex items-center">
+<input class="rounded text-green-600" type="checkbox"/>
+<span class="ml-2 text-gray-600">交叉学科</span>
+</label>
+<label class="flex items-center">
+<input class="rounded text-green-600" type="checkbox"/>
+<span class="ml-2 text-gray-600">语言类</span>
+</label>
+</div>
+</div>
+<!-- 学院筛选 -->
+<div class="mb-6">
+<h3 class="font-medium text-gray-700 mb-2">按学院筛选</h3>
+<select class="w-full p-2 border border-gray-300 rounded">
+<option>全部学院</option>
+<option>信息科学技术学院</option>
+<option selected="">数学科学学院</option>
+<option>中国语言文学系</option>
+<option>经济学院</option>
+<option>法学院</option>
+</select>
+</div>
+<!-- 书籍状态 -->
+<div class="mb-6">
+<h3 class="font-medium text-gray-700 mb-2">书籍状态</h3>
+<div class="space-y-2">
+<label class="flex items-center">
+<input checked="" class="rounded-full text-yellow-400" name="condition" type="radio"/>
+<span class="ml-2 text-gray-600">全新</span>
+</label>
+<label class="flex items-center">
+<input class="rounded-full text-green-600" name="condition" type="radio"/>
+<span class="ml-2 text-gray-600">九成新</span>
+</label>
+<label class="flex items-center">
+<input class="rounded-full text-blue-500" name="condition" type="radio"/>
+<span class="ml-2 text-gray-600">八成新</span>
+</label>
+<label class="flex items-center">
+<input class="rounded-full text-orange-400" name="condition" type="radio"/>
+<span class="ml-2 text-gray-600">七成新</span>
+</label>
+</div>
+</div>
+<!-- 捐赠时间 -->
+<div class="mb-6">
+<h3 class="font-medium text-gray-700 mb-2">捐赠时间</h3>
+<div class="space-y-2">
+<label class="flex items-center">
+<input checked="" class="rounded-full text-green-600" name="time" type="radio"/>
+<span class="ml-2 text-gray-600">近一周</span>
+</label>
+<label class="flex items-center">
+<input class="rounded-full text-green-600" name="time" type="radio"/>
+<span class="ml-2 text-gray-600">近一月</span>
+</label>
+<label class="flex items-center">
+<input class="rounded-full text-green-600" name="time" type="radio"/>
+<span class="ml-2 text-gray-600">近三月</span>
+</label>
+</div>
+</div>
+<!-- 环保效益 -->
+<div class="bg-green-50 rounded-lg p-4 mb-6">
+<div class="flex items-center justify-between mb-2">
+<span class="font-medium text-green-800">环保贡献</span>
+<span class="iconify text-green-600" data-icon="mdi:leaf" data-width="20"></span>
+</div>
+<p class="text-sm text-green-700">已节约 128 棵树</p>
+</div>
+<button class="w-full py-2 bg-green-600 hover:bg-green-700 text-white font-medium rounded-lg transition">
+          应用筛选
+        </button>
+</div>
+<!-- 中间书籍展示区 -->
+<div class="lg:w-2/4">
+<div class="bg-white rounded-lg shadow p-6 mb-6">
+<div class="flex flex-col md:flex-row md:items-center justify-between mb-6">
+<p class="text-gray-700 mb-2 md:mb-0">共找到 <span class="font-semibold">86</span> 本漂流书籍</p>
+<div class="flex items-center">
+<span class="text-gray-700 mr-2">排序:</span>
+<select class="border border-gray-300 rounded p-2">
+<option>默认排序</option>
+<option>最新捐赠</option>
+<option>热门领取</option>
+<option>评价最好</option>
+</select>
+</div>
+</div>
+<!-- 书籍网格 -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- 书籍卡片 1 -->
+<div class="border border-gray-200 rounded-lg overflow-hidden">
+<div class="relative">
+<img alt="数据结构与算法分析教材封面" class="w-full h-48 object-cover" id="1" src="https://modao.cc/agent-py/media/generated_images/2025-12-08/4dc6e05fe7c74a1a82cdb212cfd6a315.jpg"/>
+<div class="absolute top-2 right-2 bg-yellow-400 text-white text-xs px-2 py-1 rounded-full">
+                  全新
+                </div>
+</div>
+<div class="p-4">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-semibold text-gray-800">数据结构与算法分析</h3>
+<span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">免费领取</span>
+</div>
+<p class="text-sm text-gray-600 mb-3">Mark Allen Weiss 著 · 机械工业出版社</p>
+<div class="flex items-center text-sm text-blue-600 mb-3">
+<span class="iconify mr-1" data-icon="mdi:account" data-width="16"></span>
+                  捐赠者: 李同学 (信息科学技术学院)
+                </div>
+<p class="text-sm text-gray-600 mb-4">课程教材，仅翻看过一次，几乎全新</p>
+<div class="flex justify-between items-center">
+<span class="text-xs text-gray-500">捐赠时间: 2025-12-05</span>
+                <a href="图书漂流领取页.html" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition inline-flex items-center justify-center">
+                    立即领取
+                  </a>
+</div>
+</div>
+</div>
+<!-- 书籍卡片 2 -->
+<div class="border border-gray-200 rounded-lg overflow-hidden">
+<div class="relative">
+<img alt="中国哲学简史教材封面" class="w-full h-48 object-cover" id="2" src="https://modao.cc/agent-py/media/generated_images/2025-12-08/ad943a1110034282bedfc043ce1d0c1f.jpg"/>
+<div class="absolute top-2 right-2 bg-green-600 text-white text-xs px-2 py-1 rounded-full">
+                  九成新
+                </div>
+</div>
+<div class="p-4">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-semibold text-gray-800">中国哲学简史</h3>
+<span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">免费领取</span>
+</div>
+<p class="text-sm text-gray-600 mb-3">冯友兰 著 · 北京大学出版社</p>
+<div class="flex items-center text-sm text-blue-600 mb-3">
+<span class="iconify mr-1" data-icon="mdi:account" data-width="16"></span>
+                  捐赠者: 王同学 (中国语言文学系)
+                </div>
+<p class="text-sm text-gray-600 mb-4">哲学系推荐读物，有少量笔记</p>
+<div class="flex justify-between items-center">
+<span class="text-xs text-gray-500">捐赠时间: 2025-12-01</span>
+                    <a href="图书漂流领取页.html" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition inline-flex items-center justify-center">
+                    立即领取
+                  </a>
+</div>
+</div>
+</div>
+<!-- 书籍卡片 3 -->
+<div class="border border-gray-200 rounded-lg overflow-hidden">
+<div class="relative">
+<img alt="经济学原理教材封面" class="w-full h-48 object-cover" id="3" src="https://modao.cc/agent-py/media/generated_images/2025-12-08/ce6b7a64b5aa4498a256c058b45f7c24.jpg"/>
+<div class="absolute top-2 right-2 bg-blue-500 text-white text-xs px-2 py-1 rounded-full">
+                  八成新
+                </div>
+</div>
+<div class="p-4">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-semibold text-gray-800">经济学原理</h3>
+<span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">免费领取</span>
+</div>
+<p class="text-sm text-gray-600 mb-3">曼昆 著 · 北京大学出版社</p>
+<div class="flex items-center text-sm text-blue-600 mb-3">
+<span class="iconify mr-1" data-icon="mdi:account" data-width="16"></span>
+                  捐赠者: 赵同学 (经济学院)
+                </div>
+<p class="text-sm text-gray-600 mb-4">经典经济学教材，有使用痕迹</p>
+<div class="flex justify-between items-center">
+<span class="text-xs text-gray-500">捐赠时间: 2025-11-28</span>
+                    <a href="图书漂流领取页.html" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition inline-flex items-center justify-center">
+                    立即领取
+                  </a>
+</div>
+</div>
+</div>
+<!-- 书籍卡片 4 -->
+<div class="border border-gray-200 rounded-lg overflow-hidden">
+<div class="relative">
+<img alt="高等数学教材封面" class="w-full h-48 object-cover" id="4" src="https://modao.cc/agent-py/media/generated_images/2025-12-08/2da27cd4cb6f45ed8bc7c31182db9a12.jpg"/>
+<div class="absolute top-2 right-2 bg-orange-400 text-white text-xs px-2 py-1 rounded-full">
+                  七成新
+                </div>
+</div>
+<div class="p-4">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-semibold text-gray-800">高等数学</h3>
+<span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">免费领取</span>
+</div>
+<p class="text-sm text-gray-600 mb-3">同济大学数学系 编 · 高等教育出版社</p>
+<div class="flex items-center text-sm text-blue-600 mb-3">
+<span class="iconify mr-1" data-icon="mdi:account" data-width="16"></span>
+                  捐赠者: 陈同学 (数学科学学院)
+                </div>
+<p class="text-sm text-gray-600 mb-4">数学系基础教材，有笔记和标注</p>
+<div class="flex justify-between items-center">
+<span class="text-xs text-gray-500">捐赠时间: 2025-11-20</span>
+                    <a href="图书漂流领取页.html" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition inline-flex items-center justify-center">
+                    立即领取
+                  </a>
+</div>
+</div>
+</div>
+</div>
+<!-- 分页 -->
+<div class="flex justify-center mt-8">
+<nav class="flex space-x-2">
+<a class="px-3 py-1 bg-red-800 text-white rounded" href="#">1</a>
+<a class="px-3 py-1 text-gray-700 hover:bg-gray-100 rounded" href="#">2</a>
+<a class="px-3 py-1 text-gray-700 hover:bg-gray-100 rounded" href="#">3</a>
+<a class="px-3 py-1 text-gray-700 hover:bg-gray-100 rounded" href="#">4</a>
+<a class="px-3 py-1 text-gray-700 hover:bg-gray-100 rounded" href="#">下一页</a>
+</nav>
+</div>
+</div>
+<!-- 捐赠须知 -->
+<div class="bg-white rounded-lg shadow p-6">
+<h2 class="text-xl font-semibold text-gray-800 mb-4">捐赠须知</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="flex items-start">
+<div class="bg-green-100 p-3 rounded-full mr-3">
+<span class="iconify text-green-600" data-icon="mdi:book-open" data-width="24"></span>
+</div>
+<div>
+<h3 class="font-medium text-gray-800">书籍要求</h3>
+<p class="text-sm text-gray-600">教材、教辅、学术著作等正版书籍，无明显破损</p>
+</div>
+</div>
+<div class="flex items-start">
+<div class="bg-green-100 p-3 rounded-full mr-3">
+<span class="iconify text-green-600" data-icon="mdi:account-multiple" data-width="24"></span>
+</div>
+<div>
+<h3 class="font-medium text-gray-800">领取规则</h3>
+<p class="text-sm text-gray-600">每位同学每学期最多可领取5本漂流书籍</p>
+</div>
+</div>
+<div class="flex items-start">
+<div class="bg-green-100 p-3 rounded-full mr-3">
+<span class="iconify text-green-600" data-icon="mdi:handshake" data-width="24"></span>
+</div>
+<div>
+<h3 class="font-medium text-gray-800">交接方式</h3>
+<p class="text-sm text-gray-600">校内图书馆漂流角自取，每周三下午2-5点</p>
+</div>
+</div>
+<div class="flex items-start">
+<div class="bg-green-100 p-3 rounded-full mr-3">
+<span class="iconify text-green-600" data-icon="mdi:heart" data-width="24"></span>
+</div>
+<div>
+<h3 class="font-medium text-gray-800">爱心回馈</h3>
+<p class="text-sm text-gray-600">鼓励领取后写下阅读心得，分享给捐赠者</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- 右侧推荐栏 -->
+<div class="lg:w-1/4 space-y-6">
+<!-- 热门捐赠书籍 -->
+<div class="bg-white rounded-lg shadow p-6">
+<h2 class="text-lg font-semibold text-gray-800 mb-4 flex items-center">
+<span class="iconify text-red-800 mr-2" data-icon="mdi:fire" data-width="20"></span>
+            热门捐赠书籍
+          </h2>
+<div class="space-y-4">
+<div class="flex items-start">
+<img alt="西方哲学史教材封面" class="w-16 h-20 object-cover rounded mr-3" id="5" src="https://modao.cc/agent-py/media/generated_images/2025-12-08/a4c33167bee44a0f90176317a171f900.jpg"/>
+<div>
+<h3 class="font-medium text-gray-800">西方哲学史</h3>
+<p class="text-sm text-gray-600">罗素 著</p>
+<div class="flex items-center mt-1">
+<span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded mr-2">免费</span>
+<span class="text-xs text-gray-500">32人领取</span>
+</div>
+</div>
+</div>
+<div class="flex items-start">
+<img alt="国际关系教材封面" class="w-16 h-20 object-cover rounded mr-3" id="6" src="https://modao.cc/agent-py/media/generated_images/2025-12-08/66e52d61a3124c5b95cddeeb47ac880e.jpg"/>
+<div>
+<h3 class="font-medium text-gray-800">国际关系理论</h3>
+<p class="text-sm text-gray-600">王帆 著</p>
+<div class="flex items-center mt-1">
+<span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded mr-2">免费</span>
+<span class="text-xs text-gray-500">28人领取</span>
+</div>
+</div>
+</div>
+<div class="flex items-start">
+<img alt="计算机组成原理教材封面" class="w-16 h-20 object-cover rounded mr-3" id="7" src="https://modao.cc/agent-py/media/generated_images/2025-12-08/d05f972acde74cf19e7d28480e1654af.jpg"/>
+<div>
+<h3 class="font-medium text-gray-800">计算机组成原理</h3>
+<p class="text-sm text-gray-600">唐朔飞 著</p>
+<div class="flex items-center mt-1">
+<span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded mr-2">免费</span>
+<span class="text-xs text-gray-500">25人领取</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- 急需书籍 -->
+<div class="bg-white rounded-lg shadow p-6">
+<h2 class="text-lg font-semibold text-gray-800 mb-4 flex items-center">
+<span class="iconify text-orange-500 mr-2" data-icon="mdi:alert-circle" data-width="20"></span>
+            急需书籍
+          </h2>
+<ul class="space-y-3">
+<li class="flex items-center">
+<span class="w-6 h-6 rounded-full bg-red-100 text-red-800 flex items-center justify-center text-xs mr-2">1</span>
+<span class="text-gray-700">中国古代文学史</span>
+</li>
+<li class="flex items-center">
+<span class="w-6 h-6 rounded-full bg-orange-100 text-orange-800 flex items-center justify-center text-xs mr-2">2</span>
+<span class="text-gray-700">生物化学原理</span>
+</li>
+<li class="flex items-center">
+<span class="w-6 h-6 rounded-full bg-yellow-100 text-yellow-800 flex items-center justify-center text-xs mr-2">3</span>
+<span class="text-gray-700">社会学研究方法</span>
+</li>
+<li class="flex items-center">
+<span class="w-6 h-6 rounded-full bg-gray-100 text-gray-800 flex items-center justify-center text-xs mr-2">4</span>
+<span class="text-gray-700">量子力学导论</span>
+</li>
+<li class="flex items-center">
+<span class="w-6 h-6 rounded-full bg-gray-100 text-gray-800 flex items-center justify-center text-xs mr-2">5</span>
+<span class="text-gray-700">艺术设计基础</span>
+</li>
+</ul>
+<a href="图书漂流捐书页.html" class="mt-4 w-full py-2 bg-red-800 hover:bg-red-900 text-white rounded-lg transition inline-flex items-center justify-center">
+            捐赠书籍
+          </a>
+</div>
+<!-- 捐赠排行榜 -->
+<div class="bg-white rounded-lg shadow p-6">
+<h2 class="text-lg font-semibold text-gray-800 mb-4 flex items-center">
+<span class="iconify text-blue-600 mr-2" data-icon="mdi:trophy" data-width="20"></span>
+            捐赠排行榜
+          </h2>
+<div class="space-y-4">
+<div class="flex items-center">
+<div class="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center text-red-800 font-bold mr-3">1</div>
+<div class="flex-1">
+<h3 class="font-medium text-gray-800">王教授</h3>
+<p class="text-sm text-gray-600">历史学系 · 捐赠42本</p>
+</div>
+<span class="iconify text-yellow-400" data-icon="mdi:crown" data-width="20"></span>
+</div>
+<div class="flex items-center">
+<div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-800 font-bold mr-3">2</div>
+<div class="flex-1">
+<h3 class="font-medium text-gray-800">李同学</h3>
+<p class="text-sm text-gray-600">信息科学技术学院 · 捐赠28本</p>
+</div>
+</div>
+<div class="flex items-center">
+<div class="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center text-green-800 font-bold mr-3">3</div>
+<div class="flex-1">
+<h3 class="font-medium text-gray-800">张同学</h3>
+<p class="text-sm text-gray-600">经济学院 · 捐赠25本</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- 底部信息 -->
+<footer class="bg-gray-800 text-white mt-12">
+<div class="container mx-auto px-6 py-12">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+<div>
+<h3 class="text-lg font-semibold mb-4">关于我们</h3>
+<ul class="space-y-2 text-gray-300">
+<li><a class="hover:text-white" href="#">平台简介</a></li>
+<li><a class="hover:text-white" href="#">团队介绍</a></li>
+<li><a class="hover:text-white" href="#">加入我们</a></li>
+<li><a class="hover:text-white" href="#">联系方式</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-semibold mb-4">帮助中心</h3>
+<ul class="space-y-2 text-gray-300">
+<li><a class="hover:text-white" href="#">新手指南</a></li>
+<li><a class="hover:text-white" href="#">常见问题</a></li>
+<li><a class="hover:text-white" href="#">交易规则</a></li>
+<li><a class="hover:text-white" href="#">纠纷处理</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-semibold mb-4">友情链接</h3>
+<ul class="space-y-2 text-gray-300">
+<li><a class="hover:text-white" href="#">北京大学官网</a></li>
+<li><a class="hover:text-white" href="#">教务部网站</a></li>
+<li><a class="hover:text-white" href="#">图书馆系统</a></li>
+<li><a class="hover:text-white" href="#">校园论坛</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-semibold mb-4">关注我们</h3>
+<div class="flex space-x-4">
+<a class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center hover:bg-red-800" href="#">
+<span class="iconify" data-icon="mdi:wechat" data-width="20"></span>
+</a>
+<a class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center hover:bg-blue-500" href="#">
+<span class="iconify" data-icon="mdi:weibo" data-width="20"></span>
+</a>
+<a class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center hover:bg-green-500" href="#">
+<span class="iconify" data-icon="mdi:email" data-width="20"></span>
+</a>
+</div>
+<div class="mt-6 p-4 bg-gray-700 rounded-lg">
+<p class="text-sm">平台已通过校园网络安全认证</p>
+</div>
+</div>
+</div>
+<div class="border-t border-gray-700 mt-8 pt-8 text-sm text-gray-400 flex flex-col md:flex-row justify-between">
+<div>
+<p>© 2025 北京大学二手书交易平台</p>
+</div>
+<div class="mt-4 md:mt-0">
+<p>京ICP备2025000001号 | 出版物经营许可证 京出发书批字第A-2025号</p>
+</div>
+</div>
+</div>
+</footer>
+</body>
+</html>

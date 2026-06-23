@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>图书漂流 - 供给书籍</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://code.iconify.design/3/3.1.1/iconify.min.js"></script>
+<script>
+tailwind.config={theme:{extend:{colors:{pkured:'#990000',academicblue:'#0066CC',success:'#52C41A',warning:'#FA8C16',error:'#F5222D'}}}};
+</script>
+<style>
+  .step-item.active{color:#990000;font-weight:700;}
+</style>
+</head>
+
+<body class="bg-gray-100 min-h-screen flex flex-col" data-page="drift_supply">
+<header class="bg-white shadow-sm sticky top-0 z-50">
+  <div class="container mx-auto px-6">
+    <div class="flex items-center justify-between h-20">
+      <div class="flex items-center">
+        <img src="./logo.png" alt="" style="width:150px;height:50px;">
+      </div>
+      <nav class="hidden md:flex space-x-8">
+        <a class="font-medium text-gray-700 hover:text-pkured transition" href="首页.html">首页</a>
+        <a class="font-medium text-gray-700 hover:text-pkured transition" href="购书通道.html">购书通道</a>
+        <a class="font-medium text-gray-700 hover:text-pkured transition" href="售书通道.html">售书通道</a>
+        <a class="font-medium text-gray-700 hover:text-pkured transition" href="论坛.html">论坛</a>
+        <a class="font-medium text-gray-700 hover:text-pkured transition" href="图书漂流.html">图书漂流</a>
+        <a class="font-medium text-gray-700 hover:text-pkured transition" href="个人中心.html">个人中心</a>
+      </nav>
+      <div class="flex items-center space-x-4">
+        <span class="iconify text-2xl text-gray-500" data-icon="mdi:bell-outline"></span>
+        <div class="flex items-center">
+          <img alt="User Avatar" class="w-10 h-10 rounded-full border-2 border-pkured" src="https://modao.cc/agent-py/media/generated_images/2025-12-06/bae5690b441d40c3a1586a4e74f3cb18.jpg"/>
+          <span class="ml-2 text-gray-700" id="js-user-name">未登录</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="flex-1 container mx-auto px-6 py-10 grid grid-cols-12 gap-8">
+  <aside class="col-span-3">
+    <div class="bg-white rounded-xl shadow p-6 sticky top-24">
+      <h2 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
+        <span class="iconify mr-2 text-pkured" data-icon="mdi:progress-check"></span>供给流程
+      </h2>
+      <ul class="space-y-3 text-gray-600">
+        <li class="step-item active">1. 填写书籍信息</li>
+        <li class="step-item">2. 下一步：供给设置</li>
+        <li class="step-item">3. 供给确认</li>
+      </ul>
+      <div class="mt-8 pt-6 border-t text-sm text-gray-500 leading-relaxed">
+        <p class="font-medium text-gray-700 mb-2">说明</p>
+        <p>本模块采用“无偿加入、转交申领同学、不再归还”的漂流方式。</p>
+      </div>
+    </div>
+  </aside>
+
+  <section class="col-span-6">
+    <div class="bg-white rounded-xl shadow p-8">
+      <div class="flex items-center mb-6">
+        <span class="iconify text-3xl text-pkured mr-3" data-icon="mdi:book-plus"></span>
+        <h1 class="text-2xl font-bold text-gray-800">填写书籍信息</h1>
+      </div>
+
+      <form id="js-drift-supply-form" class="space-y-6">
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-2">书名</label>
+          <input id="js-drift-title" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg outline-none focus:ring-2 focus:ring-academicblue" placeholder="请输入书名" type="text"/>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">作者</label>
+            <input id="js-drift-author" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg outline-none focus:ring-2 focus:ring-academicblue" placeholder="请输入作者" type="text"/>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">ISBN（可选）</label>
+            <input id="js-drift-isbn" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg outline-none focus:ring-2 focus:ring-academicblue" placeholder="请输入ISBN" type="text"/>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">分类</label>
+            <select id="js-drift-category" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg outline-none">
+              <option>人文社会科学</option><option>理学</option><option>信息与工程科学</option><option>医学</option><option>交叉学科</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">新旧程度</label>
+            <select id="js-drift-condition" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg outline-none">
+              <option>九成新以上</option><option>七成新以上</option><option>五成新以上</option><option>有明显使用痕迹</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-2">封面图片 URL（可选）</label>
+          <input id="js-drift-cover" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg outline-none focus:ring-2 focus:ring-academicblue" placeholder="如：https://..." type="url"/>
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-2">供给说明（可选）</label>
+          <textarea id="js-drift-note" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg outline-none focus:ring-2 focus:ring-academicblue" rows="4" placeholder="如：适用课程/版本信息/缺页情况等"></textarea>
+        </div>
+
+        <div class="bg-gray-50 border border-gray-200 rounded-xl p-4">
+          <label class="flex items-start space-x-3 text-sm text-gray-700">
+            <input id="js-drift-agree" type="checkbox" class="mt-1 w-5 h-5 text-pkured rounded">
+            <span>我同意将书籍无偿加入图书漂流，并确认书籍将转交给申领同学（不再归还）。</span>
+          </label>
+        </div>
+
+        <div class="flex justify-end">
+          <button type="submit" class="px-6 py-3 bg-pkured text-white rounded-lg hover:bg-red-900">确认供给</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <aside class="col-span-3">
+    <div class="bg-white rounded-xl shadow p-6">
+      <h2 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+        <span class="iconify mr-2 text-academicblue" data-icon="mdi:information-outline"></span>温馨提示
+      </h2>
+      <ul class="space-y-3 text-sm text-gray-600 leading-relaxed">
+        <li>请尽量填写准确的版本信息，方便同学判断是否需要。</li>
+        <li>若书籍存在缺页/涂写，请在说明中如实告知。</li>
+        <li>申领成功后请按平台提示完成线下交接。</li>
+      </ul>
+    </div>
+  </aside>
+</main>
+
+<footer class="bg-white border-t mt-10">
+  <div class="container mx-auto px-6 py-6 text-center text-gray-500 text-sm">© 2025 北京大学二手书交易平台 · 图书漂流供给</div>
+</footer>
+
+<script src="js/app.js"></script>
+</body>
+</html>

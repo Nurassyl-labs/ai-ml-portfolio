@@ -1,0 +1,401 @@
+
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>图书漂流捐书 - 北京大学二手书交易平台</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+<style>
+    .hide-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .hide-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    @keyframes progress {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+  </style>
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col">
+<!-- 顶部导航栏 -->
+<header class="bg-white shadow-sm sticky top-0 z-50">
+<div class="container mx-auto px-6">
+<div class="flex items-center justify-between h-20">
+<!-- Logo区域 -->
+<div class="flex items-center">
+<img alt="Peking University Logo" class="h-12 w-12 mr-3" id="1" src="https://modao.cc/agent-py/media/generated_images/2025-12-06/74e82723ccbb4c7db8380dc2df47e4bc.jpg"/>
+<h1 class="text-xl font-bold text-pkured">北京大学二手书交易平台</h1>
+</div>
+<!-- 主导航菜单 -->
+<nav class="hidden md:flex space-x-8">
+  <a class="font-medium text-gray-700 hover:text-pku-red transition" href="首页.html">首页</a>
+  <a class="font-medium text-gray-700 hover:text-pku-red transition" href="购书通道.html">购书通道</a>
+  <a class="font-medium text-gray-700 hover:text-pku-red transition" href="售书通道.html">售书通道</a>
+  <a class="font-medium text-gray-700 hover:text-pku-red transition" href="论坛.html">论坛</a>
+  <a class="font-medium text-gray-700 hover:text-pku-red transition" href="图书漂流.html">图书漂流</a>
+  <a class="font-medium text-gray-700 hover:text-pku-red transition" href="个人中心.html">个人中心</a>
+</nav>
+<!-- 用户操作区 -->
+<div class="flex items-center space-x-4">
+<button class="relative">
+<span class="iconify text-2xl text-gray-500" data-icon="mdi:bell-outline"></span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>
+</button>
+<div class="flex items-center">
+<img alt="User Avatar" class="w-10 h-10 rounded-full border-2 border-pkured" id="2" src="https://modao.cc/agent-py/media/generated_images/2025-12-06/bae5690b441d40c3a1586a4e74f3cb18.jpg"/>
+<span class="ml-2 text-gray-700">张同学</span>
+</div>
+</div>
+</div>
+</div>
+</header>
+<!-- 主体内容 -->
+<main class="max-w-6xl mx-auto px-6 py-8">
+<div class="text-center mb-10">
+<h1 class="text-3xl font-bold text-red-800 mb-2">图书漂流 · 知识共享</h1>
+<p class="text-gray-600 max-w-2xl mx-auto">捐赠闲置书籍，传递知识与温暖。每本书都将被送到需要它的同学手中，让知识在校园中自由流动。</p>
+</div>
+<!-- 进度条 -->
+<div class="mb-12">
+<div class="relative pt-1">
+<div class="flex mb-2 items-center justify-between">
+<div class="flex items-center">
+<span class="text-sm font-semibold inline-block py-1 px-2 rounded-full text-white bg-red-800">1</span>
+<span class="ml-2 text-sm font-medium text-red-800">书籍信息</span>
+</div>
+<div class="flex items-center">
+<span class="text-sm font-semibold inline-block py-1 px-2 rounded-full text-gray-700 bg-gray-200">2</span>
+<span class="ml-2 text-sm font-medium text-gray-500">图片管理</span>
+</div>
+<div class="flex items-center">
+<span class="text-sm font-semibold inline-block py-1 px-2 rounded-full text-gray-700 bg-gray-200">3</span>
+<span class="ml-2 text-sm font-medium text-gray-500">捐赠设置</span>
+</div>
+<div class="flex items-center">
+<span class="text-sm font-semibold inline-block py-1 px-2 rounded-full text-gray-700 bg-gray-200">4</span>
+<span class="ml-2 text-sm font-medium text-gray-500">发布确认</span>
+</div>
+</div>
+<div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-gray-200">
+<div class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-red-800 animate-progress" style="width:25%"></div>
+</div>
+</div>
+</div>
+<!-- 表单区域 -->
+<div class="bg-white rounded-xl shadow-md p-8 mb-12">
+<!-- 步骤1: 书籍信息 -->
+<div id="step1">
+<h2 class="text-xl font-bold text-gray-800 mb-6">书籍基本信息</h2>
+<div class="mb-8">
+<label class="block text-gray-700 text-sm font-bold mb-2">ISBN号</label>
+<div class="bg-gray-50 rounded-lg border border-gray-300 p-4">
+<p class="text-sm text-gray-600 mb-3">输入ISBN后系统将自动填充书籍信息</p>
+<div class="flex">
+<input class="flex-grow px-4 py-3 border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-red-800 focus:border-transparent" placeholder="输入ISBN自动填充" type="text"/>
+<button class="bg-red-800 text-white px-6 py-3 rounded-r-lg font-semibold hover:bg-red-900 transition-colors">识别</button>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div>
+<label class="block text-gray-700 text-sm font-bold mb-2">书名</label>
+<input class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-800 focus:border-transparent" placeholder="输入书籍名称" type="text"/>
+</div>
+<div>
+<label class="block text-gray-700 text-sm font-bold mb-2">作者</label>
+<input class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-800 focus:border-transparent" placeholder="输入作者姓名" type="text"/>
+</div>
+</div>
+<div class="mb-6">
+<label class="block text-gray-700 text-sm font-bold mb-2">出版社</label>
+<input class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-800 focus:border-transparent" placeholder="输入出版社名称" type="text"/>
+</div>
+<div class="mb-8">
+<label class="block text-gray-700 text-sm font-bold mb-2">课程标签</label>
+<div class="flex flex-wrap gap-2">
+<span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">中国哲学史</span>
+<span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">人文经典阅读</span>
+<button class="flex items-center text-red-800 text-sm">
+<iconify-icon class="mr-1" icon="mdi:plus"></iconify-icon> 添加标签
+            </button>
+</div>
+</div>
+<div class="mb-8">
+<label class="block text-gray-700 text-sm font-bold mb-2">新旧程度</label>
+<div class="flex items-center">
+<span class="text-gray-500 text-sm mr-3">最差</span>
+<input class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-red-800" max="10" min="0" type="range" value="8"/>
+<span class="text-gray-500 text-sm ml-3">最好</span>
+</div>
+<div class="text-right mt-1">
+<span class="text-red-800 font-semibold">八成新</span>
+</div>
+</div>
+<div>
+<label class="block text-gray-700 text-sm font-bold mb-2">书籍描述</label>
+<textarea class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-800 focus:border-transparent" placeholder="请描述书籍状况、使用情况等信息" rows="4"></textarea>
+</div>
+<div class="flex justify-end mt-10 space-x-4">
+<button class="px-8 py-3 border border-gray-300 rounded-lg font-semibold text-gray-700 hover:bg-gray-50">保存草稿</button>
+<button class="px-8 py-3 bg-red-800 text-white rounded-lg font-semibold hover:bg-red-900 transition-colors" onclick="nextStep(2)">下一步：图片管理</button>
+</div>
+</div>
+<!-- 步骤2: 图片管理 -->
+<div class="hidden" id="step2">
+<h2 class="text-xl font-bold text-gray-800 mb-6">书籍图片管理</h2>
+<div class="mb-8">
+<label class="block text-gray-700 text-sm font-bold mb-2">选择上传方式</label>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<button class="flex flex-col items-center justify-center p-6 border-2 border-dashed border-gray-300 rounded-xl hover:border-red-800 transition-colors">
+<iconify-icon class="text-3xl text-gray-500 mb-2" icon="mdi:camera"></iconify-icon>
+<span class="font-medium">拍照上传</span>
+</button>
+<button class="flex flex-col items-center justify-center p-6 border-2 border-dashed border-gray-300 rounded-xl hover:border-red-800 transition-colors">
+<iconify-icon class="text-3xl text-gray-500 mb-2" icon="mdi:image-multiple"></iconify-icon>
+<span class="font-medium">相册选择</span>
+</button>
+<button class="flex flex-col items-center justify-center p-6 border-2 border-dashed border-gray-300 rounded-xl hover:border-red-800 transition-colors">
+<iconify-icon class="text-3xl text-gray-500 mb-2" icon="mdi:desktop-mac"></iconify-icon>
+<span class="font-medium">电脑上传</span>
+</button>
+</div>
+<p class="text-sm text-gray-500 mt-4">最多可上传10张图片，建议展示书籍封面、内页和细节</p>
+</div>
+<div class="mb-8">
+<label class="block text-gray-700 text-sm font-bold mb-4">已上传图片</label>
+<div class="grid grid-cols-3 gap-4">
+<div class="relative">
+<div class="aspect-[3/4] bg-gray-200 rounded-lg flex items-center justify-center">
+<iconify-icon class="text-4xl text-gray-400" icon="mdi:image"></iconify-icon>
+</div>
+<span class="absolute top-2 left-2 bg-black bg-opacity-50 text-white text-xs px-2 py-1 rounded">封面</span>
+</div>
+<div class="relative">
+<div class="aspect-[3/4] bg-gray-200 rounded-lg flex items-center justify-center">
+<iconify-icon class="text-4xl text-gray-400" icon="mdi:image"></iconify-icon>
+</div>
+<span class="absolute top-2 left-2 bg-black bg-opacity-50 text-white text-xs px-2 py-1 rounded">内页</span>
+</div>
+<div class="relative">
+<div class="aspect-[3/4] bg-gray-200 rounded-lg flex items-center justify-center">
+<iconify-icon class="text-4xl text-gray-400" icon="mdi:image"></iconify-icon>
+</div>
+<span class="absolute top-2 left-2 bg-black bg-opacity-50 text-white text-xs px-2 py-1 rounded">细节</span>
+</div>
+</div>
+<p class="text-sm text-gray-500 mt-4">图片排序 (拖动调整顺序)</p>
+</div>
+<div class="flex justify-end mt-6 space-x-4">
+<button class="px-8 py-3 border border-gray-300 rounded-lg font-semibold text-gray-700 hover:bg-gray-50" onclick="prevStep(1)">上一步</button>
+<button class="px-8 py-3 bg-red-800 text-white rounded-lg font-semibold hover:bg-red-900 transition-colors" onclick="nextStep(3)">下一步：捐赠设置</button>
+</div>
+</div>
+<!-- 步骤3: 捐赠设置 -->
+<div class="hidden" id="step3">
+<h2 class="text-xl font-bold text-gray-800 mb-6">捐赠设置</h2>
+<div class="mb-8">
+<label class="block text-gray-700 text-sm font-bold mb-2">捐赠说明</label>
+<textarea class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-800 focus:border-transparent" placeholder="请说明捐赠书籍的原因或寄语" rows="4"></textarea>
+</div>
+<div class="mb-8">
+<label class="block text-gray-700 text-sm font-bold mb-2">取货信息</label>
+<p class="text-sm text-gray-600 mb-4">我们将安排志愿者在您指定的时间和地点收取捐赠书籍</p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div>
+<label class="block text-gray-700 text-sm font-medium mb-2">取货地点</label>
+<select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-800 focus:border-transparent">
+<option>图书馆1楼咖啡厅</option>
+<option>二教一楼大厅</option>
+<option>三角地书报亭</option>
+<option>新太阳学生中心</option>
+<option>农园食堂入口</option>
+</select>
+</div>
+<div>
+<label class="block text-gray-700 text-sm font-medium mb-2">取货时间</label>
+<input class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-800 focus:border-transparent" type="date"/>
+</div>
+</div>
+</div>
+<div class="flex items-start">
+<input class="mt-1 mr-2 w-5 h-5 accent-red-800" type="checkbox"/>
+<label class="text-gray-700">我同意将书籍无偿捐赠给图书漂流项目，并授权平台将书籍分发给有需要的同学</label>
+</div>
+<div class="flex justify-end mt-10 space-x-4">
+<button class="px-8 py-3 border border-gray-300 rounded-lg font-semibold text-gray-700 hover:bg-gray-50" onclick="prevStep(2)">上一步</button>
+<button class="px-8 py-3 bg-red-800 text-white rounded-lg font-semibold hover:bg-red-900 transition-colors" onclick="nextStep(4)">下一步：发布确认</button>
+</div>
+</div>
+<!-- 步骤4: 发布确认 -->
+<div class="hidden" id="step4">
+<h2 class="text-xl font-bold text-gray-800 mb-6">捐赠确认</h2>
+<div class="bg-green-50 border border-green-200 rounded-lg p-6 mb-8">
+<div class="flex items-start">
+<iconify-icon class="text-green-600 text-2xl mr-3 mt-1" icon="mdi:check-circle"></iconify-icon>
+<div>
+<h3 class="font-bold text-green-800">感谢您的捐赠！</h3>
+<p class="text-green-700 mt-2">您的书籍将加入"图书漂流"项目，帮助更多同学获取学习资源。平台将为您记录公益积分。</p>
+</div>
+</div>
+</div>
+<div class="border border-gray-200 rounded-lg p-6 mb-8">
+<div class="flex">
+<div class="w-24 h-32 bg-gray-200 rounded-lg flex items-center justify-center mr-6">
+<iconify-icon class="text-3xl text-gray-500" icon="mdi:book-open-variant"></iconify-icon>
+</div>
+<div class="flex-grow">
+<h3 class="font-bold text-lg text-gray-800">中国哲学简史</h3>
+<p class="text-gray-600">冯友兰 著 · 北京大学出版社</p>
+<div class="flex items-center mt-2">
+<span class="bg-red-100 text-red-800 px-2 py-1 rounded-full text-xs mr-2">中国哲学史</span>
+<span class="bg-red-100 text-red-800 px-2 py-1 rounded-full text-xs">人文经典阅读</span>
+</div>
+<div class="mt-4">
+<p class="text-gray-700">教材使用一年，无笔记无划线，保存完好，仅封面有轻微折痕。</p>
+<p class="text-gray-700 mt-2"><span class="font-semibold">新旧程度：</span>八成新</p>
+</div>
+</div>
+</div>
+<div class="mt-6 pt-6 border-t border-gray-200">
+<h4 class="font-bold text-gray-800 mb-2">取货信息</h4>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div>
+<p class="text-gray-600 text-sm">取货地点</p>
+<p class="font-medium">图书馆1楼咖啡厅</p>
+</div>
+<div>
+<p class="text-gray-600 text-sm">取货时间</p>
+<p class="font-medium">2025年12月15日 14:00-16:00</p>
+</div>
+</div>
+</div>
+</div>
+<div class="flex justify-between items-center mt-10">
+<div class="flex items-start">
+<input checked="" class="mt-1 mr-2 w-5 h-5 accent-red-800" type="checkbox"/>
+<label class="text-gray-700">我同意遵守平台交易规则</label>
+</div>
+<div class="flex space-x-4">
+<button class="px-8 py-3 border border-gray-300 rounded-lg font-semibold text-gray-700 hover:bg-gray-50" onclick="prevStep(3)">上一步</button>
+<button class="px-8 py-3 bg-green-600 text-white rounded-lg font-semibold hover:bg-green-700 transition-colors flex items-center">
+<iconify-icon class="mr-2" icon="mdi:gift"></iconify-icon>
+              确认捐赠
+            </button>
+</div>
+</div>
+</div>
+</div>
+<!-- 捐赠价值提示 -->
+<div class="bg-green-50 border border-green-200 rounded-lg p-6 mb-12">
+<div class="flex items-center">
+<iconify-icon class="text-green-600 text-3xl mr-4" icon="mdi:leaf"></iconify-icon>
+<div>
+<h3 class="font-bold text-lg text-green-800">您的捐赠价值</h3>
+<p class="text-green-700 mt-2">每本捐赠书籍平均可节省约¥50教材费用，减少2kg碳排放。平台已累计传递书籍12,458本，节省教材费用超过62万元。</p>
+</div>
+</div>
+</div>
+</main>
+<!-- 底部信息 -->
+<footer class="bg-gray-800 text-white py-12">
+<div class="max-w-6xl mx-auto px-6">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+<div>
+<h3 class="font-bold text-lg mb-4">关于我们</h3>
+<ul class="space-y-2">
+<li><a class="text-gray-300 hover:text-white" href="#">平台简介</a></li>
+<li><a class="text-gray-300 hover:text-white" href="#">团队介绍</a></li>
+<li><a class="text-gray-300 hover:text-white" href="#">加入我们</a></li>
+<li><a class="text-gray-300 hover:text-white" href="#">联系方式</a></li>
+</ul>
+</div>
+<div>
+<h3 class="font-bold text-lg mb-4">帮助中心</h3>
+<ul class="space-y-2">
+<li><a class="text-gray-300 hover:text-white" href="#">发布指南</a></li>
+<li><a class="text-gray-300 hover:text-white" href="#">常见问题</a></li>
+<li><a class="text-gray-300 hover:text-white" href="#">交易规则</a></li>
+<li><a class="text-gray-300 hover:text-white" href="#">纠纷处理</a></li>
+</ul>
+</div>
+<div>
+<h3 class="font-bold text-lg mb-4">友情链接</h3>
+<ul class="space-y-2">
+<li><a class="text-gray-300 hover:text-white" href="#">北京大学官网</a></li>
+<li><a class="text-gray-300 hover:text-white" href="#">教材中心</a></li>
+<li><a class="text-gray-300 hover:text-white" href="#">图书馆系统</a></li>
+<li><a class="text-gray-300 hover:text-white" href="#">课程论坛</a></li>
+</ul>
+</div>
+<div>
+<h3 class="font-bold text-lg mb-4">联系我们</h3>
+<ul class="space-y-3">
+<li class="flex items-center">
+<iconify-icon class="mr-2" icon="mdi:email"></iconify-icon>
+<span>books@pku.edu.cn</span>
+</li>
+<li class="flex items-center">
+<iconify-icon class="mr-2" icon="mdi:phone"></iconify-icon>
+<span>010-6275XXXX</span>
+</li>
+<li class="flex items-start">
+<iconify-icon class="mr-2 mt-1" icon="mdi:map-marker"></iconify-icon>
+<span>北京市海淀区颐和园路5号<br/>北京大学新太阳中心</span>
+</li>
+</ul>
+</div>
+</div>
+<div class="border-t border-gray-700 mt-10 pt-6 text-center text-gray-400 text-sm">
+<p>© 2025 北京大学二手书交易平台 | 京ICP备2025000001号</p>
+<p class="mt-2">平台已通过校园网络安全认证</p>
+</div>
+</div>
+</footer>
+<script>
+    // 步骤切换功能
+    function nextStep(step) {
+      document.querySelectorAll('[id^="step"]').forEach(el => {
+        el.classList.add('hidden');
+      });
+      document.getElementById(`step${step}`).classList.remove('hidden');
+      
+      // 更新进度条
+      const progress = document.querySelector('.animate-progress');
+      progress.style.width = `${step * 25}%`;
+      
+      // 更新步骤状态
+      document.querySelectorAll('.flex.items-center').forEach((item, index) => {
+        const num = item.querySelector('span:first-child');
+        const text = item.querySelector('span:last-child');
+        
+        if (index < step) {
+          num.classList.remove('bg-gray-200', 'text-gray-700');
+          num.classList.add('bg-red-800', 'text-white');
+          text.classList.remove('text-gray-500');
+          text.classList.add('text-red-800');
+        } else {
+          num.classList.remove('bg-red-800', 'text-white');
+          num.classList.add('bg-gray-200', 'text-gray-700');
+          text.classList.remove('text-red-800');
+          text.classList.add('text-gray-500');
+        }
+      });
+    }
+    
+    function prevStep(step) {
+      nextStep(step);
+    }
+    
+    // 初始化显示第一步
+    document.addEventListener('DOMContentLoaded', () => {
+      nextStep(1);
+    });
+  </script>
+</body>
+</html>

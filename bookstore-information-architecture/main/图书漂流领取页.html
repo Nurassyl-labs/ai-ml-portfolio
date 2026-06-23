@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>图书漂流 - 申领</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://code.iconify.design/3/3.1.1/iconify.min.js"></script>
+<script>
+tailwind.config={theme:{extend:{colors:{pkured:'#990000',academicblue:'#0066CC',success:'#52C41A',warning:'#FA8C16',error:'#F5222D'}}}};
+</script>
+</head>
+
+<body class="bg-gray-100 min-h-screen flex flex-col" data-page="drift_claim">
+<header class="bg-white shadow-sm sticky top-0 z-50">
+  <div class="container mx-auto px-6">
+    <div class="flex items-center justify-between h-20">
+      <div class="flex items-center">
+        <img src="./logo.png" alt="" style="width:150px;height:50px;">
+      </div>
+      <nav class="hidden md:flex space-x-8">
+        <a class="font-medium text-gray-700 hover:text-pkured transition" href="首页.html">首页</a>
+        <a class="font-medium text-gray-700 hover:text-pkured transition" href="购书通道.html">购书通道</a>
+        <a class="font-medium text-gray-700 hover:text-pkured transition" href="售书通道.html">售书通道</a>
+        <a class="font-medium text-gray-700 hover:text-pkured transition" href="论坛.html">论坛</a>
+        <a class="font-medium text-gray-700 hover:text-pkured transition" href="图书漂流.html">图书漂流</a>
+        <a class="font-medium text-gray-700 hover:text-pkured transition" href="个人中心.html">个人中心</a>
+      </nav>
+      <div class="flex items-center space-x-4">
+        <span class="iconify text-2xl text-gray-500" data-icon="mdi:bell-outline"></span>
+        <div class="flex items-center">
+          <img alt="User Avatar" class="w-10 h-10 rounded-full border-2 border-pkured" src="https://modao.cc/agent-py/media/generated_images/2025-12-06/bae5690b441d40c3a1586a4e74f3cb18.jpg"/>
+          <span class="ml-2 text-gray-700" id="js-user-name">未登录</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="flex-1 container mx-auto px-6 py-10 grid grid-cols-12 gap-8">
+  <section class="col-span-7">
+    <div class="bg-white rounded-xl shadow p-8">
+      <div class="flex items-center mb-6">
+        <span class="iconify text-3xl text-pkured mr-3" data-icon="mdi:hand-extended"></span>
+        <h1 class="text-2xl font-bold text-gray-800">图书申领</h1>
+      </div>
+
+      <div class="flex">
+        <img id="js-drift-book-cover" class="w-32 h-44 object-cover rounded-lg mr-6" src="https://via.placeholder.com/160x220" alt="cover"/>
+        <div class="flex-1">
+          <h2 id="js-drift-book-title" class="text-xl font-bold text-gray-800">-</h2>
+          <p class="text-gray-500 mt-1"><span id="js-drift-book-author">-</span></p>
+
+          <div class="mt-4 grid grid-cols-2 gap-3 text-sm text-gray-700">
+            <div>图书供给人：<span id="js-drift-book-supplier">-</span></div>
+            <div>供给时间：<span id="js-drift-book-time">-</span></div>
+            <div>新旧程度：<span id="js-drift-book-condition">-</span></div>
+            <div>分类：<span id="js-drift-book-category">-</span></div>
+          </div>
+
+          <div class="mt-5 p-4 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-600 leading-relaxed">
+            <div class="font-medium text-gray-700 mb-1">漂流说明</div>
+            本书以“无偿加入、转交申领同学、不再归还”的方式进行漂流。请在申领前确认自己确有需要，并遵守线下交接规则。
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <aside class="col-span-5">
+    <div class="bg-white rounded-xl shadow p-8">
+      <h2 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+        <span class="iconify mr-2 text-academicblue" data-icon="mdi:clipboard-text"></span>申领信息
+      </h2>
+
+      <form id="js-drift-claim-form" class="space-y-5">
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-2">申领原因（简要）</label>
+          <textarea id="js-claim-reason" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg outline-none focus:ring-2 focus:ring-academicblue" rows="4" placeholder="例如：课程需要/个人阅读/研究资料等"></textarea>
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-2">期望交接方式</label>
+          <select id="js-claim-handover" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg outline-none">
+            <option value="校内当面交接">校内当面交接</option>
+            <option value="放置指定地点自取">放置指定地点自取</option>
+            <option value="双方私信协商">双方私信协商</option>
+          </select>
+        </div>
+
+        <div class="bg-gray-50 border border-gray-200 rounded-xl p-4 text-sm text-gray-600 leading-relaxed">
+          <div class="font-medium text-gray-700 mb-1">提示</div>
+          申领成功后，系统将引导你与供给人完成线下交接。请保持联系方式畅通并遵守平台规则。
+        </div>
+
+        <button type="submit" class="w-full py-3 bg-pkured text-white rounded-lg hover:bg-red-900">提交申领</button>
+      </form>
+    </div>
+  </aside>
+</main>
+
+<footer class="bg-white border-t mt-10">
+  <div class="container mx-auto px-6 py-6 text-center text-gray-500 text-sm">© 2025 北京大学二手书交易平台 · 图书漂流申领</div>
+</footer>
+
+<script src="js/app.js"></script>
+</body>
+</html>

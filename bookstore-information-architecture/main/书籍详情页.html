@@ -1,0 +1,329 @@
+
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>书籍详情 - 北京大学二手书交易平台</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://code.iconify.design/3/3.1.1/iconify.min.js"></script>
+<script src="js/app.js"></script>
+<style>
+    .hide-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .hide-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    .book-detail-section {
+      border-bottom: 1px solid #e5e7eb;
+      padding-bottom: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+  </style>
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col">
+<!-- 顶部导航栏 -->
+<header class="bg-white shadow-sm sticky top-0 z-50">
+<div class="container mx-auto px-6">
+<div class="flex items-center justify-between h-20">
+<!-- Logo区域 -->
+<div class="flex items-center">
+<!--
+<img alt="Peking University Logo" class="h-12 w-12 mr-3" id="1" src="https://modao.cc/agent-py/media/generated_images/2025-12-06/74e82723ccbb4c7db8380dc2df47e4bc.jpg"/>
+<h1 class="text-xl font-bold text-pkured">北京大学二手书交易平台</h1>
+-->
+<img src="./logo.png" alt="" style="width: 150px; height: 50px;">
+</div>
+<!-- 主导航菜单 -->
+<nav class="hidden md:flex space-x-8">
+  <a class="font-medium text-gray-700 hover:text-pku-red transition" href="首页.html">首页</a>
+  <a class="font-medium text-gray-700 hover:text-pku-red transition" href="购书通道.html">购书通道</a>
+  <a class="font-medium text-gray-700 hover:text-pku-red transition" href="售书通道.html">售书通道</a>
+  <a class="font-medium text-gray-700 hover:text-pku-red transition" href="论坛.html">论坛</a>
+  <a class="font-medium text-gray-700 hover:text-pku-red transition" href="图书漂流.html">图书漂流</a>
+  <a class="font-medium text-gray-700 hover:text-pku-red transition" href="个人中心.html">个人中心</a>
+</nav>
+<!-- 用户操作区 -->
+<div class="flex items-center space-x-4">
+<button class="relative">
+<span class="iconify text-2xl text-gray-500" data-icon="mdi:bell-outline"></span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>
+</button>
+<div class="flex items-center">
+<img alt="User Avatar" class="w-10 h-10 rounded-full border-2 border-pkured" id="2" src="https://modao.cc/agent-py/media/generated_images/2025-12-06/bae5690b441d40c3a1586a4e74f3cb18.jpg"/>
+<span class="ml-2 text-gray-700">张同学</span>
+</div>
+</div>
+</div>
+</div>
+</header>
+
+<!-- 主体内容 -->
+<main class="max-w-7xl mx-auto px-6 py-8">
+<div class="flex flex-col lg:flex-row gap-8">
+<!-- 左侧主信息区 -->
+<div class="w-full lg:w-2/3 bg-white rounded-xl shadow-sm p-8">
+<!-- 书籍图集与基础信息 -->
+<div class="flex flex-col md:flex-row gap-8 book-detail-section">
+<div class="w-full md:w-2/5">
+<div class="bg-gray-100 rounded-lg aspect-[3/4] flex items-center justify-center mb-4">
+<img alt="Book cover of A Brief History of Chinese Philosophy" class="w-48 h-auto" id="1" src="https://modao.cc/agent-py/media/generated_images/2025-12-15/7e42a49d5c2043c0aff48145146bc9aa.jpg"/>
+</div>
+<div class="flex gap-2 overflow-x-auto hide-scrollbar pb-2">
+<div class="flex-shrink-0 w-16 h-16 bg-gray-100 rounded flex items-center justify-center">
+<img alt="Book cover thumbnail" class="w-12 h-auto" id="2" src="https://modao.cc/agent-py/media/generated_images/2025-12-15/07c921d7a832495aa1be3d41f30a7a8f.jpg"/>
+</div>
+<div class="flex-shrink-0 w-16 h-16 bg-gray-100 rounded flex items-center justify-center">
+<img alt="Book inner page" class="w-12 h-auto" id="3" src="https://modao.cc/agent-py/media/generated_images/2025-12-15/fd91da10e5434ac594f359dfbc372320.jpg"/>
+</div>
+<div class="flex-shrink-0 w-16 h-16 bg-gray-100 rounded flex items-center justify-center">
+<img alt="Book details" class="w-12 h-auto" id="4" src="https://modao.cc/agent-py/media/generated_images/2025-12-15/d12e3da012e94f91a20e7a385d986d90.jpg"/>
+</div>
+</div>
+</div>
+<div class="w-full md:w-3/5">
+<h1 class="text-3xl font-bold text-gray-900 mb-2">中国哲学简史</h1>
+<p class="text-gray-700 mb-1">冯友兰 著 · 北京大学出版社</p>
+<p class="text-gray-500 text-sm mb-4">ISBN: 9787301263413</p>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="px-3 py-1 bg-orange-100 text-orange-800 rounded-full text-sm">中国哲学史</span>
+<span class="px-3 py-1 bg-orange-100 text-orange-800 rounded-full text-sm">人文经典阅读</span>
+</div>
+<div class="flex items-center mb-4">
+<span class="text-gray-700 mr-4">新旧程度:</span>
+<div class="flex-1 bg-gray-200 rounded-full h-2.5">
+<div class="bg-orange-500 h-2.5 rounded-full" style="width: 90%"></div>
+</div>
+<span class="ml-2 text-orange-600 font-medium">九成新</span>
+</div>
+<div class="flex items-center mb-2">
+<span class="text-lg text-gray-600">卖家评价:</span>
+<div class="flex items-center ml-2">
+<span class="iconify text-yellow-400" data-icon="mdi:star" data-width="20"></span>
+<span class="iconify text-yellow-400" data-icon="mdi:star" data-width="20"></span>
+<span class="iconify text-yellow-400" data-icon="mdi:star" data-width="20"></span>
+<span class="iconify text-yellow-400" data-icon="mdi:star" data-width="20"></span>
+<span class="iconify text-gray-300" data-icon="mdi:star" data-width="20"></span>
+<span class="text-gray-600 ml-1">4.7</span>
+</div>
+</div>
+</div>
+</div>
+<!-- 价格与交易信息 -->
+<div class="book-detail-section">
+<div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+<div class="flex items-end mb-4">
+<span class="text-3xl font-bold text-[#990033] mr-3">¥45</span>
+<span class="text-lg text-gray-500 line-through mr-4">¥68</span>
+<span class="text-green-600 font-medium">节省 ¥23</span>
+</div>
+<button class="w-full py-3 bg-[#990033] hover:bg-[#800029] text-white font-semibold rounded-lg transition-colors">
+              预约购买
+            </button>
+<div class="mt-4 pt-4 border-t border-gray-200">
+<div class="flex items-center mb-3">
+<div class="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center overflow-hidden mr-3">
+<span class="iconify" data-height="36" data-icon="mdi:account-circle" data-width="36"></span>
+</div>
+<div>
+<p class="font-medium">张同学</p>
+<p class="text-sm text-gray-500">信息科学技术学院</p>
+</div>
+</div>
+<div class="flex items-center text-sm">
+<span class="iconify text-gray-500 mr-1" data-icon="mdi:clock-outline" data-width="16"></span>
+<span class="text-gray-500">最近活跃: 2小时前</span>
+</div>
+</div>
+</div>
+</div>
+<!-- 书籍详细描述 -->
+<div class="book-detail-section">
+<h2 class="text-xl font-semibold text-gray-900 mb-4">书籍描述</h2>
+<div class="prose max-w-none text-gray-700">
+<p>教材使用一年，无笔记无划线，保存完好，仅封面有轻微折痕。本书是冯友兰先生哲学与思想融铸的结晶，以一本篇幅有限的哲学史专著，打通古今中外的相关知识，其中充满睿智与哲人洞见。</p>
+<p class="mt-3">本书内容涵盖中国哲学的精神与背景，孔子、老子、墨子、荀子、韩非子等先秦诸子，道家、儒家、佛家等哲学流派，以及中国历史上代表性的哲学大家，并论及中国哲学与当代世界的关系。</p>
+</div>
+</div>
+<!-- 交易方式与地点 -->
+<div>
+<h2 class="text-xl font-semibold text-gray-900 mb-4">交易信息</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="bg-gray-50 rounded-lg p-4 border border-gray-200">
+<h3 class="font-medium text-gray-900 mb-2">交易方式</h3>
+<div class="flex items-center">
+<span class="iconify text-green-600 mr-2" data-icon="mdi:check-circle" data-width="20"></span>
+<span>校内面对面交易</span>
+</div>
+</div>
+<div class="bg-gray-50 rounded-lg p-4 border border-gray-200">
+<h3 class="font-medium text-gray-900 mb-2">面交地点</h3>
+<div class="flex items-center">
+<span class="iconify text-gray-500 mr-2" data-icon="mdi:map-marker" data-width="20"></span>
+<span>图书馆1楼咖啡厅</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- 右侧侧边栏 -->
+<div class="w-full lg:w-1/3 space-y-8">
+<!-- 卖家其他在售书籍 -->
+<div class="bg-white rounded-xl shadow-sm p-6">
+<h2 class="text-xl font-semibold text-gray-900 mb-4">该卖家其他在售书籍</h2>
+<div class="space-y-4">
+<div class="flex items-start">
+<div class="w-16 h-20 bg-gray-100 rounded flex-shrink-0 flex items-center justify-center mr-4">
+<img alt="Book cover of Data Structures" class="w-12 h-auto" id="5" src="https://modao.cc/agent-py/media/generated_images/2025-12-15/ee07a0ce425f4ed8bc03ac8af8586371.jpg"/>
+</div>
+<div>
+<h3 class="font-medium text-gray-900">数据结构与算法分析</h3>
+<p class="text-sm text-gray-500 mb-1">Mark Allen Weiss 著</p>
+<div class="flex items-center justify-between">
+<span class="text-[#990033] font-medium">¥65</span>
+<span class="text-xs bg-orange-100 text-orange-800 px-2 py-1 rounded">九五成新</span>
+</div>
+</div>
+</div>
+<div class="flex items-start">
+<div class="w-16 h-20 bg-gray-100 rounded flex-shrink-0 flex items-center justify-center mr-4">
+<img alt="Book cover of Computer Networks" class="w-12 h-auto" id="6" src="https://modao.cc/agent-py/media/generated_images/2025-12-15/456121e1a76c41249ea6c29e03f267ca.jpg"/>
+</div>
+<div>
+<h3 class="font-medium text-gray-900">计算机网络：自顶向下方法</h3>
+<p class="text-sm text-gray-500 mb-1">James F. Kurose 著</p>
+<div class="flex items-center justify-between">
+<span class="text-[#990033] font-medium">¥58</span>
+<span class="text-xs bg-orange-100 text-orange-800 px-2 py-1 rounded">八成新</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- 同类书籍推荐 -->
+<div class="bg-white rounded-xl shadow-sm p-6">
+<h2 class="text-xl font-semibold text-gray-900 mb-4">同类书籍推荐</h2>
+<div class="space-y-4">
+<div class="flex items-start">
+<div class="w-16 h-20 bg-gray-100 rounded flex-shrink-0 flex items-center justify-center mr-4">
+<img alt="Book cover of History of Chinese Philosophy" class="w-12 h-auto" id="7" src="https://modao.cc/agent-py/media/generated_images/2025-12-15/2f7d902f67d442faa26502e08554a69b.jpg"/>
+</div>
+<div>
+<h3 class="font-medium text-gray-900">中国哲学史</h3>
+<p class="text-sm text-gray-500 mb-1">冯友兰 著</p>
+<div class="flex items-center justify-between">
+<span class="text-[#990033] font-medium">¥52</span>
+<span class="text-xs bg-orange-100 text-orange-800 px-2 py-1 rounded">九成新</span>
+</div>
+</div>
+</div>
+<div class="flex items-start">
+<div class="w-16 h-20 bg-gray-100 rounded flex-shrink-0 flex items-center justify-center mr-4">
+<img alt="Book cover of Introduction to Chinese Philosophy" class="w-12 h-auto" id="8" src="https://modao.cc/agent-py/media/generated_images/2025-12-15/ec80ac081bfd4a1db1e5f367bfdcd613.jpg"/>
+</div>
+<div>
+<h3 class="font-medium text-gray-900">中国哲学导论</h3>
+<p class="text-sm text-gray-500 mb-1">张岱年 著</p>
+<div class="flex items-center justify-between">
+<span class="text-[#990033] font-medium">¥48</span>
+<span class="text-xs bg-orange-100 text-orange-800 px-2 py-1 rounded">七成新</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- 平台保障提示 -->
+<div class="bg-white rounded-xl shadow-sm p-6">
+<h2 class="text-xl font-semibold text-gray-900 mb-4">北大专属交易保障</h2>
+<div class="space-y-4">
+<div class="flex">
+<span class="iconify text-green-500 mt-1 mr-3" data-icon="mdi:check-circle" data-width="24"></span>
+<div>
+<h3 class="font-medium text-gray-900">学生实名认证</h3>
+<p class="text-gray-600">交易更安全</p>
+</div>
+</div>
+<div class="flex">
+<span class="iconify text-green-500 mt-1 mr-3" data-icon="mdi:handshake" data-width="24"></span>
+<div>
+<h3 class="font-medium text-gray-900">校内面对面交易</h3>
+<p class="text-gray-600">无运输风险</p>
+</div>
+</div>
+<div class="flex">
+<span class="iconify text-green-500 mt-1 mr-3" data-icon="mdi:shield-check" data-width="24"></span>
+<div>
+<h3 class="font-medium text-gray-900">七天无理由退款</h3>
+<p class="text-gray-600">交易保障</p>
+</div>
+</div>
+<div class="flex">
+<span class="iconify text-green-500 mt-1 mr-3" data-icon="mdi:scale-balance" data-width="24"></span>
+<div>
+<h3 class="font-medium text-gray-900">校内纠纷调解支持</h3>
+<p class="text-gray-600">权益保障</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- 底部页脚 -->
+<footer class="bg-gray-800 text-white mt-16">
+  <div class="max-w-7xl mx-auto px-6 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div>
+        <h3 class="text-lg font-semibold mb-4">关于我们</h3>
+        <ul class="space-y-2">
+          <li><a class="text-gray-300 hover:text-white" href="#">平台简介</a></li>
+          <li><a class="text-gray-300 hover:text-white" href="#">团队介绍</a></li>
+          <li><a class="text-gray-300 hover:text-white" href="#">加入我们</a></li>
+          <li><a class="text-gray-300 hover:text-white" href="#">联系方式</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-lg font-semibold mb-4">帮助中心</h3>
+        <ul class="space-y-2">
+          <li><a class="text-gray-300 hover:text-white" href="#">新手指南</a></li>
+          <li><a class="text-gray-300 hover:text-white" href="#">常见问题</a></li>
+          <li><a class="text-gray-300 hover:text-white" href="#">交易规则</a></li>
+          <li><a class="text-gray-300 hover:text-white" href="#">纠纷处理</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-lg font-semibold mb-4">友情链接</h3>
+        <ul class="space-y-2">
+          <li><a class="text-gray-300 hover:text-white" href="#">北京大学官网</a></li>
+          <li><a class="text-gray-300 hover:text-white" href="#">教务部网站</a></li>
+          <li><a class="text-gray-300 hover:text-white" href="#">图书馆系统</a></li>
+          <li><a class="text-gray-300 hover:text-white" href="#">校园论坛</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-lg font-semibold mb-4">关注我们</h3>
+        <div class="flex space-x-4">
+          <a class="text-gray-300 hover:text-white" href="#">
+            <span class="iconify" data-icon="mdi:wechat" data-width="28"></span>
+          </a>
+          <a class="text-gray-300 hover:text-white" href="#">
+            <span class="iconify" data-icon="mdi:weibo" data-width="28"></span>
+          </a>
+          <a class="text-gray-300 hover:text-white" href="#">
+            <span class="iconify" data-icon="mdi:douban" data-width="28"></span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="border-t border-gray-700 mt-12 pt-8 text-center text-gray-400">
+      <p class="mb-2">© 2025 北京大学二手书交易平台</p>
+      <p class="text-sm">平台已通过校园网络安全认证</p>
+      <p class="text-sm mt-2">京ICP备2025000001号 | 出版物经营许可证 京出发书批字第A-2025号</p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,556 @@
+
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>帮助中心 - 北京大学二手书交易平台</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://code.iconify.design/3/3.1.1/iconify.min.js"></script>
+<style>
+    .question-item {
+      transition: all 0.3s ease;
+    }
+    .question-item.active {
+      border-left-color: #990000;
+      border-left-width: 4px;
+    }
+    .answer-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+    .question-item.active .answer-content {
+      max-height: 1000px;
+    }
+  </style>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            pkured: '#990000',
+            academicblue: '#0066CC'
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col">
+<!-- 顶部导航栏 -->
+<header class="bg-white shadow-sm sticky top-0 z-50">
+<div class="container mx-auto px-6">
+<div class="flex items-center justify-between h-20">
+<!-- Logo区域 -->
+<div class="flex items-center">
+<img alt="Peking University Logo" class="h-12 w-12 mr-3" id="1" src="https://modao.cc/agent-py/media/generated_images/2025-12-06/74e82723ccbb4c7db8380dc2df47e4bc.jpg"/>
+<h1 class="text-xl font-bold text-pkured">北京大学二手书交易平台</h1>
+</div>
+<!-- 主导航菜单 -->
+<nav class="hidden md:flex space-x-8">
+  <a class="font-medium text-gray-700 hover:text-pku-red transition" href="首页.html">首页</a>
+  <a class="font-medium text-gray-700 hover:text-pku-red transition" href="购书通道.html">购书通道</a>
+  <a class="font-medium text-gray-700 hover:text-pku-red transition" href="售书通道.html">售书通道</a>
+  <a class="font-medium text-gray-700 hover:text-pku-red transition" href="论坛.html">论坛</a>
+  <a class="font-medium text-gray-700 hover:text-pku-red transition" href="图书漂流.html">图书漂流</a>
+  <a class="font-medium text-gray-700 hover:text-pku-red transition" href="个人中心.html">个人中心</a>
+</nav>
+<!-- 用户操作区 -->
+<div class="flex items-center space-x-4">
+<button class="relative">
+<span class="iconify text-2xl text-gray-500" data-icon="mdi:bell-outline"></span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>
+</button>
+<div class="flex items-center">
+<img alt="User Avatar" class="w-10 h-10 rounded-full border-2 border-pkured" id="2" src="https://modao.cc/agent-py/media/generated_images/2025-12-06/bae5690b441d40c3a1586a4e74f3cb18.jpg"/>
+<span class="ml-2 text-gray-700">张同学</span>
+</div>
+</div>
+</div>
+</div>
+</header>
+<!-- 帮助中心顶部 -->
+<div class="bg-pkured py-16">
+<div class="container mx-auto px-6 text-center">
+<h1 class="text-4xl font-bold text-white mb-4">帮助中心</h1>
+<p class="text-white/90 max-w-2xl mx-auto">解答您在使用平台过程中遇到的各类问题，提供全面的操作指南和支持服务</p>
+<!-- 搜索框 -->
+<div class="max-w-2xl mx-auto mt-8">
+<div class="relative">
+<span class="iconify absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-xl" data-icon="mdi:magnify"></span>
+<input class="w-full pl-12 pr-4 py-4 bg-white rounded-xl shadow-lg focus:outline-none text-lg" placeholder="输入您的问题关键词，如'交易流程'、'账号安全'..." type="text"/>
+<button class="absolute right-3 top-1/2 -translate-y-1/2 bg-pkured text-white px-6 py-2 rounded-lg hover:bg-red-900">
+            搜索
+          </button>
+</div>
+</div>
+</div>
+</div>
+<!-- 主体内容区 -->
+<main class="flex-1 container mx-auto px-6 py-12">
+<div class="grid grid-cols-12 gap-8">
+<!-- 左侧导航 -->
+<div class="col-span-3">
+<div class="bg-white rounded-xl shadow-lg p-6 sticky top-28">
+<h2 class="text-lg font-bold text-gray-800 mb-4">帮助分类</h2>
+<ul class="space-y-2">
+<li>
+<a class="py-3 px-4 rounded-lg flex items-center justify-between bg-pkured/10 text-pkured" href="#">
+<span>常见问题</span>
+<span class="iconify" data-icon="mdi:chevron-right"></span>
+</a>
+</li>
+<li>
+<a class="py-3 px-4 rounded-lg flex items-center justify-between hover:bg-gray-100" href="#">
+<span>账户安全</span>
+</a>
+</li>
+<li>
+<a class="py-3 px-4 rounded-lg flex items-center justify-between hover:bg-gray-100" href="#">
+<span>交易指南</span>
+</a>
+</li>
+<li>
+<a class="py-3 px-4 rounded-lg flex items-center justify-between hover:bg-gray-100" href="#">
+<span>论坛使用</span>
+</a>
+</li>
+<li>
+<a class="py-3 px-4 rounded-lg flex items-center justify-between hover:bg-gray-100" href="#">
+<span>支付问题</span>
+</a>
+</li>
+<li>
+<a class="py-3 px-4 rounded-lg flex items-center justify-between hover:bg-gray-100" href="#">
+<span>发货收货</span>
+</a>
+</li>
+<li>
+<a class="py-3 px-4 rounded-lg flex items-center justify-between hover:bg-gray-100" href="#">
+<span>信用规则</span>
+</a>
+</li>
+</ul>
+<div class="mt-8 pt-6 border-t border-gray-200">
+<h3 class="font-medium text-gray-800 mb-3">热门问题</h3>
+<ul class="space-y-2">
+<li>
+<a class="text-sm text-academicblue hover:text-blue-800" href="#">如何找回密码？</a>
+</li>
+<li>
+<a class="text-sm text-academicblue hover:text-blue-800" href="#">交易纠纷如何处理？</a>
+</li>
+<li>
+<a class="text-sm text-academicblue hover:text-blue-800" href="#">如何提高信用等级？</a>
+</li>
+<li>
+<a class="text-sm text-academicblue hover:text-blue-800" href="#">书籍发布审核需要多久？</a>
+</li>
+<li>
+<a class="text-sm text-academicblue hover:text-blue-800" href="#">退货退款流程是怎样的？</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<!-- 中央内容区 - 常见问题 -->
+<div class="col-span-6">
+<div class="bg-white rounded-xl shadow-lg p-8 mb-8">
+<div class="flex items-center mb-6">
+<span class="iconify text-3xl text-pkured mr-3" data-icon="mdi:help-circle"></span>
+<h2 class="text-2xl font-bold text-gray-800">常见问题</h2>
+</div>
+<!-- 问题类别: 账户相关 -->
+<div class="mb-10">
+<h3 class="text-xl font-bold text-pkured mb-4 flex items-center">
+<span class="iconify mr-2" data-icon="mdi:account"></span>
+              账户与安全问题
+            </h3>
+<div class="space-y-4">
+<!-- 问题1 -->
+<div class="question-item bg-gray-50 rounded-lg border border-gray-200 overflow-hidden">
+<div class="question-header p-4 flex items-center justify-between cursor-pointer">
+<h4 class="font-medium text-gray-800">如何找回忘记的密码？</h4>
+<span class="iconify text-pkured" data-icon="mdi:chevron-down"></span>
+</div>
+<div class="answer-content">
+<div class="p-4 pt-0 bg-white">
+<p>如果您忘记了密码，请按以下步骤操作：</p>
+<ol class="list-decimal pl-6 mt-2 space-y-2">
+<li>在登录页面点击"忘记密码"链接</li>
+<li>输入您注册时使用的学号</li>
+<li>系统将向您绑定的邮箱发送验证码</li>
+<li>输入验证码后即可设置新密码</li>
+<li>建议设置包含字母、数字和特殊字符的强密码</li>
+</ol>
+</div>
+</div>
+</div>
+<!-- 问题2 -->
+<div class="question-item bg-gray-50 rounded-lg border border-gray-200 overflow-hidden">
+<div class="question-header p-4 flex items-center justify-between cursor-pointer">
+<h4 class="font-medium text-gray-800">如何修改手机号码和邮箱？</h4>
+<span class="iconify text-pkured" data-icon="mdi:chevron-down"></span>
+</div>
+<div class="answer-content">
+<div class="p-4 pt-0 bg-white">
+<p>修改绑定信息的步骤：</p>
+<ol class="list-decimal pl-6 mt-2 space-y-2">
+<li>登录后进入"个人中心"</li>
+<li>选择"账户安全"选项</li>
+<li>点击"修改手机号"或"修改邮箱"</li>
+<li>验证当前手机或邮箱</li>
+<li>输入新的联系方式并进行验证</li>
+<li>修改成功后系统会发送通知</li>
+</ol>
+</div>
+</div>
+</div>
+<!-- 问题3 -->
+<div class="question-item bg-gray-50 rounded-lg border border-gray-200 overflow-hidden">
+<div class="question-header p-4 flex items-center justify-between cursor-pointer">
+<h4 class="font-medium text-gray-800">如何保护账户安全？</h4>
+<span class="iconify text-pkured" data-icon="mdi:chevron-down"></span>
+</div>
+<div class="answer-content">
+<div class="p-4 pt-0 bg-white">
+<p>为确保您的账户安全，我们建议：</p>
+<ul class="list-disc pl-6 mt-2 space-y-2">
+<li>设置强密码，定期更换</li>
+<li>开启二次验证功能</li>
+<li>不要在公共设备上保持登录状态</li>
+<li>绑定手机和邮箱，及时接收安全通知</li>
+<li>警惕钓鱼网站和诈骗信息</li>
+<li>定期查看登录设备管理</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- 问题类别: 交易相关 -->
+<div class="mb-10">
+<h3 class="text-xl font-bold text-pkured mb-4 flex items-center">
+<span class="iconify mr-2" data-icon="mdi:cash"></span>
+              交易与支付问题
+            </h3>
+<div class="space-y-4">
+<!-- 问题1 -->
+<div class="question-item bg-gray-50 rounded-lg border border-gray-200 overflow-hidden">
+<div class="question-header p-4 flex items-center justify-between cursor-pointer">
+<h4 class="font-medium text-gray-800">交易过程中遇到问题怎么办？</h4>
+<span class="iconify text-pkured" data-icon="mdi:chevron-down"></span>
+</div>
+<div class="answer-content">
+<div class="p-4 pt-0 bg-white">
+<p>遇到交易问题时的处理流程：</p>
+<ol class="list-decimal pl-6 mt-2 space-y-2">
+<li>首先尝试与交易对方沟通解决</li>
+<li>进入"订单详情"页面选择"需要帮助"</li>
+<li>选择问题类型并描述具体情况</li>
+<li>上传相关证据截图（如聊天记录、订单信息）</li>
+<li>平台管理员将在24小时内介入处理</li>
+<li>处理期间可随时查看进度</li>
+</ol>
+</div>
+</div>
+</div>
+<!-- 问题2 -->
+<div class="question-item bg-gray-50 rounded-lg border border-gray-200 overflow-hidden">
+<div class="question-header p-4 flex items-center justify-between cursor-pointer">
+<h4 class="font-medium text-gray-800">退货退款流程是怎样的？</h4>
+<span class="iconify text-pkured" data-icon="mdi:chevron-down"></span>
+</div>
+<div class="answer-content">
+<div class="p-4 pt-0 bg-white">
+<p>退货退款流程：</p>
+<ol class="list-decimal pl-6 mt-2 space-y-2">
+<li>在订单页面选择"申请退款"</li>
+<li>选择退款原因并描述问题</li>
+<li>提交申请等待卖家响应</li>
+<li>卖家同意后按指引退回商品</li>
+<li>卖家确认收货后系统自动退款</li>
+<li>如有争议平台将介入调解</li>
+</ol>
+<p class="mt-3 text-sm text-gray-500">注：退款金额将原路返回支付账户，通常需要1-3个工作日</p>
+</div>
+</div>
+</div>
+<!-- 问题3 -->
+<div class="question-item bg-gray-50 rounded-lg border border-gray-200 overflow-hidden">
+<div class="question-header p-4 flex items-center justify-between cursor-pointer">
+<h4 class="font-medium text-gray-800">如何确保交易安全？</h4>
+<span class="iconify text-pkured" data-icon="mdi:chevron-down"></span>
+</div>
+<div class="answer-content">
+<div class="p-4 pt-0 bg-white">
+<p>为保障交易安全，建议：</p>
+<ul class="list-disc pl-6 mt-2 space-y-2">
+<li>尽量选择平台推荐的校内面对面交易方式</li>
+<li>交易前查看对方信用等级和历史评价</li>
+<li>仔细检查商品情况再确认收货</li>
+<li>使用平台担保支付，避免私下转账</li>
+<li>保留聊天记录和交易凭证</li>
+<li>选择公共场合进行面交</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- 问题类别: 论坛相关 -->
+<div>
+<h3 class="text-xl font-bold text-pkured mb-4 flex items-center">
+<span class="iconify mr-2" data-icon="mdi:forum"></span>
+              论坛与内容问题
+            </h3>
+<div class="space-y-4">
+<!-- 问题1 -->
+<div class="question-item bg-gray-50 rounded-lg border border-gray-200 overflow-hidden">
+<div class="question-header p-4 flex items-center justify-between cursor-pointer">
+<h4 class="font-medium text-gray-800">帖子被删除怎么办？</h4>
+<span class="iconify text-pkured" data-icon="mdi:chevron-down"></span>
+</div>
+<div class="answer-content">
+<div class="p-4 pt-0 bg-white">
+<p>如果您的帖子被删除，可能是以下原因：</p>
+<ul class="list-disc pl-6 mt-2 space-y-2">
+<li>包含违反平台规定的内容</li>
+<li>涉及敏感话题或不当言论</li>
+<li>广告或商业推广信息</li>
+<li>重复发布相同内容</li>
+</ul>
+<p class="mt-3">如果您认为误删，可以：</p>
+<ol class="list-decimal pl-6 mt-2">
+<li>在"内容管理"中找到被删帖子</li>
+<li>点击"申诉"按钮并说明情况</li>
+<li>管理员将在48小时内复核并通知结果</li>
+</ol>
+</div>
+</div>
+</div>
+<!-- 问题2 -->
+<div class="question-item bg-gray-50 rounded-lg border border-gray-200 overflow-hidden">
+<div class="question-header p-4 flex items-center justify-between cursor-pointer">
+<h4 class="font-medium text-gray-800">如何成为精华帖？</h4>
+<span class="iconify text-pkured" data-icon="mdi:chevron-down"></span>
+</div>
+<div class="answer-content">
+<div class="p-4 pt-0 bg-white">
+<p>精华帖评选标准：</p>
+<ul class="list-disc pl-6 mt-2 space-y-2">
+<li>原创优质内容，具有独特价值</li>
+<li>学术性强，专业知识准确</li>
+<li>结构清晰，逻辑严谨</li>
+<li>获得广泛好评和用户互动</li>
+<li>符合社区规范，无商业推广</li>
+</ul>
+<p class="mt-3">被选为精华帖后将获得以下权益：</p>
+<ol class="list-decimal pl-6 mt-2">
+<li>在论坛首页推荐位置展示</li>
+<li>获得"精华"标识和信用积分</li>
+<li>优先参与平台学术活动</li>
+<li>有机会获得校园文化礼品</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- 未解决问题 -->
+<div class="bg-white rounded-xl shadow-lg p-8">
+<div class="flex items-center mb-6">
+<span class="iconify text-3xl text-pkured mr-3" data-icon="mdi:head-question"></span>
+<h2 class="text-2xl font-bold text-gray-800">未解决问题？</h2>
+</div>
+<p class="text-gray-700 mb-6">如果以上解答未能解决您的疑问，请尝试以下途径：</p>
+<div class="grid grid-cols-2 gap-6">
+<div class="bg-blue-50 border border-blue-200 rounded-xl p-6">
+<h3 class="font-bold text-academicblue mb-3 flex items-center">
+<span class="iconify mr-2" data-icon="mdi:book-open-variant"></span>
+                用户指南
+              </h3>
+<p class="text-blue-700 mb-4">查看详细的平台使用手册，包含图文教程和视频指导</p>
+<button class="px-4 py-2 bg-academicblue text-white rounded flex items-center hover:bg-blue-700">
+<span class="iconify mr-1" data-icon="mdi:download"></span>
+                下载用户手册
+              </button>
+</div>
+<div class="bg-amber-50 border border-amber-200 rounded-xl p-6">
+<h3 class="font-bold text-amber-700 mb-3 flex items-center">
+<span class="iconify mr-2" data-icon="mdi:school"></span>
+                线下咨询
+              </h3>
+<p class="text-amber-700 mb-4">前往新太阳学生中心B101室，每周一至周五9:00-17:00提供现场咨询</p>
+<button class="px-4 py-2 bg-amber-100 border border-amber-300 text-amber-800 rounded flex items-center hover:bg-amber-200">
+<span class="iconify mr-1" data-icon="mdi:map-marker"></span>
+                查看地图导航
+              </button>
+</div>
+</div>
+</div>
+</div>
+<!-- 右侧信息栏 - 联系我们 -->
+<div class="col-span-3">
+<div class="bg-white rounded-xl shadow-lg p-6 mb-6 sticky top-28">
+<div class="flex items-center mb-6">
+<span class="iconify text-3xl text-pkured mr-3" data-icon="mdi:email-newsletter"></span>
+<h2 class="text-xl font-bold text-gray-800">联系我们</h2>
+</div>
+<form class="space-y-4">
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">姓名</label>
+<input class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-academicblue focus:border-academicblue outline-none" placeholder="请输入姓名" type="text"/>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">学号</label>
+<input class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-academicblue focus:border-academicblue outline-none" placeholder="请输入学号" type="text"/>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">邮箱</label>
+<input class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-academicblue focus:border-academicblue outline-none" placeholder="请输入邮箱" type="email"/>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">问题类型</label>
+<select class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-academicblue focus:border-academicblue outline-none appearance-none">
+<option value="">请选择问题类型</option>
+<option value="account">账户问题</option>
+<option value="transaction">交易问题</option>
+<option value="forum">论坛问题</option>
+<option value="payment">支付问题</option>
+<option value="suggestion">建议反馈</option>
+<option value="other">其他问题</option>
+</select>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">问题描述</label>
+<textarea class="w-full h-40 px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-academicblue focus:border-academicblue outline-none" placeholder="请详细描述您的问题..."></textarea>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">上传附件</label>
+<div class="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center cursor-pointer hover:border-pkured">
+<span class="iconify text-gray-400 text-4xl block mx-auto mb-2" data-icon="mdi:file-upload"></span>
+<p class="text-gray-500">拖放文件到此处或 <span class="text-academicblue">选择文件</span></p>
+<p class="text-gray-400 text-sm mt-2">支持 JPG, PNG, PDF 格式，单个文件最大5MB</p>
+</div>
+</div>
+<button class="w-full py-3 bg-pkured text-white rounded-lg hover:bg-red-900 mt-4">
+              提交问题
+            </button>
+</form>
+<div class="mt-8 pt-6 border-t border-gray-200">
+<h3 class="font-medium text-gray-800 mb-4">其他联系方式</h3>
+<ul class="space-y-3">
+<li class="flex items-center">
+<span class="iconify text-xl text-pkured mr-3" data-icon="mdi:phone"></span>
+<span>010-6275XXXX</span>
+</li>
+<li class="flex items-center">
+<span class="iconify text-xl text-pkured mr-3" data-icon="mdi:email"></span>
+<span>support@pku-books.edu.cn</span>
+</li>
+<li class="flex items-start">
+<span class="iconify text-xl text-pkured mr-3 mt-1" data-icon="mdi:map-marker"></span>
+<span>北京市海淀区颐和园路5号<br/>北京大学新太阳学生中心B101</span>
+</li>
+<li class="flex items-center">
+<span class="iconify text-xl text-pkured mr-3" data-icon="mdi:clock"></span>
+<span>周一至周五 9:00-17:00</span>
+</li>
+</ul>
+</div>
+</div>
+<!-- 紧急问题 -->
+<div class="bg-yellow-50 border border-yellow-200 rounded-xl p-6">
+<div class="flex items-center mb-3">
+<span class="iconify text-2xl text-yellow-600 mr-2" data-icon="mdi:alert-circle"></span>
+<h3 class="font-bold text-yellow-800">紧急问题处理</h3>
+</div>
+<p class="text-yellow-700 mb-4">如遇账户被盗、欺诈交易等紧急情况，请立即联系：</p>
+<div class="bg-red-50 border border-red-200 rounded-lg p-4">
+<div class="flex items-center">
+<span class="iconify text-red-500 mr-2" data-icon="mdi:shield-alert"></span>
+<span class="font-medium">紧急电话：010-6275XXXX</span>
+</div>
+<p class="text-red-700 text-sm mt-2">24小时安全响应中心</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- 底部页脚 -->
+<footer class="bg-white border-t border-gray-200 py-10">
+<div class="container mx-auto px-6">
+<div class="grid grid-cols-4 gap-8">
+<div>
+<h3 class="font-bold text-lg text-gray-800 mb-4">关于我们</h3>
+<ul class="space-y-2">
+<li><a class="text-gray-600 hover:text-pkured" href="#">平台简介</a></li>
+<li><a class="text-gray-600 hover:text-pkured" href="#">团队介绍</a></li>
+<li><a class="text-gray-600 hover:text-pkured" href="#">加入我们</a></li>
+<li><a class="text-gray-600 hover:text-pkured" href="#">联系方式</a></li>
+</ul>
+</div>
+<div>
+<h3 class="font-bold text-lg text-gray-800 mb-4">帮助中心</h3>
+<ul class="space-y-2">
+<li><a class="text-gray-600 hover:text-pkured" href="#">常见问题</a></li>
+<li><a class="text-gray-600 hover:text-pkured" href="#">使用指南</a></li>
+<li><a class="text-gray-600 hover:text-pkured" href="#">安全手册</a></li>
+<li><a class="text-gray-600 hover:text-pkured" href="#">视频教程</a></li>
+</ul>
+</div>
+<div>
+<h3 class="font-bold text-lg text-gray-800 mb-4">友情链接</h3>
+<ul class="space-y-2">
+<li><a class="text-gray-600 hover:text-pkured" href="#">北京大学官网</a></li>
+<li><a class="text-gray-600 hover:text-pkured" href="#">图书馆系统</a></li>
+<li><a class="text-gray-600 hover:text-pkured" href="#">课程中心</a></li>
+<li><a class="text-gray-600 hover:text-pkured" href="#">校园论坛</a></li>
+</ul>
+</div>
+<div>
+<h3 class="font-bold text-lg text-gray-800 mb-4">关注我们</h3>
+<div class="flex space-x-4 mb-4">
+<span class="bg-gray-200 p-2 rounded-full cursor-pointer">
+<span class="iconify text-xl" data-icon="mdi:wechat"></span>
+</span>
+<span class="bg-gray-200 p-2 rounded-full cursor-pointer">
+<span class="iconify text-xl" data-icon="mdi:weibo"></span>
+</span>
+<span class="bg-gray-200 p-2 rounded-full cursor-pointer">
+<span class="iconify text-xl" data-icon="mdi:email-outline"></span>
+</span>
+</div>
+<p class="text-gray-500 text-sm">
+            © 2025 北京大学二手书交易平台<br/>
+            平台已通过校园网络安全认证
+          </p>
+</div>
+</div>
+<div class="border-t border-gray-200 mt-8 pt-6 text-center text-gray-500">
+<p>京ICP备2025000001号 | 出版物经营许可证 京出发书批字第A-2025号</p>
+</div>
+</div>
+</footer>
+<script>
+    // 问题折叠功能
+    document.querySelectorAll('.question-header').forEach(header => {
+      header.addEventListener('click', () => {
+        const questionItem = header.parentElement;
+        questionItem.classList.toggle('active');
+        
+        // 关闭其他问题
+        document.querySelectorAll('.question-item').forEach(item => {
+          if (item !== questionItem) {
+            item.classList.remove('active');
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

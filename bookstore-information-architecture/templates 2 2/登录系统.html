@@ -1,0 +1,121 @@
+
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>北京大学二手书交易平台 - 登录</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://code.iconify.design/3/3.1.1/iconify.min.js"></script>
+<style>
+    .hide-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .hide-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+<div class="w-[800px] bg-white rounded-2xl shadow-xl overflow-hidden">
+<!-- 头部校徽区域 -->
+<div class="bg-red-800 py-6 px-10 flex items-center">
+<img alt="Peking University Logo" class="w-14 h-14 mr-4" id="1" src="https://modao.cc/agent-py/media/generated_images/2025-12-06/5142d26d11094f7c9e74f70bdc2b3b15.jpg"/>
+<div>
+<h1 class="text-2xl font-bold text-white">北京大学二手书交易平台</h1>
+<p class="text-white opacity-80">安全 · 便捷 · 可信赖的校园书籍交易</p>
+</div>
+</div>
+<!-- 主体登录表单 -->
+<div class="p-10 grid grid-cols-2 gap-10">
+<!-- 普通登录表单 -->
+<div>
+<h2 class="text-xl font-bold text-gray-800 mb-6">用户登录</h2>
+<form class="space-y-6">
+<!-- 学号输入 -->
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">学号</label>
+<div class="relative">
+<span class="iconify absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" data-icon="mdi:account-school"></span>
+<input class="w-full pl-10 pr-3 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-200 focus:border-blue-500 outline-none transition-all" placeholder="请输入学号" type="text"/>
+</div>
+</div>
+<!-- 密码输入 -->
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">密码</label>
+<div class="relative">
+<span class="iconify absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" data-icon="mdi:lock"></span>
+<input class="w-full pl-10 pr-3 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-200 focus:border-blue-500 outline-none transition-all" placeholder="请输入密码" type="password"/>
+</div>
+</div>
+<!-- 验证码区域 -->
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">验证码</label>
+<div class="flex items-center space-x-3">
+<div class="flex-1 relative">
+<span class="iconify absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" data-icon="mdi:shield-check"></span>
+<input class="w-full pl-10 pr-3 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-200 focus:border-blue-500 outline-none transition-all" placeholder="请输入验证码" type="text"/>
+</div>
+<div class="flex items-center border border-gray-200 rounded-xl overflow-hidden">
+<img alt="Captcha image" class="w-24 h-12" id="2" src="https://modao.cc/agent-py/media/generated_images/2025-12-06/aadd92188f02430d825109a34df4c6f7.jpg"/>
+<button class="p-3 hover:bg-gray-100 transition-colors" type="button">
+<span class="iconify text-gray-500" data-icon="mdi:refresh"></span>
+</button>
+</div>
+</div>
+</div>
+<!-- 记住密码 -->
+<div class="flex items-center">
+<input class="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500" id="remember" type="checkbox"/>
+<label class="ml-2 text-sm text-gray-700" for="remember">记住我的登录状态</label>
+</div>
+<!-- 登录按钮 -->
+<button class="w-full bg-red-800 hover:bg-red-900 text-white font-medium py-3 rounded-xl transition-colors shadow-md hover:shadow-lg">
+            登录系统
+          </button>
+<!-- 辅助链接 -->
+<div class="flex justify-between text-sm">
+<a class="text-blue-600 hover:text-blue-800 transition-colors" href="#">忘记密码?</a>
+<a class="text-gray-600 hover:text-gray-800 transition-colors" href="#">新用户注册</a>
+</div>
+</form>
+</div>
+<!-- 校园网认证登录 -->
+<div class="flex flex-col">
+<div class="bg-blue-50 rounded-xl p-6 border border-blue-100 flex-1">
+<div class="flex items-center mb-4">
+<span class="iconify text-blue-700 text-3xl mr-3" data-icon="mdi:school"></span>
+<h2 class="text-xl font-bold text-blue-800">校园网认证登录</h2>
+</div>
+<p class="text-blue-900 mb-6">使用北大统一认证账号快速登录，享受更安全的校园交易服务</p>
+<div class="bg-gray-100 rounded-lg p-4 mb-6">
+<div class="flex items-start mb-3">
+<span class="iconify text-green-500 mt-1 mr-2" data-icon="mdi:check-circle"></span>
+<span class="text-sm text-gray-700">直接使用北大通行证登录，无需额外注册</span>
+</div>
+<div class="flex items-start">
+<span class="iconify text-green-500 mt-1 mr-2" data-icon="mdi:check-circle"></span>
+<span class="text-sm text-gray-700">全面保护您的账号和交易安全</span>
+</div>
+</div>
+<button class="w-full bg-white border-2 border-blue-600 text-blue-700 font-medium py-3 rounded-xl transition-all hover:bg-blue-50 hover:shadow-md">
+<div class="flex items-center justify-center space-x-2">
+<img alt="PKU Authentication Logo" class="w-6 h-6" id="3" src="https://modao.cc/agent-py/media/generated_images/2025-12-06/847d8df5083e4fc9b5d600a023d43616.jpg"/>
+<span>北大统一认证登录</span>
+</div>
+</button>
+</div>
+<!-- 安全提示 -->
+<div class="mt-4 bg-gray-50 p-4 rounded-lg border border-gray-200 flex">
+<span class="iconify text-yellow-500 mt-1 mr-2" data-icon="mdi:shield-alert"></span>
+<p class="text-xs text-gray-600">
+            请勿在公共设备上保存密码，谨防账号被盗用。如遇任何问题，请联系平台管理员。
+          </p>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

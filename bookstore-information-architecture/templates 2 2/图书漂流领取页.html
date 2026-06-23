@@ -1,0 +1,246 @@
+
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>图书漂流 - 领取详情 | 北京大学二手书交易平台</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://code.iconify.design/3/3.1.1/iconify.min.js"></script>
+<style>
+    .hide-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .hide-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    .book-image-hover:hover {
+      transform: scale(1.03);
+      transition: transform 0.3s ease;
+    }
+  </style>
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col">
+<!-- 顶部导航栏 -->
+<header class="bg-white shadow-sm sticky top-0 z-50">
+<div class="container mx-auto px-6">
+<div class="flex items-center justify-between h-20">
+<!-- Logo区域 -->
+<div class="flex items-center">
+<img alt="Peking University Logo" class="h-12 w-12 mr-3" id="1" src="https://modao.cc/agent-py/media/generated_images/2025-12-06/74e82723ccbb4c7db8380dc2df47e4bc.jpg"/>
+<h1 class="text-xl font-bold text-pkured">北京大学二手书交易平台</h1>
+</div>
+<!-- 主导航菜单 -->
+<nav class="hidden md:flex space-x-8">
+  <a class="font-medium text-gray-700 hover:text-pku-red transition" href="首页.html">首页</a>
+  <a class="font-medium text-gray-700 hover:text-pku-red transition" href="购书通道.html">购书通道</a>
+  <a class="font-medium text-gray-700 hover:text-pku-red transition" href="售书通道.html">售书通道</a>
+  <a class="font-medium text-gray-700 hover:text-pku-red transition" href="论坛.html">论坛</a>
+  <a class="font-medium text-gray-700 hover:text-pku-red transition" href="图书漂流.html">图书漂流</a>
+  <a class="font-medium text-gray-700 hover:text-pku-red transition" href="个人中心.html">个人中心</a>
+</nav>
+<!-- 用户操作区 -->
+<div class="flex items-center space-x-4">
+<button class="relative">
+<span class="iconify text-2xl text-gray-500" data-icon="mdi:bell-outline"></span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>
+</button>
+<div class="flex items-center">
+<img alt="User Avatar" class="w-10 h-10 rounded-full border-2 border-pkured" id="2" src="https://modao.cc/agent-py/media/generated_images/2025-12-06/bae5690b441d40c3a1586a4e74f3cb18.jpg"/>
+<span class="ml-2 text-gray-700">张同学</span>
+</div>
+</div>
+</div>
+</div>
+</header>
+<!-- 主体内容 -->
+<main class="max-w-7xl mx-auto px-6 py-10">
+<div class="flex flex-col md:flex-row gap-8">
+<!-- 左侧图片区域 -->
+<div class="w-full md:w-[40%]">
+<div class="bg-white rounded-xl shadow-md p-6">
+<h2 class="text-xl font-semibold text-gray-800 mb-4">书籍图片</h2>
+<!-- 主图展示 -->
+<div class="mb-6 overflow-hidden rounded-lg">
+<img alt="Book cover image" class="w-full h-96 object-contain book-image-hover" id="1" src="https://modao.cc/agent-py/media/generated_images/2025-12-08/c50f2261977f48098411829a5545ad5b.jpg"/>
+</div>
+<!-- 缩略图列表 -->
+<div class="flex gap-3 overflow-x-auto hide-scrollbar pb-2">
+<div class="flex-shrink-0 w-24 h-24 border-2 border-transparent rounded-lg overflow-hidden cursor-pointer">
+<img alt="Book thumbnail 1" class="w-full h-full object-cover" id="2" src="https://modao.cc/agent-py/media/generated_images/2025-12-08/fcaa6c2141d14a88838738bf3ee1aa76.jpg"/>
+</div>
+<div class="flex-shrink-0 w-24 h-24 border-2 border-transparent rounded-lg overflow-hidden cursor-pointer">
+<img alt="Book thumbnail 2" class="w-full h-full object-cover" id="3" src="https://modao.cc/agent-py/media/generated_images/2025-12-08/764527d80b6846ebac12449fd969c3c6.jpg"/>
+</div>
+<div class="flex-shrink-0 w-24 h-24 border-2 border-transparent rounded-lg overflow-hidden cursor-pointer">
+<img alt="Book thumbnail 3" class="w-full h-full object-cover" id="4" src="https://modao.cc/agent-py/media/generated_images/2025-12-08/4306b06e28a54eeb89e6c872ad8ecd9d.jpg"/>
+</div>
+<div class="flex-shrink-0 w-24 h-24 border-2 border-transparent rounded-lg overflow-hidden cursor-pointer">
+<img alt="Book thumbnail 4" class="w-full h-full object-cover" id="5" src="https://modao.cc/agent-py/media/generated_images/2025-12-08/b4555b35797347588f796b73616b40c7.jpg"/>
+</div>
+</div>
+</div>
+</div>
+<!-- 右侧信息区域 -->
+<div class="w-full md:w-[60%]">
+<!-- 书籍基本信息 -->
+<div class="bg-white rounded-xl shadow-md p-6 mb-6">
+<h1 class="text-2xl font-bold text-gray-900 mb-2">中国哲学简史</h1>
+<p class="text-gray-600 mb-1">冯友兰 著 · 北京大学出版社</p>
+<p class="text-gray-500">ISBN: 9787301255637</p>
+<div class="mt-4 flex items-center">
+<span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm font-medium">待领取</span>
+<span class="ml-3 px-3 py-1 bg-yellow-100 text-yellow-800 rounded-full text-sm font-medium">九成新</span>
+</div>
+</div>
+<!-- 捐赠信息 -->
+<div class="bg-white rounded-xl shadow-md p-6 mb-6">
+<h2 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
+<span class="iconify mr-2 text-green-600" data-icon="mdi:heart-outline" data-width="24"></span>
+            捐赠信息
+          </h2>
+<div class="bg-green-50 border border-green-200 rounded-lg p-4 mb-4">
+<p class="text-green-800 font-medium mb-2">捐赠人寄语：</p>
+<p class="text-gray-700">"这本书陪伴我度过了哲学系最美好的时光，希望它能继续帮助学弟学妹探索中国哲学的智慧。"</p>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<p class="text-gray-500 text-sm">捐赠人</p>
+<p class="text-gray-800">张同学 · 哲学系</p>
+</div>
+<div>
+<p class="text-gray-500 text-sm">捐赠时间</p>
+<p class="text-gray-800">2025年11月20日</p>
+</div>
+</div>
+<div class="mt-4 p-3 bg-blue-50 border border-blue-200 rounded-lg">
+<p class="text-blue-800 font-medium">公益价值：</p>
+<p class="text-gray-700">本书已参与校园图书漂流计划，成功领取将获得2小时公益时长认证。</p>
+</div>
+</div>
+<!-- 课程标签 -->
+<div class="bg-white rounded-xl shadow-md p-6 mb-6">
+<h2 class="text-xl font-semibold text-gray-800 mb-4">相关课程</h2>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm">中国哲学史</span>
+<span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm">人文经典阅读</span>
+<span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm">传统文化研究</span>
+</div>
+</div>
+<!-- 领取流程 -->
+<div class="bg-white rounded-xl shadow-md p-6 mb-6">
+<h2 class="text-xl font-semibold text-gray-800 mb-4">领取流程</h2>
+<div class="space-y-4">
+<div class="flex items-start">
+<div class="flex-shrink-0 w-8 h-8 rounded-full bg-red-100 flex items-center justify-center mr-3">
+<span class="text-red-800 font-bold">1</span>
+</div>
+<div>
+<p class="font-medium text-gray-800">确认领取</p>
+<p class="text-gray-600 text-sm">点击下方"确认领取"按钮，系统将为您保留本书48小时</p>
+</div>
+</div>
+<div class="flex items-start">
+<div class="flex-shrink-0 w-8 h-8 rounded-full bg-yellow-100 flex items-center justify-center mr-3">
+<span class="text-yellow-800 font-bold">2</span>
+</div>
+<div>
+<p class="font-medium text-gray-800">选择取货</p>
+<p class="text-gray-600 text-sm">在下方选择取货地点和时间，系统将发送确认通知</p>
+</div>
+</div>
+<div class="flex items-start">
+<div class="flex-shrink-0 w-8 h-8 rounded-full bg-green-100 flex items-center justify-center mr-3">
+<span class="text-green-800 font-bold">3</span>
+</div>
+<div>
+<p class="font-medium text-gray-800">现场领取</p>
+<p class="text-gray-600 text-sm">凭学生证/校园卡在约定时间地点领取书籍</p>
+</div>
+</div>
+</div>
+</div>
+<!-- 取货安排 -->
+<div class="bg-white rounded-xl shadow-md p-6">
+<h2 class="text-xl font-semibold text-gray-800 mb-4">取货安排</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div>
+<label class="block text-gray-700 text-sm font-medium mb-2">取货地点</label>
+<select class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-200">
+<option>图书馆1楼咖啡厅</option>
+<option>二教一楼大厅</option>
+<option>三角地书报亭</option>
+<option>新太阳学生中心</option>
+<option>农园食堂入口</option>
+</select>
+</div>
+<div>
+<label class="block text-gray-700 text-sm font-medium mb-2">取货时间</label>
+<input class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-800 focus:border-transparent" type="date"/>
+</div>
+</div>
+<div class="mt-6 flex justify-end">
+<button class="px-8 py-3 bg-red-800 text-white font-semibold rounded-full hover:bg-red-900 transition-colors">
+              确认领取
+            </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- 底部页脚 -->
+<footer class="bg-gray-800 text-white mt-16">
+<div class="max-w-7xl mx-auto px-6 py-12">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+<div>
+<h3 class="text-lg font-semibold mb-4">关于我们</h3>
+<ul class="space-y-2">
+<li><a class="text-gray-300 hover:text-white" href="#">平台简介</a></li>
+<li><a class="text-gray-300 hover:text-white" href="#">团队介绍</a></li>
+<li><a class="text-gray-300 hover:text-white" href="#">加入我们</a></li>
+<li><a class="text-gray-300 hover:text-white" href="#">联系方式</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-semibold mb-4">帮助中心</h3>
+<ul class="space-y-2">
+<li><a class="text-gray-300 hover:text-white" href="#">新手指南</a></li>
+<li><a class="text-gray-300 hover:text-white" href="#">常见问题</a></li>
+<li><a class="text-gray-300 hover:text-white" href="#">交易规则</a></li>
+<li><a class="text-gray-300 hover:text-white" href="#">纠纷处理</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-semibold mb-4">友情链接</h3>
+<ul class="space-y-2">
+<li><a class="text-gray-300 hover:text-white" href="#">北京大学官网</a></li>
+<li><a class="text-gray-300 hover:text-white" href="#">教务部网站</a></li>
+<li><a class="text-gray-300 hover:text-white" href="#">图书馆系统</a></li>
+<li><a class="text-gray-300 hover:text-white" href="#">校园论坛</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-semibold mb-4">关注我们</h3>
+<div class="flex space-x-4">
+<a class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center" href="#">
+<span class="iconify" data-icon="mdi:wechat" data-width="24"></span>
+</a>
+<a class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center" href="#">
+<span class="iconify" data-icon="mdi:weibo" data-width="24"></span>
+</a>
+<a class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center" href="#">
+<span class="iconify" data-icon="mdi:douban" data-width="24"></span>
+</a>
+</div>
+</div>
+</div>
+<div class="border-t border-gray-700 mt-10 pt-6 text-center text-gray-400 text-sm">
+<p>© 2025 北京大学二手书交易平台 | 平台已通过校园网络安全认证</p>
+<p class="mt-2">京ICP备2025000001号 | 出版物经营许可证 京出发书批字第A-2025号</p>
+</div>
+</div>
+</footer>
+</body>
+</html>

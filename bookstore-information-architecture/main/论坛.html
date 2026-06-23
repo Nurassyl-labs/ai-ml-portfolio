@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>北京大学二手书交易平台 - 论坛</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://code.iconify.design/3/3.1.1/iconify.min.js"></script>
+<script>
+tailwind.config={theme:{extend:{colors:{pkured:'#990000',academicblue:'#0066CC',success:'#52C41A',warning:'#FA8C16',error:'#F5222D'}}}};
+</script>
+<style>
+.hide-scrollbar::-webkit-scrollbar{display:none;}
+.hide-scrollbar{-ms-overflow-style:none;scrollbar-width:none;}
+</style>
+</head>
+
+<body class="bg-gray-100 min-h-screen flex flex-col" data-page="forum">
+<header class="bg-white shadow-sm sticky top-0 z-50">
+  <div class="container mx-auto px-6">
+    <div class="flex items-center justify-between h-20">
+      <div class="flex items-center"><img src="./logo.png" alt="" style="width:150px;height:50px;"></div>
+      <nav class="hidden md:flex space-x-8">
+        <a class="font-medium text-gray-700 hover:text-pkured transition" href="首页.html">首页</a>
+        <a class="font-medium text-gray-700 hover:text-pkured transition" href="购书通道.html">购书通道</a>
+        <a class="font-medium text-gray-700 hover:text-pkured transition" href="售书通道.html">售书通道</a>
+        <a class="font-medium text-gray-700 hover:text-pkured transition" href="论坛.html">论坛</a>
+        <a class="font-medium text-gray-700 hover:text-pkured transition" href="图书漂流.html">图书漂流</a>
+        <a class="font-medium text-gray-700 hover:text-pkured transition" href="个人中心.html">个人中心</a>
+      </nav>
+      <div class="flex items-center space-x-4">
+        <button class="relative">
+          <span class="iconify text-2xl text-gray-500" data-icon="mdi:bell-outline"></span>
+          <span class="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>
+        </button>
+        <div class="flex items-center">
+          <img alt="User Avatar" class="w-10 h-10 rounded-full border-2 border-pkured" src="https://modao.cc/agent-py/media/generated_images/2025-12-06/bae5690b441d40c3a1586a4e74f3cb18.jpg"/>
+          <span class="ml-2 text-gray-700" id="js-user-name">未登录</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="flex-1 container mx-auto px-6 py-10 grid grid-cols-12 gap-8">
+  <aside class="col-span-3">
+    <div class="bg-white rounded-xl shadow p-6">
+      <h2 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+        <span class="iconify mr-2 text-academicblue" data-icon="mdi:view-list"></span>板块导航
+      </h2>
+      <ul class="space-y-2 text-gray-700">
+        <li><a class="hover:text-pkured" href="#">学习经验</a></li>
+        <li><a class="hover:text-pkured" href="#">课程交流</a></li>
+        <li><a class="hover:text-pkured" href="#">二手交易</a></li>
+        <li><a class="hover:text-pkured" href="#">图书漂流区</a></li>
+      </ul>
+    </div>
+
+    <div class="bg-white rounded-xl shadow p-6 mt-6">
+      <h2 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+        <span class="iconify mr-2 text-pkured" data-icon="mdi:plus-circle-outline"></span>发帖
+      </h2>
+      <form id="js-post-form" class="space-y-3">
+        <input id="js-post-title" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg" placeholder="标题" />
+        <select id="js-post-board" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg">
+          <option>学习经验</option><option>课程交流</option><option>二手交易</option><option>图书漂流区</option>
+        </select>
+        <input id="js-post-tags" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg" placeholder="标签（用逗号分隔，可选）" />
+        <textarea id="js-post-content" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg" rows="5" placeholder="内容"></textarea>
+        <button class="w-full py-3 bg-pkured text-white rounded-lg hover:bg-red-900" type="submit">发布</button>
+      </form>
+      <p class="text-xs text-gray-500 mt-3">提示：发帖需要先登录（Bearer Token）。</p>
+    </div>
+  </aside>
+
+  <section class="col-span-9">
+    <div class="bg-white rounded-xl shadow p-6 mb-6">
+      <div class="flex items-center gap-4">
+        <div class="flex-1 relative">
+          <span class="iconify absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" data-icon="mdi:magnify"></span>
+          <input id="js-forum-q" class="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-academicblue focus:border-academicblue outline-none" placeholder="搜索帖子标题或关键词..." type="text"/>
+        </div>
+        <button id="js-forum-search-btn" class="bg-pkured text-white px-6 py-3 rounded-lg flex items-center hover:bg-red-900">
+          <span class="iconify mr-2" data-icon="mdi:magnify"></span>搜索
+        </button>
+      </div>
+    </div>
+
+    <div id="js-forum-list" class="space-y-4">
+      <!-- app.js 渲染 -->
+    </div>
+  </section>
+</main>
+
+<footer class="bg-white border-t mt-10">
+  <div class="container mx-auto px-6 py-6 text-center text-gray-500 text-sm">© 2025 北京大学二手书交易平台 · 论坛</div>
+</footer>
+
+<script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,639 @@
+
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>【数据结构与算法】期中考试复习经验分享 - 北京大学二手书交易平台</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://code.iconify.design/3/3.1.1/iconify.min.js"></script>
+<style>
+    .comment-reply {
+      border-left: 3px solid #0066CC;
+      padding-left: 1.5rem;
+      margin-left: 1rem;
+    }
+    .fade-in {
+      animation: fadeIn 0.3s ease-in;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            pkured: '#990000',
+            academicblue: '#0066CC',
+            success: '#52C41A',
+            warning: '#FA8C16',
+            error: '#F5222D'
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col">
+<!-- 顶部导航栏 -->
+<header class="bg-white shadow-sm sticky top-0 z-50">
+<div class="container mx-auto px-6">
+<div class="flex items-center justify-between h-20">
+<!-- Logo区域 -->
+<div class="flex items-center">
+<img alt="Peking University Logo" class="h-12 w-12 mr-3" id="1" src="https://modao.cc/agent-py/media/generated_images/2025-12-06/74e82723ccbb4c7db8380dc2df47e4bc.jpg"/>
+<h1 class="text-xl font-bold text-pkured">北京大学二手书交易平台</h1>
+</div>
+<!-- 主导航菜单 -->
+<nav class="hidden md:flex space-x-8">
+  <a class="font-medium text-gray-700 hover:text-pku-red transition" href="#">首页</a>
+  <a class="font-medium text-gray-700 hover:text-pku-red transition" href="#">购书通道</a>
+  <a class="font-medium text-gray-700 hover:text-pku-red transition" href="#">售书通道</a>
+  <a class="font-medium text-gray-700 hover:text-pku-red transition" href="#">论坛</a>
+  <a class="font-medium text-gray-700 hover:text-pku-red transition" href="#">图书漂流</a>
+  <a class="font-medium text-gray-700 hover:text-pku-red transition" href="#">个人中心</a>
+</nav>
+<!-- 用户操作区 -->
+<div class="flex items-center space-x-4">
+<button class="relative">
+<span class="iconify text-2xl text-gray-500" data-icon="mdi:bell-outline"></span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>
+</button>
+<div class="flex items-center">
+<img alt="User Avatar" class="w-10 h-10 rounded-full border-2 border-pkured" id="2" src="https://modao.cc/agent-py/media/generated_images/2025-12-06/bae5690b441d40c3a1586a4e74f3cb18.jpg"/>
+<span class="ml-2 text-gray-700">张同学</span>
+</div>
+</div>
+</div>
+</div>
+</header>
+<!-- 帖子内容区域 -->
+<main class="flex-1 container mx-auto px-6 py-8 grid grid-cols-12 gap-8">
+<!-- 左侧作者信息 -->
+<aside class="col-span-3">
+<div class="bg-white rounded-xl shadow p-6 sticky top-24">
+<!-- 作者卡片 -->
+<div class="text-center mb-6">
+<img alt="Author Avatar" class="w-24 h-24 rounded-full border-4 border-pkured mx-auto mb-4" id="3" src="https://modao.cc/agent-py/media/generated_images/2025-12-06/998b1826371f4875b965b21bb348599a.jpg"/>
+<h2 class="text-xl font-bold text-gray-800">张同学</h2>
+<div class="flex items-center justify-center mt-2">
+<span class="text-amber-500 flex">
+<span class="iconify" data-icon="mdi:star"></span>
+<span class="iconify" data-icon="mdi:star"></span>
+<span class="iconify" data-icon="mdi:star"></span>
+<span class="iconify" data-icon="mdi:star"></span>
+<span class="iconify" data-icon="mdi:star-half-full"></span>
+</span>
+<span class="ml-1 text-gray-500 text-sm">4.7</span>
+</div>
+<div class="mt-3">
+<span class="bg-academicblue/10 text-academicblue px-3 py-1 rounded-full text-sm">信息科学技术学院</span>
+</div>
+</div>
+<!-- 作者信用 -->
+<div class="bg-blue-50 rounded-xl p-4 mb-6">
+<div class="flex items-center justify-between mb-2">
+<span class="font-medium">信用等级</span>
+<span class="bg-pkured text-white text-xs px-2 py-1 rounded-full">金牌卖家</span>
+</div>
+<div class="flex items-center text-sm">
+<div class="w-full bg-gray-200 rounded-full h-2 mr-2">
+<div class="bg-pkured h-2 rounded-full" style="width: 92%"></div>
+</div>
+<span class="font-bold">920</span>
+</div>
+</div>
+<!-- 作者数据 -->
+<div class="grid grid-cols-2 gap-3 mb-6">
+<div class="bg-gray-50 rounded-lg p-3 text-center">
+<div class="text-2xl font-bold text-pkured">32</div>
+<div class="text-gray-500 text-sm">发帖数</div>
+</div>
+<div class="bg-gray-50 rounded-lg p-3 text-center">
+<div class="text-2xl font-bold text-pkured">186</div>
+<div class="text-gray-500 text-sm">粉丝数</div>
+</div>
+<div class="bg-gray-50 rounded-lg p-3 text-center">
+<div class="text-2xl font-bold text-pkured">98%</div>
+<div class="text-gray-500 text-sm">好评率</div>
+</div>
+<div class="bg-gray-50 rounded-lg p-3 text-center">
+<div class="text-2xl font-bold text-pkured">24</div>
+<div class="text-gray-500 text-sm">在线书籍</div>
+</div>
+</div>
+<!-- 操作按钮 -->
+<div class="space-y-3">
+<button class="w-full py-3 bg-pkured text-white rounded-lg flex items-center justify-center hover:bg-red-900">
+<span class="iconify mr-2" data-icon="mdi:message"></span>
+            私信作者
+          </button>
+<button class="w-full py-3 bg-white border border-academicblue text-academicblue rounded-lg flex items-center justify-center hover:bg-blue-50">
+<span class="iconify mr-2" data-icon="mdi:heart"></span>
+            关注作者
+          </button>
+<button class="w-full py-3 bg-white border border-gray-300 text-gray-700 rounded-lg flex items-center justify-center hover:bg-gray-50">
+<span class="iconify mr-2" data-icon="mdi:book"></span>
+            查看他的书籍
+          </button>
+</div>
+</div>
+</aside>
+<!-- 中央内容区 - 帖子详情 -->
+<section class="col-span-6">
+<!-- 标题与元数据 -->
+<div class="bg-white rounded-xl shadow p-8 mb-6">
+<div class="flex items-center justify-between mb-4">
+<span class="bg-pkured/10 text-pkured px-3 py-1 rounded-full">精华帖</span>
+<span class="text-gray-500">发布于 2025-12-04 14:30</span>
+</div>
+<h1 class="text-3xl font-bold text-gray-800 mb-4">【数据结构与算法】期中考试复习经验分享</h1>
+<div class="flex items-center text-gray-500 text-sm mb-6">
+<span>浏览 342 次</span>
+<span class="mx-2">•</span>
+<span>点赞 86 次</span>
+<span class="mx-2">•</span>
+<span>收藏 45 次</span>
+</div>
+<!-- 帖子内容 -->
+<article class="prose max-w-none">
+<p class="text-lg text-gray-700 mb-4">最近刚结束数据结构与算法的期中考试，整理了一些复习经验和个人心得分享给大家，希望能帮助到正在复习的同学。</p>
+<h2 class="text-xl font-bold text-pkured mt-8 mb-4">考试重点内容</h2>
+<p>本次考试主要覆盖了以下章节内容：</p>
+<ul class="list-disc pl-6 mb-4">
+<li>树与二叉树：各种遍历方式（前序、中序、后序、层次），以及二叉树的性质和应用</li>
+<li>图：图的存储结构（邻接矩阵、邻接表），图的遍历（DFS、BFS），最小生成树（Prim、Kruskal算法）</li>
+<li>排序算法：包括插入排序、希尔排序、冒泡排序、快速排序、堆排序等，要求掌握原理和性能分析</li>
+<li>查找：二叉排序树、平衡二叉树、B树的基本概念和操作</li>
+</ul>
+<h2 class="text-xl font-bold text-pkured mt-8 mb-4">复习建议</h2>
+<h3 class="font-bold text-gray-800 mt-4 mb-2">1. 理解算法原理而非死记硬背</h3>
+<p>数据结构考试注重理解而非记忆，特别是各种排序算法的时间复杂度和空间复杂度分析，建议通过绘制流程图、编写伪代码等方式加深理解。</p>
+<h3 class="font-bold text-gray-800 mt-4 mb-2">2. 多做真题练习</h3>
+<p>过去三年的期中考试题可以在课程网站的"资源下载"区域找到，这些题目非常有参考价值。下面是近三年的题型分布：</p>
+<div class="overflow-x-auto mt-4 mb-6">
+<table class="min-w-full divide-y divide-gray-200">
+<thead class="bg-gray-50">
+<tr>
+<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" scope="col">题型</th>
+<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" scope="col">2023年</th>
+<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" scope="col">2024年</th>
+<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" scope="col">2025年</th>
+</tr>
+</thead>
+<tbody class="bg-white divide-y divide-gray-200">
+<tr>
+<td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">选择题</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">15题 (30分)</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">12题 (24分)</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">10题 (20分)</td>
+</tr>
+<tr>
+<td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">简答题</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">5题 (30分)</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">6题 (36分)</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">5题 (30分)</td>
+</tr>
+<tr>
+<td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">算法设计</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">2题 (40分)</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">2题 (40分)</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">2题 (50分)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 class="font-bold text-gray-800 mt-4 mb-2">3. 重点掌握排序算法对比</h3>
+<p>排序算法是考试重点，以下是主要排序算法的性能对比表：</p>
+<div class="overflow-x-auto mt-4 mb-6">
+<table class="min-w-full divide-y divide-gray-200">
+<thead class="bg-gray-50">
+<tr>
+<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" scope="col">算法</th>
+<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" scope="col">平均时间复杂度</th>
+<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" scope="col">最坏时间复杂度</th>
+<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" scope="col">空间复杂度</th>
+<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" scope="col">稳定性</th>
+</tr>
+</thead>
+<tbody class="bg-white divide-y divide-gray-200">
+<tr>
+<td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">冒泡排序</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">O(n²)</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">O(n²)</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">O(1)</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">稳定</td>
+</tr>
+<tr>
+<td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">快速排序</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">O(nlogn)</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">O(n²)</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">O(logn)</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">不稳定</td>
+</tr>
+<tr>
+<td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">堆排序</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">O(nlogn)</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">O(nlogn)</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">O(1)</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">不稳定</td>
+</tr>
+<tr>
+<td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">归并排序</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">O(nlogn)</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">O(nlogn)</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">O(n)</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">稳定</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 class="text-xl font-bold text-pkured mt-8 mb-4">复习资料分享</h2>
+<p>我整理了一些复习资料，包括常见算法伪代码和典型例题分析，有需要的同学可以下载：</p>
+<div class="bg-blue-50 rounded-xl p-4 mt-4 mb-6">
+<div class="flex items-center mb-2">
+<span class="iconify text-blue-600 text-2xl mr-3" data-icon="mdi:file-document"></span>
+<div>
+<div class="font-medium">数据结构复习资料包.zip</div>
+<div class="text-sm text-blue-700">包含知识点总结、典型例题和算法伪代码</div>
+</div>
+</div>
+<div class="flex mt-3">
+<button class="px-4 py-2 bg-blue-600 text-white rounded-md flex items-center text-sm mr-3">
+<span class="iconify mr-1" data-icon="mdi:download"></span>
+                下载资料
+              </button>
+<button class="px-4 py-2 bg-white border border-blue-600 text-blue-600 rounded-md flex items-center text-sm">
+<span class="iconify mr-1" data-icon="mdi:eye"></span>
+                在线预览
+              </button>
+</div>
+</div>
+<h2 class="text-xl font-bold text-pkured mt-8 mb-4">备考建议</h2>
+<p>最后几点备考建议：</p>
+<ol class="list-decimal pl-6 mb-4">
+<li>合理安排时间，建议至少提前一周开始系统复习</li>
+<li>重点复习教材《数据结构与算法分析》第3-7章内容</li>
+<li>多动手写代码，理解算法实现细节</li>
+<li>组队学习，互相讲解难点内容</li>
+</ol>
+<p>祝大家考试顺利！欢迎在评论区提问交流，我会尽量解答。</p>
+</article>
+<!-- 互动区域 -->
+<div class="flex items-center justify-between mt-8 pt-6 border-t border-gray-200">
+<div class="flex space-x-4">
+<button class="flex items-center text-gray-600 hover:text-pkured">
+<span class="iconify text-xl mr-1" data-icon="mdi:thumb-up"></span>
+              86
+            </button>
+<button class="flex items-center text-gray-600 hover:text-pkured">
+<span class="iconify text-xl mr-1" data-icon="mdi:thumb-down"></span>
+              2
+            </button>
+<button class="flex items-center text-gray-600 hover:text-pkured">
+<span class="iconify text-xl mr-1" data-icon="mdi:bookmark"></span>
+              收藏
+            </button>
+<button class="flex items-center text-gray-600 hover:text-pkured">
+<span class="iconify text-xl mr-1" data-icon="mdi:share"></span>
+              分享
+            </button>
+</div>
+<div>
+<button class="flex items-center text-gray-600 hover:text-pkured">
+<span class="iconify text-xl mr-1" data-icon="mdi:flag"></span>
+              举报
+            </button>
+</div>
+</div>
+</div>
+<!-- 评论区域 -->
+<div class="bg-white rounded-xl shadow p-6">
+<h2 class="text-xl font-bold text-pkured mb-4">评论（32条）</h2>
+<!-- 评论输入框 -->
+<div class="mb-8">
+<div class="flex mb-4">
+<img alt="Commenter Avatar" class="w-10 h-10 rounded-full mr-3" id="4" src="https://modao.cc/agent-py/media/generated_images/2025-12-06/066848d18ec147659389ce33fd58a415.jpg"/>
+<textarea class="flex-1 border border-gray-300 rounded-xl p-4 h-24 resize-none" placeholder="输入您的评论..."></textarea>
+</div>
+<div class="flex justify-between">
+<div class="flex space-x-2">
+<button class="p-2 text-gray-500 hover:text-academicblue">
+<span class="iconify" data-icon="mdi:image"></span>
+</button>
+<button class="p-2 text-gray-500 hover:text-academicblue">
+<span class="iconify" data-icon="mdi:attachment"></span>
+</button>
+<button class="p-2 text-gray-500 hover:text-academicblue">
+<span class="iconify" data-icon="mdi:format-bold"></span>
+</button>
+</div>
+<button class="px-6 py-2 bg-pkured text-white rounded-lg hover:bg-red-900">
+              发表评论
+            </button>
+</div>
+</div>
+<!-- 评论列表 -->
+<div class="space-y-6">
+<!-- 评论1 -->
+<div class="fade-in">
+<div class="flex">
+<img alt="Commenter Avatar" class="w-10 h-10 rounded-full mr-4" id="5" src="https://modao.cc/agent-py/media/generated_images/2025-12-06/3d85067679b14a478be199bbe4c58cb0.jpg"/>
+<div class="flex-1">
+<div class="flex items-center justify-between">
+<div>
+<span class="font-bold">王同学</span>
+<span class="text-gray-500 text-sm ml-2">信息科学技术学院</span>
+</div>
+<span class="text-gray-500 text-sm">2小时前</span>
+</div>
+<div class="mt-2 text-gray-700">
+                  感谢分享！能再详细讲讲如何判断堆排序的时间复杂度吗？这部分一直理解得不够透彻。
+                </div>
+<div class="flex items-center mt-3 text-sm">
+<button class="flex items-center text-gray-500 hover:text-pkured mr-4">
+<span class="iconify mr-1" data-icon="mdi:thumb-up"></span>
+                    12
+                  </button>
+<button class="flex items-center text-gray-500 hover:text-pkured mr-4">
+<span class="iconify mr-1" data-icon="mdi:reply"></span>
+                    回复
+                  </button>
+<button class="flex items-center text-gray-500 hover:text-pkured">
+<span class="iconify mr-1" data-icon="mdi:flag"></span>
+                    举报
+                  </button>
+</div>
+<!-- 回复评论 -->
+<div class="comment-reply mt-4">
+<div class="flex">
+<img alt="Author Avatar" class="w-8 h-8 rounded-full mr-3" id="6" src="https://modao.cc/agent-py/media/generated_images/2025-12-06/87bb405684bb4f12a1e5fb890d07d052.jpg"/>
+<div class="flex-1">
+<div class="flex items-center justify-between">
+<div>
+<span class="font-bold">张同学</span>
+<span class="bg-pkured text-white text-xs px-2 py-0.5 rounded ml-2">作者</span>
+</div>
+<span class="text-gray-500 text-sm">1小时前</span>
+</div>
+<div class="mt-1 text-gray-700">
+                        堆排序的时间复杂度分析主要分两部分：建堆过程是O(n)，堆调整过程是O(nlogn)，所以总时间复杂度为O(nlogn)。你可以参考教材第256页的详细推导过程。
+                      </div>
+<div class="flex items-center mt-2 text-sm">
+<button class="flex items-center text-gray-500 hover:text-pkured mr-4">
+<span class="iconify mr-1" data-icon="mdi:thumb-up"></span>
+                          8
+                        </button>
+<button class="flex items-center text-gray-500 hover:text-pkured">
+<span class="iconify mr-1" data-icon="mdi:reply"></span>
+                          回复
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- 评论2 -->
+<div class="fade-in">
+<div class="flex">
+<img alt="Commenter Avatar" class="w-10 h-10 rounded-full mr-4" id="7" src="https://modao.cc/agent-py/media/generated_images/2025-12-06/3137b9ddde134a299a28dbd9afd03f2e.jpg"/>
+<div class="flex-1">
+<div class="flex items-center justify-between">
+<div>
+<span class="font-bold">李教授</span>
+<span class="bg-academicblue text-white text-xs px-2 py-0.5 rounded ml-2">教师</span>
+</div>
+<span class="text-gray-500 text-sm">5小时前</span>
+</div>
+<div class="mt-2 text-gray-700">
+                  非常全面的总结！特别赞同你提到的"理解原理而非死记硬背"的观点。对于想深入理解排序算法的同学，推荐阅读《算法导论》相关章节。
+                </div>
+<div class="flex items-center mt-3 text-sm">
+<button class="flex items-center text-gray-500 hover:text-pkured mr-4">
+<span class="iconify mr-1" data-icon="mdi:thumb-up"></span>
+                    42
+                  </button>
+<button class="flex items-center text-gray-500 hover:text-pkured mr-4">
+<span class="iconify mr-1" data-icon="mdi:reply"></span>
+                    回复
+                  </button>
+<button class="flex items-center text-gray-500 hover:text-pkured">
+<span class="iconify mr-1" data-icon="mdi:flag"></span>
+                    举报
+                  </button>
+</div>
+</div>
+</div>
+</div>
+<!-- 评论3 -->
+<div class="fade-in">
+<div class="flex">
+<img alt="Commenter Avatar" class="w-10 h-10 rounded-full mr-4" id="8" src="https://modao.cc/agent-py/media/generated_images/2025-12-06/5138060c85584836b381d59803b397e9.jpg"/>
+<div class="flex-1">
+<div class="flex items-center justify-between">
+<span class="font-bold">陈同学</span>
+<span class="text-gray-500 text-sm">昨天 18:45</span>
+</div>
+<div class="mt-2 text-gray-700">
+                  资料太有用了！请问这些资料在考试结束后还会保留吗？想作为期末复习参考。
+                </div>
+<div class="flex items-center mt-3 text-sm">
+<button class="flex items-center text-gray-500 hover:text-pkured mr-4">
+<span class="iconify mr-1" data-icon="mdi:thumb-up"></span>
+                    15
+                  </button>
+<button class="flex items-center text-gray-500 hover:text-pkured mr-4">
+<span class="iconify mr-1" data-icon="mdi:reply"></span>
+                    回复
+                  </button>
+<button class="flex items-center text-gray-500 hover:text-pkured">
+<span class="iconify mr-1" data-icon="mdi:flag"></span>
+                    举报
+                  </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- 分页控件 -->
+<div class="flex justify-center mt-8">
+<nav class="inline-flex">
+<a class="py-2 px-3 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700" href="#">
+<span class="iconify" data-icon="mdi:chevron-left"></span>
+</a>
+<a class="py-2 px-3 leading-tight text-pkured bg-pkured/10 border border-gray-300" href="#">1</a>
+<a class="py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700" href="#">2</a>
+<a class="py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700" href="#">3</a>
+<a class="py-2 px-3 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700" href="#">
+<span class="iconify" data-icon="mdi:chevron-right"></span>
+</a>
+</nav>
+</div>
+</div>
+</section>
+<!-- 右侧相关推荐 -->
+<aside class="col-span-3">
+<!-- 相关推荐 -->
+<div class="bg-white rounded-xl shadow p-6 mb-6">
+<h2 class="text-xl font-bold text-gray-800 mb-4">相关推荐</h2>
+<div class="space-y-4">
+<a class="group block" href="#">
+<h3 class="font-medium text-gray-800 group-hover:text-pkured">数据结构期末复习指南（2025最新版）</h3>
+<div class="flex items-center text-gray-500 text-sm mt-1">
+<span>张同学</span>
+<span class="mx-2">•</span>
+<span>156 浏览</span>
+</div>
+</a>
+<a class="group block" href="#">
+<h3 class="font-medium text-gray-800 group-hover:text-pkured">算法复杂度实战分析10例</h3>
+<div class="flex items-center text-gray-500 text-sm mt-1">
+<span>王同学</span>
+<span class="mx-2">•</span>
+<span>78 浏览</span>
+</div>
+</a>
+<a class="group block" href="#">
+<h3 class="font-medium text-gray-800 group-hover:text-pkured">图算法在社交网络分析中的应用</h3>
+<div class="flex items-center text-gray-500 text-sm mt-1">
+<span>刘教授</span>
+<span class="mx-2">•</span>
+<span>203 浏览</span>
+</div>
+</a>
+<a class="group block" href="#">
+<h3 class="font-medium text-gray-800 group-hover:text-pkured">北大信息学院推荐的算法学习路线</h3>
+<div class="flex items-center text-gray-500 text-sm mt-1">
+<span>信息学院官方</span>
+<span class="mx-2">•</span>
+<span>321 浏览</span>
+</div>
+</a>
+</div>
+</div>
+<!-- 该作者其他发帖 -->
+<div class="bg-white rounded-xl shadow p-6 mb-6">
+<div class="flex items-center justify-between mb-4">
+<h2 class="text-xl font-bold text-gray-800">该作者其他发帖</h2>
+<a class="text-sm text-academicblue hover:text-blue-800" href="#">查看全部</a>
+</div>
+<div class="space-y-4">
+<a class="group block" href="#">
+<h3 class="font-medium text-gray-800 group-hover:text-pkured">操作系统学习笔记：进程调度算法精解</h3>
+<div class="flex items-center text-gray-500 text-sm mt-1">
+<span>3天前</span>
+<span class="mx-2">•</span>
+<span>98 回复</span>
+</div>
+</a>
+<a class="group block" href="#">
+<h3 class="font-medium text-gray-800 group-hover:text-pkured">计算机网络实验报告分享</h3>
+<div class="flex items-center text-gray-500 text-sm mt-1">
+<span>1周前</span>
+<span class="mx-2">•</span>
+<span>56 回复</span>
+</div>
+</a>
+<a class="group block" href="#">
+<h3 class="font-medium text-gray-800 group-hover:text-pkured">编译原理学习心得</h3>
+<div class="flex items-center text-gray-500 text-sm mt-1">
+<span>2周前</span>
+<span class="mx-2">•</span>
+<span>42 回复</span>
+</div>
+</a>
+</div>
+</div>
+<!-- 收藏与分享 -->
+<div class="bg-white rounded-xl shadow p-6">
+<h2 class="text-xl font-bold text-gray-800 mb-4">收藏本帖</h2>
+<div class="bg-yellow-50 border border-yellow-200 rounded-xl p-4 mb-4">
+<div class="flex">
+<span class="iconify text-yellow-500 text-2xl mr-3" data-icon="mdi:star"></span>
+<p class="text-yellow-700">收藏帖子后可随时在个人中心查看，方便回顾重要内容</p>
+</div>
+</div>
+<button class="w-full py-3 bg-amber-100 border border-amber-300 text-amber-800 rounded-lg flex items-center justify-center hover:bg-amber-200 mb-4">
+<span class="iconify mr-2" data-icon="mdi:bookmark"></span>
+          收藏本帖
+        </button>
+<h2 class="text-xl font-bold text-gray-800 mb-4 mt-6">分享帖子</h2>
+<div class="flex justify-center space-x-4">
+<button class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 hover:bg-blue-200">
+<span class="iconify" data-icon="mdi:wechat"></span>
+</button>
+<button class="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center text-white hover:bg-blue-600">
+<span class="iconify" data-icon="mdi:qqchat"></span>
+</button>
+<button class="w-10 h-10 rounded-full bg-blue-700 flex items-center justify-center text-white hover:bg-blue-800">
+<span class="iconify" data-icon="mdi:weibo"></span>
+</button>
+<button class="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center text-gray-700 hover:bg-gray-300">
+<span class="iconify" data-icon="mdi:link"></span>
+</button>
+</div>
+</div>
+</aside>
+</main>
+<!-- 底部页脚 -->
+<footer class="bg-white border-t border-gray-200 py-10 mt-10">
+<div class="container mx-auto px-6">
+<div class="grid grid-cols-4 gap-8">
+<div>
+<h3 class="font-bold text-lg text-gray-800 mb-4">关于我们</h3>
+<ul class="space-y-2">
+<li><a class="text-gray-600 hover:text-pkured" href="#">平台简介</a></li>
+<li><a class="text-gray-600 hover:text-pkured" href="#">团队介绍</a></li>
+<li><a class="text-gray-600 hover:text-pkured" href="#">加入我们</a></li>
+<li><a class="text-gray-600 hover:text-pkured" href="#">联系方式</a></li>
+</ul>
+</div>
+<div>
+<h3 class="font-bold text-lg text-gray-800 mb-4">论坛指南</h3>
+<ul class="space-y-2">
+<li><a class="text-gray-600 hover:text-pkured" href="#">发帖规范</a></li>
+<li><a class="text-gray-600 hover:text-pkured" href="#">精华帖标准</a></li>
+<li><a class="text-gray-600 hover:text-pkured" href="#">社区守则</a></li>
+<li><a class="text-gray-600 hover:text-pkured" href="#">举报机制</a></li>
+</ul>
+</div>
+<div>
+<h3 class="font-bold text-lg text-gray-800 mb-4">友情链接</h3>
+<ul class="space-y-2">
+<li><a class="text-gray-600 hover:text-pkured" href="#">北京大学官网</a></li>
+<li><a class="text-gray-600 hover:text-pkured" href="#">课程中心</a></li>
+<li><a class="text-gray-600 hover:text-pkured" href="#">图书馆系统</a></li>
+<li><a class="text-gray-600 hover:text-pkured" href="#">教务部</a></li>
+</ul>
+</div>
+<div>
+<h3 class="font-bold text-lg text-gray-800 mb-4">联系我们</h3>
+<div class="space-y-2">
+<p class="flex items-center text-gray-600">
+<span class="iconify mr-2" data-icon="mdi:email"></span>
+              forum@pku.edu.cn
+            </p>
+<p class="flex items-center text-gray-600">
+<span class="iconify mr-2" data-icon="mdi:phone"></span>
+              010-6275XXXX
+            </p>
+<p class="flex items-start text-gray-600">
+<span class="iconify mr-2 mt-1" data-icon="mdi:map-marker"></span>
+              北京市海淀区颐和园路5号<br/>北京大学新太阳中心
+            </p>
+</div>
+</div>
+</div>
+<div class="border-t border-gray-200 mt-8 pt-6 text-center text-gray-500">
+<p>© 2025 北京大学二手书交易平台 | 京ICP备2025000001号</p>
+</div>
+</div>
+</footer>
+</body>
+</html>

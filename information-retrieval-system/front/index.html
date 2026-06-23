@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>课程知识智能检索系统</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ── HEADER ── -->
+<header>
+  <div class="logo" onclick="goHome()" style="cursor:pointer;" title="返回首页">
+    <div class="logo-icon">
+      <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+    </div>
+    课程知识智能检索系统
+  </div>
+  <div class="status-badge">
+    <span class="dot"></span>
+    RAG · FAISS · v1.0
+  </div>
+</header>
+
+<div class="layout">
+
+  <!-- ── 좌측 사이드바 ── -->
+  <aside class="sidebar">
+
+    <!-- 파일 업로드 -->
+    <div class="sidebar-section">
+      <div class="sidebar-label">知识库文档</div>
+      <button class="upload-btn" onclick="document.getElementById('file-input').click()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+             stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+          <polyline points="17 8 12 3 7 8"/>
+          <line x1="12" y1="3" x2="12" y2="15"/>
+        </svg>
+        上传课程资料
+      </button>
+      <input type="file" id="file-input" accept=".pdf,.txt,.docx" multiple
+             onchange="handleFileUpload(event)">
+    </div>
+
+    <!-- 문서 목록 -->
+    <div class="sidebar-section" style="flex:1; overflow-y:auto; border-bottom:none;">
+      <div class="sidebar-label" style="margin-bottom:10px;">已索引文件</div>
+      <div class="doc-list" id="doc-list">
+        <div class="doc-item" onclick="openFilePreview(this)" data-name="信息存储与检索.pdf" data-type="pdf" data-chunks="142" data-size="2.4MB">
+          <div class="doc-icon pdf">PDF</div>
+          <div class="doc-meta">
+            <div class="doc-name">信息存储与检索.pdf</div>
+            <div class="doc-size">142 chunks · 2.4MB</div>
+          </div>
+          <div class="doc-status"></div>
+        </div>
+        <div class="doc-item" onclick="openFilePreview(this)" data-name="RAG技术综述.txt" data-type="txt" data-chunks="87" data-size="0.8MB">
+          <div class="doc-icon txt">TXT</div>
+          <div class="doc-meta">
+            <div class="doc-name">RAG技术综述.txt</div>
+            <div class="doc-size">87 chunks · 0.8MB</div>
+          </div>
+          <div class="doc-status"></div>
+        </div>
+        <div class="doc-item" onclick="openFilePreview(this)" data-name="第三章_向量检索.pdf" data-type="pdf" data-chunks="63" data-size="1.1MB">
+          <div class="doc-icon ppt">PPT</div>
+          <div class="doc-meta">
+            <div class="doc-name">第三章_向量检索.pdf</div>
+            <div class="doc-size">63 chunks · 1.1MB</div>
+          </div>
+          <div class="doc-status"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 통계 -->
+    <div class="sidebar-stats">
+      <div class="stat-card">
+        <div class="stat-num" id="stat-chunks">292</div>
+        <div class="stat-lbl">文本块</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num" id="stat-docs">3</div>
+        <div class="stat-lbl">文档数</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">768</div>
+        <div class="stat-lbl">向量维度</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">L2</div>
+        <div class="stat-lbl">检索方式</div>
+      </div>
+    </div>
+
+  </aside>
+
+  <!-- ── 중앙 채팅 ── -->
+  <main class="main">
+    <div class="chat-area" id="chat-area">
+      <div class="message-wrap">
+
+        <!-- 환영 화면 -->
+        <div class="welcome" id="welcome">
+          <div class="welcome-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+            </svg>
+          </div>
+          <h2>课程知识智能问答</h2>
+          <p>基于RAG框架，从课程资料中检索相关内容并生成回答</p>
+          <div class="suggestion-list">
+            <button class="suggestion" onclick="fillSuggestion(this)">什么是RAG？它和传统检索有什么区别？</button>
+            <button class="suggestion" onclick="fillSuggestion(this)">FAISS向量检索的工作原理是什么？</button>
+            <button class="suggestion" onclick="fillSuggestion(this)">Embedding是如何将文本转换为向量的？</button>
+            <button class="suggestion" onclick="fillSuggestion(this)">信息检索中的语义匹配和关键词匹配区别？</button>
+          </div>
+        </div>
+
+        <!-- 메시지 컨테이너 -->
+        <div id="messages"></div>
+
+      </div>
+    </div>
+
+    <!-- 입력창 -->
+    <div class="input-bar">
+      <div class="input-wrap">
+        <div class="input-row">
+          <textarea id="query-input"
+            placeholder="输入问题，从课程知识库中检索相关内容..."
+            rows="1"
+            onkeydown="handleKeyDown(event)"
+            oninput="autoResize(this)"></textarea>
+          <button class="send-btn" id="send-btn" onclick="sendQuery()" title="发送">
+            <svg viewBox="0 0 24 24">
+              <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+            </svg>
+          </button>
+        </div>
+        <div class="input-meta">
+          <div class="input-settings">
+            <div class="setting-chip active" id="chip-rag" onclick="toggleChip(this)">
+              <span>RAG模式</span>
+            </div>
+            <div class="setting-chip" id="chip-topk" onclick="cycleTopK(this)">
+              Top-K: 3
+            </div>
+          </div>
+          <div class="input-hint">Enter 发送 · Shift+Enter 换行</div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ── 우측 패널 ── -->
+  <aside class="right-panel">
+
+    <!-- 파이프라인 -->
+    <div class="panel-header">检索流程</div>
+    <div class="pipeline" id="pipeline">
+      <div class="pipe-step idle" id="step-embed">
+        <div class="pipe-dot"></div>
+        1. 问题 Embedding
+      </div>
+      <div class="pipe-step idle" id="step-search">
+        <div class="pipe-dot"></div>
+        2. FAISS 向量检索
+      </div>
+      <div class="pipe-step idle" id="step-topk">
+        <div class="pipe-dot"></div>
+        3. 返回 Top-K 文本
+      </div>
+      <div class="pipe-step idle" id="step-prompt">
+        <div class="pipe-dot"></div>
+        4. 构建 Prompt
+      </div>
+      <div class="pipe-step idle" id="step-llm">
+        <div class="pipe-dot"></div>
+        5. LLM 生成回答
+      </div>
+    </div>
+
+    <!-- 召回 청크 -->
+    <div class="panel-header" style="margin-top:4px;">召回文本块</div>
+    <div class="panel-body" id="chunks-panel">
+      <div style="color: var(--text3); font-size: 12px; text-align: center; padding: 20px; font-family: var(--mono);">
+        等待检索...
+      </div>
+    </div>
+
+  </aside>
+
+</div>
+
+<!-- 파일 미리보기 모달 -->
+<div class="modal-overlay" id="modal-overlay" onclick="closeModalOnOverlay(event)">
+  <div class="modal" id="modal">
+    <div class="modal-header">
+      <div class="modal-title">
+        <div class="doc-icon pdf" id="modal-icon">PDF</div>
+        <div>
+          <div class="modal-filename" id="modal-filename">文件名</div>
+          <div class="modal-meta" id="modal-meta">—</div>
+        </div>
+      </div>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body" id="modal-body"></div>
+    <div class="modal-footer" id="modal-footer"></div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

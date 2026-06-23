@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>北京大学二手书交易平台 - 二手论坛</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://code.iconify.design/3/3.1.1/iconify.min.js"></script>
+<style>
+    .hide-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .hide-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    .topic-card {
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .topic-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            pkured: '#990000',
+            academicblue: '#0066CC',
+            success: '#52C41A',
+            warning: '#FA8C16',
+            error: '#F5222D'
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col">
+<!-- 顶部导航栏 -->
+<header class="bg-white shadow-sm sticky top-0 z-50">
+  <div class="container mx-auto px-6">
+    <div class="flex items-center justify-between h-20">
+      <!-- Logo区域 -->
+      <div class="flex items-center">
+        <img alt="Peking University Logo" class="h-12 w-12 mr-3" id="1" src="https://modao.cc/agent-py/media/generated_images/2025-12-06/74e82723ccbb4c7db8380dc2df47e4bc.jpg"/>
+        <h1 class="text-xl font-bold text-pkured">北京大学二手书交易平台</h1>
+      </div>
+      <!-- 主导航菜单 -->
+      <nav class="hidden md:flex space-x-8">
+        <a class="font-medium text-gray-700 hover:text-pkured transition" href="首页.html">首页</a>
+        <a class="font-medium text-gray-700 hover:text-pkured transition" href="购书通道.html">购书通道</a>
+        <a class="font-medium text-gray-700 hover:text-pkured transition" href="售书通道.html">售书通道</a>
+        <a class="font-medium text-gray-700 hover:text-pkured transition" href="论坛.html">论坛</a>
+        <a class="font-medium text-gray-700 hover:text-pkured transition" href="图书漂流.html">图书漂流</a>
+        <a class="font-medium text-gray-700 hover:text-pkured transition" href="个人中心.html">个人中心</a>
+      </nav>
+      <!-- 用户操作区 -->
+      <div class="flex items-center space-x-4">
+        <button class="relative">
+          <span class="iconify text-2xl text-gray-500" data-icon="mdi:bell-outline"></span>
+          <span class="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>
+        </button>
+        <div class="flex items-center">
+          <img alt="User Avatar" class="w-10 h-10 rounded-full border-2 border-pkured" id="2" src="https://modao.cc/agent-py/media/generated_images/2025-12-06/bae5690b441d40c3a1586a4e74f3cb18.jpg"/>
+          <span class="ml-2 text-gray-700">张同学</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<!-- 论坛顶部区域 -->
+<div class="bg-pkured py-12">
+<div class="container mx-auto px-6 text-center">
+<h1 class="text-4xl font-bold text-white mb-4">北大学术交流论坛</h1>
+<p class="text-white/90 max-w-2xl mx-auto">分享课程心得，交流教材使用经验，寻找学习伙伴，共建北大学习社区</p>
+</div>
+</div>
+<!-- 主体内容区 -->
+<main class="flex-1 container mx-auto px-6 py-8 grid grid-cols-12 gap-8">
+<!-- 左侧功能侧边栏 - 板块导航 -->
+<aside class="col-span-3">
+<!-- 学科分类 -->
+<div class="bg-white rounded-xl shadow p-6 mb-6">
+<h2 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+<span class="iconify mr-2 text-academicblue" data-icon="mdi:bookshelf"></span>
+          学科分类
+        </h2>
+<ul class="space-y-2">
+<li>
+<a class="py-2 px-4 rounded-lg flex items-center justify-between bg-academicblue/10 text-academicblue" href="#">
+<span>人文社会科学</span>
+<span class="bg-academicblue text-white text-xs px-2 py-1 rounded-full">28</span>
+</a>
+</li>
+<li>
+<a class="py-2 px-4 rounded-lg flex items-center justify-between hover:bg-gray-100" href="#">
+<span>理学</span>
+<span class="bg-gray-200 text-gray-600 text-xs px-2 py-1 rounded-full">19</span>
+</a>
+</li>
+<li>
+<a class="py-2 px-4 rounded-lg flex items-center justify-between hover:bg-gray-100" href="#">
+<span>信息与工程科学</span>
+<span class="bg-gray-200 text-gray-600 text-xs px-2 py-1 rounded-full">32</span>
+</a>
+</li>
+<li>
+<a class="py-2 px-4 rounded-lg flex items-center justify-between hover:bg-gray-100" href="#">
+<span>医学</span>
+<span class="bg-gray-200 text-gray-600 text-xs px-2 py-1 rounded-full">12</span>
+</a>
+</li>
+<li>
+<a class="py-2 px-4 rounded-lg flex items-center justify-between hover:bg-gray-100" href="#">
+<span>交叉学科</span>
+<span class="bg-gray-200 text-gray-600 text-xs px-2 py-1 rounded-full">21</span>
+</a>
+</li>
+<li>
+<a class="py-2 px-4 rounded-lg flex items-center justify-between hover:bg-gray-100" href="#">
+<span>语言与文学</span>
+<span class="bg-gray-200 text-gray-600 text-xs px-2 py-1 rounded-full">15</span>
+</a>
+</li>
+</ul>
+</div>
+<!-- 话题类型筛选 -->
+<div class="bg-white rounded-xl shadow p-6 mb-6">
+<h2 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+<span class="iconify mr-2 text-academicblue" data-icon="mdi:tag"></span>
+          话题类型
+        </h2>
+<div class="flex flex-wrap gap-2">
+<span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">课程讨论</span>
+<span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">教材分享</span>
+<span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">学习心得</span>
+<span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">资料共享</span>
+<span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">考试攻略</span>
+<span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">书籍求购</span>
+<span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">交易反馈</span>
+<span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">校园活动</span>
+</div>
+</div>
+<!-- 精华帖筛选 -->
+<div class="bg-white rounded-xl shadow p-6 mb-6">
+<div class="flex items-center justify-between">
+<h2 class="text-xl font-bold text-gray-800 flex items-center">
+<span class="iconify mr-2 text-amber-500" data-icon="mdi:star"></span>
+            精华帖筛选
+          </h2>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-pkured"></div>
+</label>
+</div>
+<p class="mt-2 text-gray-500 text-sm">仅显示被管理员标记为精华的优质帖子</p>
+</div>
+<!-- 快速操作 -->
+<div class="bg-white rounded-xl shadow p-6">
+<h2 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+<span class="iconify mr-2 text-pkured" data-icon="mdi:lightning-bolt"></span>
+          快速操作
+        </h2>
+<div class="space-y-3">
+<a href="发帖页面.html" class="w-full inline-flex py-3 bg-pkured text-white font-medium rounded-lg items-center justify-center hover:bg-red-900 transition-colors">
+            <span class="iconify mr-2" data-icon="mdi:pencil-plus"></span>
+            发布新话题
+          </a>
+<button class="w-full py-3 bg-white border border-academicblue text-academicblue font-medium rounded-lg flex items-center justify-center hover:bg-blue-50 transition-colors">
+<span class="iconify mr-2" data-icon="mdi:magnify"></span>
+            搜索帖子
+          </button>
+<button class="w-full py-3 bg-white border border-gray-300 text-gray-700 font-medium rounded-lg flex items-center justify-center hover:bg-gray-50 transition-colors">
+<span class="iconify mr-2" data-icon="mdi:heart"></span>
+            查看我的关注
+          </button>
+</div>
+</div>
+</aside>
+<!-- 中央内容区 - 帖子列表 -->
+<section class="col-span-6">
+<!-- 排序与过滤控制 -->
+<div class="flex items-center justify-between mb-6">
+<div class="text-2xl font-bold text-pkured">最新帖子</div>
+<div class="flex items-center space-x-4">
+<span class="text-gray-600">排序:</span>
+<select class="bg-white border border-gray-200 rounded-md px-4 py-2">
+<option>最新发布</option>
+<option>热门讨论</option>
+<option>最高评分</option>
+<option>最多回复</option>
+</select>
+</div>
+</div>
+<!-- 帖子列表 -->
+<div class="space-y-5">
+<!-- 帖子1 -->
+<div class="topic-card bg-white rounded-xl shadow p-6">
+<div class="flex">
+<!-- 头像和作者 -->
+<div class="mr-4">
+<img alt="User Avatar" class="w-12 h-12 rounded-full border-2 border-pkured" id="3" src="https://modao.cc/agent-py/media/generated_images/2025-12-06/ac02d09bbe514d249439e0075fa5eb2c.jpg"/>
+</div>
+<div class="flex-1">
+<!-- 标题和标签 -->
+<div class="flex items-start justify-between">
+<h2 class="text-lg font-bold text-gray-800 hover:text-pkured cursor-pointer">【数据结构与算法】期中考试复习经验分享</h2>
+<div class="flex items-center space-x-2">
+<span class="bg-pkured/10 text-pkured px-2 py-1 rounded-full text-xs">精华帖</span>
+<span class="bg-academicblue/10 text-academicblue px-2 py-1 rounded-full text-xs">信息与工程科学</span>
+</div>
+</div>
+<!-- 作者信息 -->
+<div class="flex items-center text-gray-500 text-sm mt-2">
+<span class="font-medium">张同学</span>
+<span class="mx-2">•</span>
+<span>信息科学技术学院</span>
+<span class="mx-2">•</span>
+<span>信用等级: <span class="text-amber-500">★★★★☆</span></span>
+<span class="mx-2">•</span>
+<span>2小时前</span>
+</div>
+<!-- 帖子内容摘要 -->
+<div class="text-gray-700 mt-3">
+                整理了《数据结构与算法分析》期中考试的重点内容和复习方法，包含树、图、排序算法等核心知识点的学习建议。附赠自己整理的复习资料下载链接...
+              </div>
+<!-- 互动统计 -->
+<div class="flex items-center mt-4 text-gray-500 text-sm">
+<div class="flex items-center mr-4">
+<span class="iconify mr-1" data-icon="mdi:message-reply-text"></span>
+                  32 条回复
+                </div>
+<div class="flex items-center mr-4">
+<span class="iconify mr-1" data-icon="mdi:eye"></span>
+                  245 次查看
+                </div>
+<div class="flex items-center mr-4">
+<span class="iconify mr-1" data-icon="mdi:heart"></span>
+                  68 个赞
+                </div>
+<div class="flex items-center">
+<span class="iconify mr-1" data-icon="mdi:bookmark"></span>
+                  收藏
+                </div>
+</div>
+</div>
+</div>
+</div>
+<!-- 帖子2 -->
+<div class="topic-card bg-white rounded-xl shadow p-6">
+<div class="flex">
+<!-- 头像和作者 -->
+<div class="mr-4">
+<img alt="User Avatar" class="w-12 h-12 rounded-full border-2 border-blue-500" id="4" src="https://modao.cc/agent-py/media/generated_images/2025-12-06/ad10e3be32694b1b8ccdb7b5a1194496.jpg"/>
+</div>
+<div class="flex-1">
+<!-- 标题和标签 -->
+<div class="flex items-start justify-between">
+<h2 class="text-lg font-bold text-gray-800 hover:text-pkured cursor-pointer">求购《西方哲学史》罗素著，旧版新印均可</h2>
+<div class="flex items-center space-x-2">
+<span class="bg-academicblue/10 text-academicblue px-2 py-1 rounded-full text-xs">书籍求购</span>
+<span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs">人文社会科学</span>
+</div>
+</div>
+<!-- 作者信息 -->
+<div class="flex items-center text-gray-500 text-sm mt-2">
+<span class="font-medium">李同学</span>
+<span class="mx-2">•</span>
+<span>哲学系</span>
+<span class="mx-2">•</span>
+<span>信用等级: <span class="text-amber-500">★★★★★</span></span>
+<span class="mx-2">•</span>
+<span>5小时前</span>
+</div>
+<!-- 帖子内容摘要 -->
+<div class="text-gray-700 mt-3">
+                需要《西方哲学史》罗素著，最好是商务印书馆版本，新旧程度不限，价格可议。学习哲学导论课程急需，希望有书的同学联系我，可校内交易...
+              </div>
+<!-- 互动统计 -->
+<div class="flex items-center mt-4 text-gray-500 text-sm">
+<div class="flex items-center mr-4">
+<span class="iconify mr-1" data-icon="mdi:message-reply-text"></span>
+                  8 条回复
+                </div>
+<div class="flex items-center mr-4">
+<span class="iconify mr-1" data-icon="mdi:eye"></span>
+                  89 次查看
+                </div>
+<div class="flex items-center">
+<span class="iconify mr-1" data-icon="mdi:bookmark"></span>
+                  收藏
+                </div>
+</div>
+</div>
+</div>
+</div>
+<!-- 帖子3 -->
+<div class="topic-card bg-white rounded-xl shadow p-6">
+<div class="flex">
+<!-- 头像和作者 -->
+<div class="mr-4">
+<img alt="User Avatar" class="w-12 h-12 rounded-full border-2 border-green-500" id="5" src="https://modao.cc/agent-py/media/generated_images/2025-12-06/3aee4f8ab4d042798b7438ca0bd68994.jpg"/>
+</div>
+<div class="flex-1">
+<!-- 标题和标签 -->
+<div class="flex items-start justify-between">
+<h2 class="text-lg font-bold text-gray-800 hover:text-pkured cursor-pointer">【推荐】经济学原理课程教材最佳替代方案</h2>
+<div class="flex items-center space-x-2">
+<span class="bg-amber-100 text-amber-800 px-2 py-1 rounded-full text-xs">教材分享</span>
+<span class="bg-purple-100 text-purple-800 px-2 py-1 rounded-full text-xs">经济学院</span>
+</div>
+</div>
+<!-- 作者信息 -->
+<div class="flex items-center text-gray-500 text-sm mt-2">
+<span class="font-medium">王同学</span>
+<span class="mx-2">•</span>
+<span>经济学院</span>
+<span class="mx-2">•</span>
+<span>信用等级: <span class="text-amber-500">★★★★☆</span></span>
+<span class="mx-2">•</span>
+<span>1天前</span>
+</div>
+<!-- 帖子内容摘要 -->
+<div class="text-gray-700 mt-3">
+                曼昆的《经济学原理》价格较高且厚重，推荐几本更轻便且内容精炼的替代教材，适合经济学入门学习，附详细对比和购买建议...
+              </div>
+<!-- 互动统计 -->
+<div class="flex items-center mt-4 text-gray-500 text-sm">
+<div class="flex items-center mr-4">
+<span class="iconify mr-1" data-icon="mdi:message-reply-text"></span>
+                  21 条回复
+                </div>
+<div class="flex items-center mr-4">
+<span class="iconify mr-1" data-icon="mdi:eye"></span>
+                  156 次查看
+                </div>
+<div class="flex items-center mr-4">
+<span class="iconify mr-1" data-icon="mdi:heart"></span>
+                  45 个赞
+                </div>
+<div class="flex items-center">
+<span class="iconify mr-1" data-icon="mdi:bookmark"></span>
+                  收藏
+                </div>
+</div>
+</div>
+</div>
+</div>
+<!-- 帖子4 -->
+<div class="topic-card bg-white rounded-xl shadow p-6">
+<div class="flex">
+<!-- 头像和作者 -->
+<div class="mr-4">
+<img alt="User Avatar" class="w-12 h-12 rounded-full border-2 border-purple-500" id="6" src="https://modao.cc/agent-py/media/generated_images/2025-12-06/a55431df3cac4b9cad92bf44de90920d.jpg"/>
+</div>
+<div class="flex-1">
+<!-- 标题和标签 -->
+<div class="flex items-start justify-between">
+<h2 class="text-lg font-bold text-gray-800 hover:text-pkured cursor-pointer">中国哲学史课程讨论组 - 第12周学习内容交流</h2>
+<div class="flex items-center space-x-2">
+<span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs">课程讨论</span>
+<span class="bg-red-100 text-red-800 px-2 py-1 rounded-full text-xs">人文社会科学</span>
+</div>
+</div>
+<!-- 作者信息 -->
+<div class="flex items-center text-gray-500 text-sm mt-2">
+<span class="font-medium">赵教授</span>
+<span class="mx-2">•</span>
+<span>哲学系教师</span>
+<span class="mx-2">•</span>
+<span>认证教师</span>
+<span class="mx-2">•</span>
+<span>2天前</span>
+</div>
+<!-- 帖子内容摘要 -->
+<div class="text-gray-700 mt-3">
+                本周我们将学习宋明理学部分，请同学们提前阅读《中国哲学史》冯友兰著第25-28章，讨论重点：朱熹理学与王阳明心学的比较...
+              </div>
+<!-- 互动统计 -->
+<div class="flex items-center mt-4 text-gray-500 text-sm">
+<div class="flex items-center mr-4">
+<span class="iconify mr-1" data-icon="mdi:message-reply-text"></span>
+                  47 条回复
+                </div>
+<div class="flex items-center mr-4">
+<span class="iconify mr-1" data-icon="mdi:eye"></span>
+                  321 次查看
+                </div>
+<div class="flex items-center mr-4">
+<span class="iconify mr-1" data-icon="mdi:heart"></span>
+                  92 个赞
+                </div>
+<div class="flex items-center">
+<span class="iconify mr-1" data-icon="mdi:bookmark"></span>
+                  收藏
+                </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- 分页控件 -->
+<div class="flex justify-center mt-8">
+<nav class="inline-flex">
+<a class="py-2 px-3 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700" href="#">
+<span class="iconify" data-icon="mdi:chevron-left"></span>
+</a>
+<a class="py-2 px-3 leading-tight text-pkured bg-pkured/10 border border-gray-300" href="#">1</a>
+<a class="py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700" href="#">2</a>
+<a class="py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700" href="#">3</a>
+<a class="py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700" href="#">4</a>
+<a class="py-2 px-3 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700" href="#">
+<span class="iconify" data-icon="mdi:chevron-right"></span>
+</a>
+</nav>
+</div>
+</section>
+<!-- 右侧信息栏 -->
+<aside class="col-span-3">
+<!-- 漂流区 -->
+<div class="bg-white rounded-xl shadow p-6 mb-6">
+  <div class="flex items-center justify-between mb-4">
+    <h2 class="text-xl font-bold text-gray-800 flex items-center">
+      <span class="iconify mr-2 text-blue-500" data-icon="mdi:book-open-variant"></span>
+      漂流区
+    </h2>
+    <span class="bg-blue-500 text-white text-xs px-2 py-1 rounded-full">FREE</span>
+  </div>
+  <div class="space-y-4">
+    <a href="图书漂流领取页.html" class="group block">
+      <h3 class="font-medium text-gray-800 group-hover:text-blue-600 cursor-pointer">《数据结构与算法分析》——同学捐赠</h3>
+      <div class="flex items-center text-gray-500 text-sm mt-1">
+        <span>信息科学技术学院</span>
+        <span class="mx-2">•</span>
+        <span>状态：0元领取</span>
+      </div>
+    </a>
+    <a href="图书漂流领取页.html" class="group block">
+      <h3 class="font-medium text-gray-800 group-hover:text-blue-600 cursor-pointer">《微观经济学原理》——同学捐赠</h3>
+      <div class="flex items-center text-gray-500 text-sm mt-1">
+        <span>经济学院</span>
+        <span class="mx-2">•</span>
+        <span>状态：0元领取</span>
+      </div>
+    </a>
+    <a href="图书漂流领取页.html" class="group block">
+      <h3 class="font-medium text-gray-800 group-hover:text-blue-600 cursor-pointer">《线性代数》——同学捐赠</h3>
+      <div class="flex items-center text-gray-500 text-sm mt-1">
+        <span>数学科学学院</span>
+        <span class="mx-2">•</span>
+        <span>状态：0元领取</span>
+      </div>
+    </a>
+    <a href="图书漂流.html" class="w-full mt-3 py-2 border border-blue-500 text-blue-500 rounded-md flex items-center justify-center hover:bg-blue-500/10 inline-flex">
+      查看更多漂流书籍
+      <span class="iconify ml-1" data-icon="mdi:arrow-right"></span>
+    </a>
+  </div>
+</div>
+<!-- 优质卖家 -->
+<div class="bg-white rounded-xl shadow p-6 mb-6">
+<h2 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+<span class="iconify mr-2 text-amber-500" data-icon="mdi:crown"></span>
+          优质卖家推荐
+        </h2>
+<div class="space-y-4">
+<div class="flex items-center">
+<img alt="Seller Avatar" class="w-10 h-10 rounded-full border-2 border-amber-400" id="7" src="https://modao.cc/agent-py/media/generated_images/2025-12-06/58248c468519426da202e265d8e04bbb.jpg"/>
+<div class="ml-3">
+<div class="font-medium">张同学</div>
+<div class="flex items-center text-xs text-gray-500">
+<span class="text-amber-500 mr-1">★★★★★</span>
+<span>98%好评率</span>
+</div>
+</div>
+<button class="ml-auto px-3 py-1 bg-pkured text-white rounded text-sm hover:bg-red-900">关注</button>
+</div>
+<div class="flex items-center">
+<img alt="Seller Avatar" class="w-10 h-10 rounded-full border-2 border-amber-400" id="8" src="https://modao.cc/agent-py/media/generated_images/2025-12-06/039334885cd2400e87495c5cc5ef263b.jpg"/>
+<div class="ml-3">
+<div class="font-medium">李同学</div>
+<div class="flex items-center text-xs text-gray-500">
+<span class="text-amber-500 mr-1">★★★★★</span>
+<span>96%好评率</span>
+</div>
+</div>
+<button class="ml-auto px-3 py-1 bg-pkured text-white rounded text-sm hover:bg-red-900">关注</button>
+</div>
+<div class="flex items-center">
+<img alt="Seller Avatar" class="w-10 h-10 rounded-full border-2 border-amber-400" id="9" src="https://modao.cc/agent-py/media/generated_images/2025-12-06/6072f2736468495da38dea525d8ceb26.jpg"/>
+<div class="ml-3">
+<div class="font-medium">王同学</div>
+<div class="flex items-center text-xs text-gray-500">
+<span class="text-amber-500 mr-1">★★★★☆</span>
+<span>94%好评率</span>
+</div>
+</div>
+<button class="ml-auto px-3 py-1 bg-pkured text-white rounded text-sm hover:bg-red-900">关注</button>
+</div>
+<button class="w-full mt-3 py-2 border border-gray-300 text-gray-700 rounded-md flex items-center justify-center hover:bg-gray-50">
+            查看全部优质卖家
+            <span class="iconify ml-1" data-icon="mdi:account-group"></span>
+</button>
+</div>
+</div>
+<!-- 热门话题 -->
+<div class="bg-white rounded-xl shadow p-6">
+<h2 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+<span class="iconify mr-2 text-pkured" data-icon="mdi:trending-up"></span>
+          热门话题
+        </h2>
+<div class="flex flex-wrap gap-2">
+<span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full">#期末复习</span>
+<span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full">#教材推荐</span>
+<span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full">#学习小组</span>
+<span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full">#二手书交易技巧</span>
+<span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full">#数学建模</span>
+<span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full">#课程避坑指南</span>
+<span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full">#北大图书馆资源</span>
+<span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full">#学术写作</span>
+</div>
+<div class="mt-4">
+<div class="flex items-center justify-between text-sm mb-1">
+<span class="text-gray-600">#数据结构复习</span>
+<span class="font-medium">124 讨论</span>
+</div>
+<div class="w-full bg-gray-200 rounded-full h-1.5">
+<div class="bg-pkured h-1.5 rounded-full" style="width: 85%"></div>
+</div>
+</div>
+<div class="mt-3">
+<div class="flex items-center justify-between text-sm mb-1">
+<span class="text-gray-600">#经济学原理</span>
+<span class="font-medium">89 讨论</span>
+</div>
+<div class="w-full bg-gray-200 rounded-full h-1.5">
+<div class="bg-pkured h-1.5 rounded-full" style="width: 70%"></div>
+</div>
+</div>
+<div class="mt-3">
+<div class="flex items-center justify-between text-sm mb-1">
+<span class="text-gray-600">#中国哲学史</span>
+<span class="font-medium">76 讨论</span>
+</div>
+<div class="w-full bg-gray-200 rounded-full h-1.5">
+<div class="bg-pkured h-1.5 rounded-full" style="width: 65%"></div>
+</div>
+</div>
+</div>
+</aside>
+</main>
+<!-- 底部页脚 -->
+<footer class="bg-white border-t border-gray-200 py-10 mt-10">
+<div class="container mx-auto px-6">
+<div class="grid grid-cols-4 gap-8">
+<div>
+<h3 class="font-bold text-lg text-gray-800 mb-4">关于我们</h3>
+<ul class="space-y-2">
+<li><a class="text-gray-600 hover:text-pkured" href="#">平台简介</a></li>
+<li><a class="text-gray-600 hover:text-pkured" href="#">团队介绍</a></li>
+<li><a class="text-gray-600 hover:text-pkured" href="#">加入我们</a></li>
+<li><a class="text-gray-600 hover:text-pkured" href="#">联系方式</a></li>
+</ul>
+</div>
+<div>
+<h3 class="font-bold text-lg text-gray-800 mb-4">论坛指南</h3>
+<ul class="space-y-2">
+<li><a class="text-gray-600 hover:text-pkured" href="#">发帖规范</a></li>
+<li><a class="text-gray-600 hover:text-pkured" href="#">精华帖标准</a></li>
+<li><a class="text-gray-600 hover:text-pkured" href="#">社区守则</a></li>
+<li><a class="text-gray-600 hover:text-pkured" href="#">举报机制</a></li>
+</ul>
+</div>
+<div>
+<h3 class="font-bold text-lg text-gray-800 mb-4">友情链接</h3>
+<ul class="space-y-2">
+<li><a class="text-gray-600 hover:text-pkured" href="#">北京大学官网</a></li>
+<li><a class="text-gray-600 hover:text-pkured" href="#">课程中心</a></li>
+<li><a class="text-gray-600 hover:text-pkured" href="#">图书馆系统</a></li>
+<li><a class="text-gray-600 hover:text-pkured" href="#">教务部</a></li>
+</ul>
+</div>
+<div>
+<h3 class="font-bold text-lg text-gray-800 mb-4">联系我们</h3>
+<div class="space-y-2">
+<p class="flex items-center text-gray-600">
+<span class="iconify mr-2" data-icon="mdi:email"></span>
+              forum@pku.edu.cn
+            </p>
+<p class="flex items-center text-gray-600">
+<span class="iconify mr-2" data-icon="mdi:phone"></span>
+              010-6275XXXX
+            </p>
+<p class="flex items-start text-gray-600">
+<span class="iconify mr-2 mt-1" data-icon="mdi:map-marker"></span>
+              北京市海淀区颐和园路5号<br/>北京大学新太阳中心
+            </p>
+</div>
+</div>
+</div>
+<div class="border-t border-gray-200 mt-8 pt-6 text-center text-gray-500">
+<p>© 2025 北京大学二手书交易平台 | 京ICP备2025000001号</p>
+</div>
+</div>
+</footer>
+</body>
+</html>

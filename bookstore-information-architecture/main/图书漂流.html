@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>图书漂流 - 北京大学二手书交易平台</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://code.iconify.design/3/3.1.1/iconify.min.js"></script>
+<style>
+  .hide-scrollbar::-webkit-scrollbar{display:none;}
+  .hide-scrollbar{-ms-overflow-style:none;scrollbar-width:none;}
+  .book-card{transition:transform .2s, box-shadow .2s;}
+  .book-card:hover{transform:translateY(-3px);box-shadow:0 10px 25px -5px rgba(0,0,0,.1);}
+</style>
+<script>
+tailwind.config={theme:{extend:{colors:{pkured:'#990000',academicblue:'#0066CC',success:'#52C41A',warning:'#FA8C16',error:'#F5222D'}}}};
+</script>
+</head>
+
+<body class="bg-gray-100 min-h-screen flex flex-col" data-page="drift_list">
+<header class="bg-white shadow-sm sticky top-0 z-50">
+  <div class="container mx-auto px-6">
+    <div class="flex items-center justify-between h-20">
+      <div class="flex items-center">
+        <img src="./logo.png" alt="" style="width:150px;height:50px;">
+      </div>
+      <nav class="hidden md:flex space-x-8">
+        <a class="font-medium text-gray-700 hover:text-pkured transition" href="首页.html">首页</a>
+        <a class="font-medium text-gray-700 hover:text-pkured transition" href="购书通道.html">购书通道</a>
+        <a class="font-medium text-gray-700 hover:text-pkured transition" href="售书通道.html">售书通道</a>
+        <a class="font-medium text-gray-700 hover:text-pkured transition" href="论坛.html">论坛</a>
+        <a class="font-medium text-gray-700 hover:text-pkured transition" href="图书漂流.html">图书漂流</a>
+        <a class="font-medium text-gray-700 hover:text-pkured transition" href="个人中心.html">个人中心</a>
+      </nav>
+      <div class="flex items-center space-x-4">
+        <button class="relative">
+          <span class="iconify text-2xl text-gray-500" data-icon="mdi:bell-outline"></span>
+          <span class="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>
+        </button>
+        <div class="flex items-center">
+          <img alt="User Avatar" class="w-10 h-10 rounded-full border-2 border-pkured" src="https://modao.cc/agent-py/media/generated_images/2025-12-06/bae5690b441d40c3a1586a4e74f3cb18.jpg"/>
+          <span class="ml-2 text-gray-700" id="js-user-name">未登录</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="bg-pkured py-12">
+  <div class="container mx-auto px-6 text-center">
+    <h1 class="text-4xl font-bold text-white mb-4">图书漂流</h1>
+    <p class="text-white/90 max-w-2xl mx-auto">在校园里让好书继续流动：把闲置书籍无偿加入漂流，让更多同学受益。</p>
+  </div>
+</div>
+
+<main class="flex-1 container mx-auto px-6 py-8 grid grid-cols-12 gap-8">
+  <aside class="col-span-3">
+    <div class="bg-white rounded-xl shadow p-6 mb-6">
+      <h2 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+        <span class="iconify mr-2 text-academicblue" data-icon="mdi:filter-variant"></span>筛选与排序
+      </h2>
+
+      <div class="mb-6">
+        <h3 class="font-medium text-gray-700 mb-2">漂流类型</h3>
+        <div class="space-y-2 text-gray-600">
+          <label class="flex items-center space-x-2"><input type="checkbox" class="w-5 h-5 text-pkured rounded" checked><span>教材</span></label>
+          <label class="flex items-center space-x-2"><input type="checkbox" class="w-5 h-5 text-pkured rounded" checked><span>课外读物</span></label>
+          <label class="flex items-center space-x-2"><input type="checkbox" class="w-5 h-5 text-pkured rounded" checked><span>工具书</span></label>
+        </div>
+      </div>
+
+      <div class="mb-6">
+        <h3 class="font-medium text-gray-700 mb-2">新旧程度</h3>
+        <div class="space-y-2 text-gray-600">
+          <label class="flex items-center space-x-2"><input type="radio" name="condition" class="w-5 h-5 text-pkured" checked><span>不限</span></label>
+          <label class="flex items-center space-x-2"><input type="radio" name="condition" class="w-5 h-5 text-pkured"><span>九成新以上</span></label>
+          <label class="flex items-center space-x-2"><input type="radio" name="condition" class="w-5 h-5 text-pkured"><span>七成新以上</span></label>
+        </div>
+      </div>
+
+      <div class="mb-6">
+        <h3 class="font-medium text-gray-700 mb-2">排序方式</h3>
+        <select id="js-drift-sort" class="w-full bg-gray-50 border border-gray-200 rounded-md px-3 py-2 text-sm">
+          <option value="latest">最新供给</option>
+          <option value="hot">最受欢迎</option>
+        </select>
+      </div>
+
+      <button class="w-full py-3 bg-pkured text-white rounded-lg hover:bg-red-900 transition-colors">应用筛选</button>
+    </div>
+
+    <div class="bg-white rounded-xl shadow p-6">
+      <h2 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+        <span class="iconify mr-2 text-amber-500" data-icon="mdi:trophy"></span>供给排行榜
+      </h2>
+      <div class="space-y-4">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center">
+            <span class="w-7 h-7 rounded-full bg-amber-100 text-amber-700 flex items-center justify-center font-bold mr-3">1</span>
+            <div><p class="font-medium text-gray-800">王同学</p><p class="text-sm text-gray-600">历史学系 · 供给42本</p></div>
+          </div>
+          <span class="iconify text-amber-500" data-icon="mdi:medal"></span>
+        </div>
+        <div class="flex items-center justify-between">
+          <div class="flex items-center">
+            <span class="w-7 h-7 rounded-full bg-gray-100 text-gray-700 flex items-center justify-center font-bold mr-3">2</span>
+            <div><p class="font-medium text-gray-800">李同学</p><p class="text-sm text-gray-600">信息科学 · 供给29本</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <section class="col-span-6">
+    <div class="bg-white rounded-xl shadow p-6 mb-6">
+      <div class="flex items-center gap-4">
+        <div class="flex-1 relative">
+          <span class="iconify absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" data-icon="mdi:magnify"></span>
+          <input id="js-drift-q" class="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-academicblue focus:border-academicblue outline-none" placeholder="搜索书名、作者或课程..." type="text"/>
+        </div>
+        <button id="js-drift-search-btn" class="bg-pkured text-white px-6 py-3 rounded-lg flex items-center hover:bg-red-900">
+          <span class="iconify mr-2" data-icon="mdi:magnify"></span>搜索
+        </button>
+      </div>
+    </div>
+
+    <div id="js-drift-list" class="space-y-5">
+      <!-- 由 app.js 渲染 -->
+    </div>
+  </section>
+
+  <aside class="col-span-3">
+    <div class="bg-white rounded-xl shadow p-6 mb-6">
+      <h2 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+        <span class="iconify mr-2 text-pkured" data-icon="mdi:lightning-bolt"></span>快速操作
+      </h2>
+      <div class="space-y-3">
+        <a href="图书漂流捐书页.html" class="w-full inline-flex py-3 bg-pkured text-white font-medium rounded-lg items-center justify-center hover:bg-red-900 transition-colors">
+          <span class="iconify mr-2" data-icon="mdi:gift"></span>供给书籍
+        </a>
+        <button class="w-full py-3 bg-white border border-academicblue text-academicblue font-medium rounded-lg flex items-center justify-center hover:bg-blue-50 transition-colors">
+          <span class="iconify mr-2" data-icon="mdi:history"></span>查看我的漂流记录
+        </button>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-xl shadow p-6">
+      <h2 class="text-xl font-bold text-gray-800 mb-3 flex items-center">
+        <span class="iconify mr-2 text-academicblue" data-icon="mdi:information-outline"></span>漂流须知
+      </h2>
+      <p class="text-gray-600 text-sm leading-relaxed">
+        本模块采用“无偿加入、转交申领同学、不再归还”的漂流方式。请确保书籍信息真实、状态描述准确；申领成功后请按平台提示完成线下交接。
+      </p>
+    </div>
+  </aside>
+</main>
+
+<footer class="bg-white border-t mt-10">
+  <div class="container mx-auto px-6 py-6 text-center text-gray-500 text-sm">© 2025 北京大学二手书交易平台 · 图书漂流模块</div>
+</footer>
+
+<script src="js/app.js"></script>
+</body>
+</html>

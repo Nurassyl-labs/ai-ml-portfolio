@@ -1,0 +1,38 @@
+[build-system]
+requires = ["hatchling>=1.24.2"]
+build-backend = "hatchling.build"
+
+[project]
+name = "image-process-backend"
+version = "0.1.0"
+description = "FastAPI backend for sticker generator (stylize + SAM magic select/brush)"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "fastapi>=0.110",
+    "uvicorn[standard]>=0.27",
+    "pillow>=10.0.0",
+    "numpy>=1.24.0",
+    "python-multipart>=0.0.9",
+    "opencv-python>=4.8.0",
+    "torch",
+    "torchvision",
+    "segment-anything @ git+https://github.com/facebookresearch/segment-anything.git",
+    "openai>=2.14.0",
+    "requests>=2.32.0",
+]
+
+[dependency-groups]
+dev = ["ruff>=0.7.0"]
+
+[project.scripts]
+image-process-backend = "image_process_backend.cli:main"
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/image_process_backend"]
+
+[tool.ruff]
+line-length = 100

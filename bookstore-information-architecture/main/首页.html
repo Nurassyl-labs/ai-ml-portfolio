@@ -1,0 +1,428 @@
+
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>北京大学二手书交易网</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'pku-red': '#990000',
+            'pku-blue': '#003366',
+            'pku-beige': '#F8F5E6'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .hide-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .hide-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .carousel-item {
+      display: none;
+      animation: fadeIn 0.5s ease-in;
+    }
+    .carousel-item.active {
+      display: block;
+    }
+  </style>
+</head>
+<body class="bg-gray-100 font-sans" data-page="home">
+<!-- 顶部导航 -->
+<header class="bg-white shadow-md fixed w-full z-50">
+<div class="container mx-auto px-6 py-4 flex items-center justify-between">
+<div class="flex items-center">
+<!--<iconify-icon class="text-pku-red text-3xl mr-2" icon="mdi:university"></iconify-icon>-->
+<img src="./logo.png" alt="" style="width: 150px; height: 50px;">
+<!--<h1 class="text-xl font-bold text-pku-red">北京大学二手书交易网</h1>-->
+</div>
+<nav class="hidden md:flex space-x-8">
+<a class="font-medium text-gray-700 hover:text-pku-red transition" href="首页.html">首页</a>
+<a class="font-medium text-gray-700 hover:text-pku-red transition" href="购书通道.html">购书通道</a>
+<a class="font-medium text-gray-700 hover:text-pku-red transition" href="售书通道.html">售书通道</a>
+<a class="font-medium text-gray-700 hover:text-pku-red transition" href="论坛.html">论坛</a>
+<a class="font-medium text-gray-700 hover:text-pku-red transition" href="图书漂流.html">图书漂流</a>
+<a class="font-medium text-gray-700 hover:text-pku-red transition" href="个人中心.html">个人中心</a>
+</nav>
+<div class="flex items-center space-x-4">
+<button class="px-4 py-2 bg-pku-red text-white rounded-lg hover:bg-red-900 transition">
+          登录/注册
+        </button>
+<iconify-icon class="text-gray-600 text-2xl" icon="mdi:bell-outline"></iconify-icon>
+</div>
+</div>
+</header>
+<!-- Banner区域 -->
+<section class="pt-24 pb-16 bg-pku-beige">
+<div class="container mx-auto px-6">
+<div class="carousel relative h-80 rounded-xl overflow-hidden shadow-lg">
+<div class="carousel-item active">
+<div class="bg-gradient-to-r from-pku-red to-red-800 h-full flex items-center px-16">
+<div class="max-w-lg">
+<h2 class="text-4xl font-bold text-white mb-4">新学期教材轻松购</h2>
+<p class="text-white text-xl mb-8">学长学姐的优质教材，半价带回家</p>
+              <a href="购书通道.html" class="px-6 py-3 bg-white text-pku-red font-bold rounded-lg hover:bg-gray-100 transition inline-block text-center">
+                立即选购
+              </a>
+</div>
+</div>
+</div>
+<div class="carousel-item">
+<div class="bg-gradient-to-r from-blue-900 to-pku-blue h-full flex items-center px-16">
+<div class="max-w-lg">
+<h2 class="text-4xl font-bold text-white mb-4">闲置教材变现快</h2>
+<p class="text-white text-xl mb-8">轻松发布，快速交易，学弟学妹等着你</p>
+              <a href="售书通道.html" class="px-6 py-3 bg-white text-pku-blue font-bold rounded-lg hover:bg-gray-100 transition inline-block text-center">
+                发布教材
+              </a>
+</div>
+</div>
+</div>
+<div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+<button class="carousel-indicator w-3 h-3 rounded-full bg-white bg-opacity-50 hover:bg-opacity-100"></button>
+<button class="carousel-indicator w-3 h-3 rounded-full bg-white bg-opacity-50 hover:bg-opacity-100"></button>
+</div>
+</div>
+<!-- 搜索框 -->
+<div class="max-w-3xl mx-auto -mt-8 relative z-10">
+<div class="bg-white rounded-xl shadow-lg p-2 flex">
+<input class="flex-grow px-4 py-3 text-lg focus:outline-none" placeholder="搜索书名、ISBN、课程名称..." type="text"/>
+<button class="bg-pku-red text-white px-6 py-3 rounded-lg hover:bg-red-900 transition">
+            搜索
+          </button>
+</div>
+</div>
+</div>
+
+<!-- 热门书籍 -->
+<section class="py-16 bg-gray-50">
+<div class="container mx-auto px-6">
+<div class="flex justify-between items-center mb-8">
+<h2 class="text-3xl font-bold text-pku-blue">热门交易书籍</h2>
+<a class="text-pku-red font-medium hover:underline" href="#">查看全部 &gt;</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- 书籍卡片1 -->
+<div class="book-card bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition">
+<div class="h-48 bg-gray-200 flex items-center justify-center">
+<img alt="Book cover: Advanced Mathematics" class="w-32 h-auto" id="1" src="https://modao.cc/agent-py/media/generated_images/2025-12-06/36961ee8c27b428e9ea182587db5e27e.jpg"/>
+</div>
+<div class="p-6">
+<h3 class="text-xl font-bold text-gray-800 mb-2">高等数学（第七版）</h3>
+<div class="flex justify-between items-center mb-3">
+<span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">数学系</span>
+<span class="text-red-600 font-bold">¥45.00</span>
+</div>
+<div class="flex items-center text-sm text-gray-600">
+<iconify-icon class="text-yellow-400 mr-1" icon="mdi:star"></iconify-icon>
+<span class="mr-4">4.8 (72评价)</span>
+<iconify-icon class="mr-1" icon="mdi:account"></iconify-icon>
+<span>张学长</span>
+</div>
+<div class="mt-4 flex space-x-3">
+<button class="flex-1 bg-pku-red text-white py-2 rounded-lg hover:bg-red-900 transition">
+                立即购买
+              </button>
+<button class="w-12 h-12 flex items-center justify-center border border-gray-300 rounded-lg hover:bg-gray-100">
+<iconify-icon icon="mdi:heart-outline"></iconify-icon>
+</button>
+</div>
+</div>
+</div>
+<!-- 书籍卡片2 -->
+<div class="book-card bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition">
+<div class="h-48 bg-gray-200 flex items-center justify-center">
+<img alt="Book cover: Principles of Economics" class="w-32 h-auto" id="2" src="https://modao.cc/agent-py/media/generated_images/2025-12-06/3d6312f870bd41519284e52c4d4728da.jpg"/>
+</div>
+<div class="p-6">
+<h3 class="text-xl font-bold text-gray-800 mb-2">经济学原理（微观分册）</h3>
+<div class="flex justify-between items-center mb-3">
+<span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">经济学院</span>
+<span class="text-red-600 font-bold">¥60.00</span>
+</div>
+<div class="flex items-center text-sm text-gray-600">
+<iconify-icon class="text-yellow-400 mr-1" icon="mdi:star"></iconify-icon>
+<span class="mr-4">4.9 (58评价)</span>
+<iconify-icon class="mr-1" icon="mdi:account"></iconify-icon>
+<span>李学姐</span>
+</div>
+<div class="mt-4 flex space-x-3">
+<button class="flex-1 bg-pku-red text-white py-2 rounded-lg hover:bg-red-900 transition">
+                立即购买
+              </button>
+<button class="w-12 h-12 flex items-center justify-center border border-gray-300 rounded-lg hover:bg-gray-100">
+<iconify-icon icon="mdi:heart-outline"></iconify-icon>
+</button>
+</div>
+</div>
+</div>
+<!-- 书籍卡片3 -->
+<div class="book-card bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition">
+<div class="h-48 bg-gray-200 flex items-center justify-center">
+<img alt="Book cover: Computer Networks" class="w-32 h-auto" id="3" src="https://modao.cc/agent-py/media/generated_images/2025-12-06/94a2b9cf3f7d4cd4aa1c02a78cb0ada4.jpg"/>
+</div>
+<div class="p-6">
+<h3 class="text-xl font-bold text-gray-800 mb-2">计算机网络（第五版）</h3>
+<div class="flex justify-between items-center mb-3">
+<span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">计算机系</span>
+<span class="text-red-600 font-bold">¥50.00</span>
+</div>
+<div class="flex items-center text-sm text-gray-600">
+<iconify-icon class="text-yellow-400 mr-1" icon="mdi:star"></iconify-icon>
+<span class="mr-4">4.7 (64评价)</span>
+<iconify-icon class="mr-1" icon="mdi:account"></iconify-icon>
+<span>王学长</span>
+</div>
+<div class="mt-4 flex space-x-3">
+<button class="flex-1 bg-pku-red text-white py-2 rounded-lg hover:bg-red-900 transition">
+                立即购买
+              </button>
+<button class="w-12 h-12 flex items-center justify-center border border-gray-300 rounded-lg hover:bg-gray-100">
+<iconify-icon icon="mdi:heart-outline"></iconify-icon>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 最新动态 -->
+<section class="py-16 bg-white">
+<div class="container mx-auto px-6">
+<h2 class="text-3xl font-bold text-center text-pku-blue mb-12">最新动态</h2>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+<!-- 最新帖子 -->
+<div>
+<div class="flex justify-between items-center mb-6">
+<h3 class="text-2xl font-bold text-gray-800">论坛最新帖子</h3>
+<a class="text-pku-red font-medium hover:underline" href="#">更多 &gt;</a>
+</div>
+<div class="space-y-4">
+<div class="post-card bg-gray-50 rounded-lg p-6 hover:shadow-md transition">
+<div class="flex items-center mb-3">
+<div class="w-10 h-10 rounded-full bg-gray-200 mr-3 flex items-center justify-center">
+<iconify-icon class="text-2xl text-gray-500" icon="mdi:account-circle"></iconify-icon>
+</div>
+<div>
+<h4 class="font-bold text-gray-800">如何高效准备期末考试？</h4>
+<p class="text-sm text-gray-500">张同学 · 历史学院</p>
+</div>
+</div>
+<p class="text-gray-700 mb-4">分享我个人的期末复习方法和时间安排技巧...</p>
+<div class="flex text-sm text-gray-500">
+<span class="flex items-center mr-4">
+<iconify-icon class="mr-1" icon="mdi:clock"></iconify-icon>
+                  2小时前
+                </span>
+<span class="flex items-center mr-4">
+<iconify-icon class="mr-1" icon="mdi:comment"></iconify-icon>
+                  24条回复
+                </span>
+<span class="flex items-center">
+<iconify-icon class="mr-1" icon="mdi:eye"></iconify-icon>
+                  156次浏览
+                </span>
+</div>
+</div>
+<div class="post-card bg-gray-50 rounded-lg p-6 hover:shadow-md transition">
+<div class="flex items-center mb-3">
+<div class="w-10 h-10 rounded-full bg-gray-200 mr-3 flex items-center justify-center">
+<iconify-icon class="text-2xl text-gray-500" icon="mdi:account-circle"></iconify-icon>
+</div>
+<div>
+<h4 class="font-bold text-gray-800">线性代数学习经验分享</h4>
+<p class="text-sm text-gray-500">李同学 · 数学系</p>
+</div>
+</div>
+<p class="text-gray-700 mb-4">这门课对很多大一同学来说有点难度，我分享一些学习方法...</p>
+<div class="flex text-sm text-gray-500">
+<span class="flex items-center mr-4">
+<iconify-icon class="mr-1" icon="mdi:clock"></iconify-icon>
+                  5小时前
+                </span>
+<span class="flex items-center mr-4">
+<iconify-icon class="mr-1" icon="mdi:comment"></iconify-icon>
+                  18条回复
+                </span>
+<span class="flex items-center">
+<iconify-icon class="mr-1" icon="mdi:eye"></iconify-icon>
+                  98次浏览
+                </span>
+</div>
+</div>
+</div>
+</div>
+<!-- 平台公告 -->
+<div>
+<div class="flex justify-between items-center mb-6">
+<h3 class="text-2xl font-bold text-gray-800">平台公告</h3>
+<a class="text-pku-red font-medium hover:underline" href="#">更多 &gt;</a>
+</div>
+<div class="bg-pku-beige rounded-lg p-6">
+<div class="h-80 overflow-y-auto hide-scrollbar">
+<div class="space-y-4">
+<div class="announcement">
+<div class="flex items-start">
+<div class="w-2 h-2 bg-pku-red rounded-full mt-2 mr-3"></div>
+<div>
+<h4 class="font-bold text-gray-800 mb-1">寒假交易服务安排</h4>
+<p class="text-gray-700 text-sm">寒假期间平台将维持正常服务，发货时间可能会有延迟，请提前安排好交易时间...</p>
+<p class="text-gray-500 text-xs mt-2">2025年12月1日</p>
+</div>
+</div>
+</div>
+<div class="announcement">
+<div class="flex items-start">
+<div class="w-2 h-2 bg-pku-red rounded-full mt-2 mr-3"></div>
+<div>
+<h4 class="font-bold text-gray-800 mb-1">新版平台上线通知</h4>
+<p class="text-gray-700 text-sm">我们很高兴地宣布，新版二手书交易平台已正式上线，新增论坛功能、信用系统...</p>
+<p class="text-gray-500 text-xs mt-2">2025年11月20日</p>
+</div>
+</div>
+</div>
+<div class="announcement">
+<div class="flex items-start">
+<div class="w-2 h-2 bg-pku-red rounded-full mt-2 mr-3"></div>
+<div>
+<h4 class="font-bold text-gray-800 mb-1">学期末交易奖励活动</h4>
+<p class="text-gray-700 text-sm">即日起至12月31日，凡完成3笔交易即可获得校园纪念币一套，限量100份...</p>
+<p class="text-gray-500 text-xs mt-2">2025年11月15日</p>
+</div>
+</div>
+</div>
+<div class="announcement">
+<div class="flex items-start">
+<div class="w-2 h-2 bg-pku-red rounded-full mt-2 mr-3"></div>
+<div>
+<h4 class="font-bold text-gray-800 mb-1">信用系统升级说明</h4>
+<p class="text-gray-700 text-sm">平台信用系统已完成升级，新的评价机制更加公平合理，详情请查看帮助中心...</p>
+<p class="text-gray-500 text-xs mt-2">2025年11月10日</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 底部信息 -->
+<footer class="bg-pku-blue text-white py-12">
+<div class="container mx-auto px-6">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+<div>
+<h3 class="text-xl font-bold mb-4">北京大学二手书交易网</h3>
+<p class="text-gray-300 mb-4">连接学长学姐与学弟学弟的教材交易平台</p>
+<div class="flex space-x-4">
+<iconify-icon class="text-2xl hover:text-gray-300 cursor-pointer" icon="mdi:wechat"></iconify-icon>
+<iconify-icon class="text-2xl hover:text-gray-300 cursor-pointer" icon="mdi:weibo"></iconify-icon>
+<iconify-icon class="text-2xl hover:text-gray-300 cursor-pointer" icon="mdi:email"></iconify-icon>
+</div>
+</div>
+<div>
+<h4 class="font-bold mb-4">快速链接</h4>
+<ul class="space-y-2">
+<li><a class="text-gray-300 hover:text-white transition" href="#">购书通道</a></li>
+<li><a class="text-gray-300 hover:text-white transition" href="#">售书发布</a></li>
+<li><a class="text-gray-300 hover:text-white transition" href="#">论坛交流</a></li>
+<li><a class="text-gray-300 hover:text-white transition" href="#">帮助中心</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold mb-4">友情链接</h4>
+<ul class="space-y-2">
+<li><a class="text-gray-300 hover:text-white transition" href="#">北京大学图书馆</a></li>
+<li><a class="text-gray-300 hover:text-white transition" href="#">课程中心</a></li>
+<li><a class="text-gray-300 hover:text-white transition" href="#">校园门户</a></li>
+<li><a class="text-gray-300 hover:text-white transition" href="#">教学网</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold mb-4">联系我们</h4>
+<ul class="space-y-2">
+<li class="flex items-center">
+<iconify-icon class="mr-2" icon="mdi:map-marker"></iconify-icon>
+<span>北京市海淀区颐和园路5号</span>
+</li>
+<li class="flex items-center">
+<iconify-icon class="mr-2" icon="mdi:email"></iconify-icon>
+<span>booktrade@pku.edu.cn</span>
+</li>
+<li class="flex items-center">
+<iconify-icon class="mr-2" icon="mdi:phone"></iconify-icon>
+<span>010-6275xxxx</span>
+</li>
+</ul>
+</div>
+</div>
+<div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400 text-sm">
+<p>© 2025 北京大学二手书交易网 · 京ICP备12345678号-1</p>
+</div>
+</div>
+</footer>
+<script>
+    // 轮播图功能
+    document.addEventListener('DOMContentLoaded', function() {
+      const carouselItems = document.querySelectorAll('.carousel-item');
+      const indicators = document.querySelectorAll('.carousel-indicator');
+      let currentIndex = 0;
+      
+      function showSlide(index) {
+        carouselItems.forEach(item => item.classList.remove('active'));
+        carouselItems[index].classList.add('active');
+        
+        indicators.forEach(indicator => indicator.classList.remove('bg-white'));
+        indicators[index].classList.add('bg-white');
+        
+        currentIndex = index;
+      }
+      
+      // 初始化第一个指示器
+      indicators[0].classList.add('bg-white');
+      
+      // 添加指示器点击事件
+      indicators.forEach((indicator, index) => {
+        indicator.addEventListener('click', () => {
+          showSlide(index);
+        });
+      });
+      
+      // 自动轮播
+      setInterval(() => {
+        let nextIndex = (currentIndex + 1) % carouselItems.length;
+        showSlide(nextIndex);
+      }, 5000);
+      
+      // 功能卡片悬停效果
+      const featureCards = document.querySelectorAll('.feature-card');
+      featureCards.forEach(card => {
+        card.addEventListener('mouseenter', () => {
+          card.querySelector('div').classList.add('scale-110');
+        });
+        
+        card.addEventListener('mouseleave', () => {
+          card.querySelector('div').classList.remove('scale-110');
+        });
+      });
+    });
+  </script>
+  <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>文创 / 贴图 / 版面生成器</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <header class="top">
+    <div class="title">文创 / 贴图 / 版面生成器</div>
+    <div class="sub">Upload → Select subject → Drag → Style → Export</div>
+  </header>
+
+  <main class="grid">
+    <section class="card">
+      <h2>1) Upload & Select Subject</h2>
+
+      <div class="row">
+        <input id="fileInput" type="file" accept="image/*" />
+        <button id="setBgBtn" class="btn" disabled>Set as BG</button>
+        <button id="clearCropBtn" class="btn">Clear</button>
+      </div>
+
+      <label class="lbl">Select mode</label>
+      <select id="selectMode">
+        <option value="rect">Rectangle (drag)</option>
+        <option value="magic">Magic (SAM click)</option>
+        <option value="brush">Magic Brush (hold & paint)</option>
+      </select>
+
+      <div class="canvasBox">
+        <div class="label">Editor</div>
+        <canvas id="editorCanvas" width="720" height="480"></canvas>
+      </div>
+
+      <h3 class="h3">Mask refine (for magic)</h3>
+      <div class="control-grid">
+        <div class="control-group">
+          <label class="lbl">Expand / Shrink: <span id="refineExpandVal">0</span>px</label>
+          <input id="refineExpand" type="range" min="-25" max="25" step="1" value="0" />
+        </div>
+        <div class="control-group">
+          <label class="lbl">Feather: <span id="refineFeatherVal">2</span>px</label>
+          <input id="refineFeather" type="range" min="0" max="20" step="1" value="2" />
+        </div>
+      </div>
+      <div class="control-grid">
+        <div class="control-group">
+          <label class="lbl">Smooth: <span id="refineSmoothVal">2</span></label>
+          <input id="refineSmooth" type="range" min="0" max="10" step="1" value="2" />
+        </div>
+        <div class="control-group">
+          <label class="lbl">Remove speckles (min area): <span id="refineMinAreaVal">150</span></label>
+          <input id="refineMinArea" type="range" min="0" max="3000" step="50" value="150" />
+        </div>
+      </div>
+      <div class="row row2">
+        <label class="chk"><input id="refineFillHoles" type="checkbox" checked /> Fill holes</label>
+        <label class="chk"><input id="refineDecontam" type="checkbox" /> Edge decontam</label>
+      </div>
+
+      <div id="candidates" class="candidates" hidden>
+        <div class="label">Choose the best mask:</div>
+        <div id="candidatesGrid" class="candidatesGrid"></div>
+      </div>
+
+      <div class="row">
+        <button id="addBtn" class="btn primary" disabled>Add rectangle as element</button>
+        <button id="magicAddBtn" class="btn primary" disabled>Add magic-selected element</button>
+      </div>
+
+      <pre id="debug" class="debug"></pre>
+    </section>
+
+    <section class="card">
+      <h2>2) Element Controls</h2>
+
+      <label class="lbl">Active element</label>
+      <select id="activeSelect" disabled></select>
+
+      <div class="row">
+        <button id="toFrontBtn" class="btn" disabled>To Front</button>
+        <button id="toBackBtn" class="btn" disabled>To Back</button>
+        <button id="deleteBtn" class="btn danger" disabled>Delete</button>
+      </div>
+
+      <div class="control-group">
+        <label class="lbl">Scale: <span id="scaleVal">1.0</span></label>
+        <input type="range" id="scaleRange" min="0.1" max="3.0" step="0.1" value="1.0" disabled />
+      </div>
+
+      <div class="control-group">
+        <label class="lbl">Rotation: <span id="rotVal">0</span>°</label>
+        <input type="range" id="rotRange" min="-180" max="180" step="1" value="0" disabled />
+      </div>
+
+      <label class="lbl">Preset</label>
+      <select id="preset">
+        <option value="none">None</option>
+        <option value="warm">Warm</option>
+        <option value="cold">Cold</option>
+        <option value="vivid">Vivid</option>
+        <option value="mono">Mono (Old)</option>
+        <option value="sketch">Sketch (素描)</option>
+        <option value="watercolor">Watercolor (水彩)</option>
+        <option value="oil">Oil Painting (油画)</option>
+        <option value="vintage">Vintage (复古)</option>
+        <option value="gray">Grayscale (黑白)</option>
+        <option value="cartoon">Cartoon (动漫)</option>
+      </select>
+
+      <label class="lbl">Saturation</label>
+      <input id="sat" type="range" min="0" max="2" step="0.01" value="1" />
+
+      <label class="lbl">Brightness</label>
+      <input id="bri" type="range" min="0" max="2" step="0.01" value="1" />
+
+      <button id="applyBtn" class="btn primary" disabled>Apply Style (backend)</button>
+
+      <h3 class="h3">Layout & Layers</h3>
+      <div class="row row2">
+        <label class="chk"><input id="lockEnable" type="checkbox" /> Lock element</label>
+        <label class="chk">Blend
+          <select id="blendMode">
+            <option value="source-over">Normal</option>
+            <option value="multiply">Multiply</option>
+            <option value="screen">Screen</option>
+            <option value="overlay">Overlay</option>
+            <option value="darken">Darken</option>
+            <option value="lighten">Lighten</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="control-group">
+        <label class="lbl">Opacity: <span id="opacityVal">100</span>%</label>
+        <input id="opacity" type="range" min="0" max="100" step="1" value="100" />
+      </div>
+
+      <div class="row row2">
+        <button id="groupBtn" class="btn" disabled>Group selection</button>
+        <button id="ungroupBtn" class="btn" disabled>Ungroup</button>
+        <button id="selectAllBtn" class="btn" disabled>Select all</button>
+        <button id="clearSelBtn" class="btn" disabled>Clear selection</button>
+      </div>
+
+      <div class="control-grid">
+        <div class="control-group">
+          <div class="label">Align</div>
+          <div class="btnGrid">
+            <button id="alignLeftBtn" class="btn tiny" disabled>Left</button>
+            <button id="alignHCenterBtn" class="btn tiny" disabled>H-Center</button>
+            <button id="alignRightBtn" class="btn tiny" disabled>Right</button>
+            <button id="alignTopBtn" class="btn tiny" disabled>Top</button>
+            <button id="alignVCenterBtn" class="btn tiny" disabled>V-Center</button>
+            <button id="alignBottomBtn" class="btn tiny" disabled>Bottom</button>
+          </div>
+        </div>
+        <div class="control-group">
+          <div class="label">Distribute</div>
+          <div class="btnGrid">
+            <button id="distHBtn" class="btn tiny" disabled>H Space</button>
+            <button id="distVBtn" class="btn tiny" disabled>V Space</button>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="h3">Effects (Sticker)</h3>
+
+      <div class="control-group">
+        <div class="row row2">
+          <label class="chk"><input id="strokeEnable" type="checkbox" /> Outline</label>
+          <label class="chk"><input id="shadowEnable" type="checkbox" /> Shadow</label>
+          <label class="chk"><input id="glowEnable" type="checkbox" /> Glow</label>
+        </div>
+      </div>
+
+      <div class="control-grid">
+        <div class="control-group">
+          <label class="lbl">Outline width: <span id="strokeWidthVal">0</span>px</label>
+          <input id="strokeWidth" type="range" min="0" max="30" step="1" value="0" />
+        </div>
+        <div class="control-group">
+          <label class="lbl">Outline color</label>
+          <input id="strokeColor" type="color" value="#ffffff" />
+        </div>
+      </div>
+
+      <div class="control-grid">
+        <div class="control-group">
+          <label class="lbl">Shadow blur: <span id="shadowBlurVal">12</span>px</label>
+          <input id="shadowBlur" type="range" min="0" max="60" step="1" value="12" />
+        </div>
+        <div class="control-group">
+          <label class="lbl">Shadow color</label>
+          <input id="shadowColor" type="color" value="#000000" />
+        </div>
+      </div>
+
+      <div class="control-grid">
+        <div class="control-group">
+          <label class="lbl">Shadow X: <span id="shadowXVal">8</span>px</label>
+          <input id="shadowX" type="range" min="-40" max="40" step="1" value="8" />
+        </div>
+        <div class="control-group">
+          <label class="lbl">Shadow Y: <span id="shadowYVal">8</span>px</label>
+          <input id="shadowY" type="range" min="-40" max="40" step="1" value="8" />
+        </div>
+      </div>
+
+      <div class="control-grid">
+        <div class="control-group">
+          <label class="lbl">Glow blur: <span id="glowBlurVal">20</span>px</label>
+          <input id="glowBlur" type="range" min="0" max="80" step="1" value="20" />
+        </div>
+        <div class="control-group">
+          <label class="lbl">Glow color</label>
+          <input id="glowColor" type="color" value="#00ffff" />
+        </div>
+      </div>
+
+      <div class="control-group">
+        <label class="lbl">Auto-crop padding: <span id="cropPadVal">12</span>px</label>
+        <input id="cropPad" type="range" min="0" max="80" step="1" value="12" />
+        <button id="autoCropBtn" class="btn" disabled>Auto-crop active element</button>
+      </div>
+
+      <h3 class="h3">Text</h3>
+      <label class="lbl">Text content</label>
+      <input id="textContent" class="textInput" type="text" placeholder="Type something…" />
+
+      <div class="control-grid">
+        <div class="control-group">
+          <label class="lbl">Font size: <span id="textSizeVal">64</span>px</label>
+          <input id="textSize" type="range" min="12" max="160" step="1" value="64" />
+        </div>
+        <div class="control-group">
+          <label class="lbl">Text color</label>
+          <input id="textFill" type="color" value="#ffffff" />
+        </div>
+      </div>
+
+      <label class="lbl">Font</label>
+      <select id="textFont">
+        <option value="system-ui">System</option>
+        <option value="Arial">Arial</option>
+        <option value="Impact">Impact</option>
+        <option value="Georgia">Georgia</option>
+        <option value="Times New Roman">Times New Roman</option>
+        <option value="monospace">Monospace</option>
+      </select>
+
+      <div class="row">
+        <button id="addTextBtn" class="btn primary">Add text element</button>
+        <button id="updateTextBtn" class="btn" disabled>Update selected text</button>
+      </div>
+
+      <div class="hint">
+        Tips:
+        <ul>
+          <li>Magic click: click inside object.</li>
+          <li>Magic brush: hold mouse and paint over object.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>3) Final Composition</h2>
+
+      <h3 class="h3">Template presets</h3>
+      <div class="row row2">
+        <select id="templatePreset">
+          <option value="custom">Custom (keep current)</option>
+          <option value="ig_story_1080x1920">Instagram Story (1080×1920)</option>
+          <option value="phone_1170x2532">Phone Wallpaper (1170×2532)</option>
+          <option value="a4_2480x3508">A4 Print (2480×3508)</option>
+          <option value="square_1024x1024">Square (1024×1024)</option>
+        </select>
+        <button id="applyTemplateBtn" class="btn" >Apply template</button>
+      </div>
+
+      <h3 class="h3">Snapping</h3>
+      <div class="row row2">
+        <label class="chk"><input id="snapEnable" type="checkbox" checked /> Snap</label>
+        <label class="chk"><input id="guidesEnable" type="checkbox" checked /> Show guides</label>
+      </div>
+      <div class="control-group">
+        <label class="lbl">Snap threshold: <span id="snapThreshVal">8</span>px</label>
+        <input id="snapThresh" type="range" min="1" max="30" step="1" value="8" />
+      </div>
+
+      <div class="canvasBox">
+        <div class="label">Canvas</div>
+        <canvas id="finalCanvas" width="900" height="900"></canvas>
+      </div>
+
+      <div class="row">
+        <button id="undoBtn" class="btn" disabled>Undo</button>
+        <button id="redoBtn" class="btn" disabled>Redo</button>
+        <button id="exportBtn" class="btn primary">Export PNG</button>
+      </div>
+
+      <h3 class="h3">AI refine (OpenRouter)</h3>
+      <label class="lbl">Extra request (optional)</label>
+      <input id="aiUserText" class="textInput" type="text" placeholder="e.g. add cute text 'Hello', make it more kawaii…" />
+      <div class="row">
+        <button id="aiRefineBtn" class="btn">Refine final PNG with AI</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="main.js"></script>
+</body>
+
+</html>

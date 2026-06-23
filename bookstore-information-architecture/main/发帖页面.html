@@ -1,0 +1,359 @@
+
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>发布新话题 - 北京大学二手书交易平台</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://code.iconify.design/3/3.1.1/iconify.min.js"></script>
+<script src="js/app.js"></script>
+<style>
+    .editor-toolbar {
+      border: 1px solid #D9D9D9;
+      border-bottom: none;
+      border-radius: 4px 4px 0 0;
+    }
+    .editor-content {
+      border: 1px solid #D9D9D9;
+      border-radius: 0 0 4px 4px;
+      min-height: 400px;
+    }
+    .autosave-indicator {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 100;
+    }
+  </style>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            pkured: '#990000',
+            academicblue: '#0066CC'
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col">
+<!-- 顶部导航栏 -->
+<header class="bg-white shadow-sm sticky top-0 z-50">
+<div class="container mx-auto px-6">
+<div class="flex items-center justify-between h-20">
+<!-- Logo区域 -->
+<div class="flex items-center">
+<!--
+<img alt="Peking University Logo" class="h-12 w-12 mr-3" id="1" src="https://modao.cc/agent-py/media/generated_images/2025-12-06/74e82723ccbb4c7db8380dc2df47e4bc.jpg"/>
+<h1 class="text-xl font-bold text-pkured">北京大学二手书交易平台</h1>
+-->
+<img src="./logo.png" alt="" style="width: 150px; height: 50px;">
+</div>
+<!-- 主导航菜单 -->
+<nav class="hidden md:flex space-x-8">
+  <a class="font-medium text-gray-700 hover:text-pku-red transition" href="首页.html">首页</a>
+  <a class="font-medium text-gray-700 hover:text-pku-red transition" href="购书通道.html">购书通道</a>
+  <a class="font-medium text-gray-700 hover:text-pku-red transition" href="售书通道.html">售书通道</a>
+  <a class="font-medium text-gray-700 hover:text-pku-red transition" href="论坛.html">论坛</a>
+  <a class="font-medium text-gray-700 hover:text-pku-red transition" href="图书漂流.html">图书漂流</a>
+  <a class="font-medium text-gray-700 hover:text-pku-red transition" href="个人中心.html">个人中心</a>
+</nav>
+<!-- 用户操作区 -->
+<div class="flex items-center space-x-4">
+<button class="relative">
+<span class="iconify text-2xl text-gray-500" data-icon="mdi:bell-outline"></span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>
+</button>
+<div class="flex items-center">
+<img alt="User Avatar" class="w-10 h-10 rounded-full border-2 border-pkured" id="2" src="https://modao.cc/agent-py/media/generated_images/2025-12-06/bae5690b441d40c3a1586a4e74f3cb18.jpg"/>
+<span class="ml-2 text-gray-700">张同学</span>
+</div>
+</div>
+</div>
+</div>
+</header>
+<!-- 主体内容区 -->
+<main class="flex-1 container mx-auto px-6 py-8">
+<div class="max-w-4xl mx-auto">
+<div class="flex items-center justify-between mb-8">
+<h1 class="text-3xl font-bold text-pkured">发布新话题</h1>
+<div class="flex items-center bg-green-50 text-green-800 px-4 py-2 rounded-full">
+<span class="iconify mr-2" data-icon="mdi:content-save"></span>
+<span>草稿已自动保存</span>
+</div>
+</div>
+<!-- 帖子编辑区域 -->
+<div class="bg-white rounded-xl shadow-lg p-8">
+<!-- 标题区域 -->
+<div class="mb-8">
+<label class="block text-lg font-medium text-gray-800 mb-3">标题</label>
+<input class="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-academicblue focus:border-academicblue outline-none text-xl" placeholder="请输入帖子标题..." type="text"/>
+<p class="mt-2 text-gray-500 text-sm">清晰、简洁的标题有助于吸引更多读者</p>
+</div>
+<!-- 编辑器区域 -->
+<div class="mb-8">
+<label class="block text-lg font-medium text-gray-800 mb-3">内容</label>
+<!-- 编辑器工具栏 -->
+<div class="editor-toolbar bg-gray-50 p-3 flex flex-wrap gap-2">
+<button class="w-9 h-9 flex items-center justify-center border border-gray-200 rounded hover:bg-gray-100">
+<span class="iconify" data-icon="mdi:format-bold"></span>
+</button>
+<button class="w-9 h-9 flex items-center justify-center border border-gray-200 rounded hover:bg-gray-100">
+<span class="iconify" data-icon="mdi:format-italic"></span>
+</button>
+<button class="w-9 h-9 flex items-center justify-center border border-gray-200 rounded hover:bg-gray-100">
+<span class="iconify" data-icon="mdi:format-underline"></span>
+</button>
+<div class="h-6 border-l border-gray-200 mx-2"></div>
+<button class="w-9 h-9 flex items-center justify-center border border-gray-200 rounded hover:bg-gray-100">
+<span class="iconify" data-icon="mdi:format-list-bulleted"></span>
+</button>
+<button class="w-9 h-9 flex items-center justify-center border border-gray-200 rounded hover:bg-gray-100">
+<span class="iconify" data-icon="mdi:format-list-numbered"></span>
+</button>
+<div class="h-6 border-l border-gray-200 mx-2"></div>
+<button class="w-9 h-9 flex items-center justify-center border border-gray-200 rounded hover:bg-gray-100">
+<span class="iconify" data-icon="mdi:link"></span>
+</button>
+<button class="w-9 h-9 flex items-center justify-center border border-gray-200 rounded hover:bg-gray-100">
+<span class="iconify" data-icon="mdi:image"></span>
+</button>
+<button class="w-9 h-9 flex items-center justify-center border border-gray-200 rounded hover:bg-gray-100">
+<span class="iconify" data-icon="mdi:attachment"></span>
+</button>
+<div class="h-6 border-l border-gray-200 mx-2"></div>
+<button class="w-9 h-9 flex items-center justify-center border border-gray-200 rounded hover:bg-gray-100">
+<span class="iconify" data-icon="mdi:code-tags"></span>
+</button>
+<button class="w-9 h-9 flex items-center justify-center border border-gray-200 rounded hover:bg-gray-100">
+<span class="iconify" data-icon="mdi:table"></span>
+</button>
+<button class="w-9 h-9 flex items-center justify-center border border-gray-200 rounded hover:bg-gray-100">
+<span class="iconify" data-icon="mdi:format-quote-close"></span>
+</button>
+</div>
+<!-- 编辑器内容区 -->
+<div class="editor-content p-6 bg-gray-50">
+<textarea class="w-full h-80 bg-transparent outline-none resize-none">在这里输入您的内容...</textarea>
+</div>
+<!-- 图片上传区域 -->
+<div class="mt-4 border border-dashed border-gray-300 rounded-xl p-6 text-center">
+<div class="mb-3">
+<span class="iconify text-gray-400 text-4xl mx-auto" data-icon="mdi:image-plus"></span>
+</div>
+<p class="text-gray-500 mb-3">拖放图片到此处或 <span class="text-academicblue cursor-pointer">从设备上传</span></p>
+<p class="text-gray-400 text-sm">支持 JPG, PNG 格式，单张图片最大 5MB</p>
+<!-- 图片预览缩略图 -->
+<div class="flex justify-center mt-4 space-x-3">
+<div class="w-16 h-16 bg-gray-100 border border-gray-200 rounded relative">
+<img alt="Upload preview" class="w-full h-full object-cover" id="3" src="https://modao.cc/agent-py/media/generated_images/2025-12-06/7c987200fe4144a1bba72afcd7001a73.jpg"/>
+<button class="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center">
+<span class="iconify text-xs" data-icon="mdi:close"></span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- 内容格式设置 -->
+<div class="grid grid-cols-2 gap-8 mb-8">
+<!-- 选择板块 -->
+<div>
+<label class="block text-lg font-medium text-gray-800 mb-3">选择板块</label>
+<div class="relative">
+<span class="iconify absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" data-icon="mdi:view-grid"></span>
+<select class="w-full pl-12 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-academicblue focus:border-academicblue outline-none appearance-none">
+<option value="">-- 请选择讨论板块 --</option>
+<option value="humanities">人文社会科学</option>
+<option value="science">理学</option>
+<option value="engineering">信息与工程科学</option>
+<option value="medical">医学</option>
+<option value="interdisciplinary">交叉学科</option>
+<option value="language">语言与文学</option>
+</select>
+<span class="iconify absolute right-4 top-1/2 -translate-y-1/2 text-gray-400" data-icon="mdi:chevron-down"></span>
+</div>
+</div>
+<!-- 添加话题标签 -->
+<div>
+<label class="block text-lg font-medium text-gray-800 mb-3">话题标签</label>
+<div class="relative">
+<span class="iconify absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" data-icon="mdi:tag"></span>
+<input class="w-full pl-12 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-academicblue focus:border-academicblue outline-none" placeholder="输入相关话题标签，用逗号分隔" type="text"/>
+</div>
+<div class="flex flex-wrap gap-2 mt-3">
+<span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full flex items-center">
+<span>数据结构</span>
+<span class="iconify ml-1 cursor-pointer" data-icon="mdi:close"></span>
+</span>
+<span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full flex items-center">
+<span>学习经验</span>
+<span class="iconify ml-1 cursor-pointer" data-icon="mdi:close"></span>
+</span>
+</div>
+</div>
+</div>
+<!-- 阅读权限设置 -->
+<div class="mb-8">
+<label class="block text-lg font-medium text-gray-800 mb-3">阅读权限</label>
+<div class="grid grid-cols-3 gap-4">
+<div class="border border-gray-200 rounded-xl p-4 text-center cursor-pointer hover:border-academicblue">
+<div class="text-3xl text-green-500 mb-2">
+<span class="iconify" data-icon="mdi:earth"></span>
+</div>
+<span class="font-medium">公开</span>
+<p class="text-gray-500 text-sm mt-1">所有用户可见</p>
+</div>
+<div class="border border-gray-200 rounded-xl p-4 text-center cursor-pointer hover:border-academicblue">
+<div class="text-3xl text-blue-500 mb-2">
+<span class="iconify" data-icon="mdi:account-group"></span>
+</div>
+<span class="font-medium">仅平台用户</span>
+<p class="text-gray-500 text-sm mt-1">需登录后查看</p>
+</div>
+<div class="border border-gray-200 rounded-xl p-4 text-center cursor-pointer hover:border-academicblue">
+<div class="text-3xl text-orange-500 mb-2">
+<span class="iconify" data-icon="mdi:lock"></span>
+</div>
+<span class="font-medium">仅关注者</span>
+<p class="text-gray-500 text-sm mt-1">仅限互相关注用户</p>
+</div>
+</div>
+</div>
+<!-- 发布设置 -->
+<div class="bg-gray-50 rounded-xl p-6 mb-8">
+<h2 class="text-xl font-bold text-gray-800 mb-4">发布设置</h2>
+<div class="space-y-4">
+<!-- 匿名发布 -->
+<div class="flex items-center justify-between">
+<div>
+<div class="font-medium">匿名发布</div>
+<div class="text-gray-500 text-sm">隐藏您的身份信息</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-pkured"></div>
+</label>
+</div>
+<!-- 允许评论 -->
+<div class="flex items-center justify-between">
+<div>
+<div class="font-medium">允许评论</div>
+<div class="text-gray-500 text-sm">其他用户可回复此帖</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-pkured"></div>
+</label>
+</div>
+<!-- 定时发布 -->
+<div class="flex items-center justify-between">
+<div>
+<div class="font-medium">定时发布</div>
+<div class="text-gray-500 text-sm">设置自动发布时间</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-pkured"></div>
+</label>
+</div>
+<!-- 定时设置 -->
+<div class="mt-4 bg-blue-50 border border-blue-200 rounded-lg p-4">
+<label class="block text-sm font-medium text-gray-700 mb-2">发布时间</label>
+<div class="grid grid-cols-2 gap-3">
+<input class="w-full border border-gray-300 rounded-lg px-3 py-2" type="date"/>
+<input class="w-full border border-gray-300 rounded-lg px-3 py-2" type="time"/>
+</div>
+</div>
+</div>
+</div>
+<!-- 预览与提交 -->
+<div class="flex justify-between">
+<div class="flex space-x-4">
+<button class="px-6 py-3 bg-gray-200 text-gray-700 rounded-lg flex items-center hover:bg-gray-300">
+<span class="iconify mr-2" data-icon="mdi:eye"></span>
+              预览
+            </button>
+<button class="px-6 py-3 bg-white border border-academicblue text-academicblue rounded-lg flex items-center hover:bg-blue-50">
+<span class="iconify mr-2" data-icon="mdi:content-save"></span>
+              保存草稿
+            </button>
+</div>
+<div class="flex space-x-4">
+<button class="px-6 py-3 bg-white border border-gray-300 text-gray-700 rounded-lg flex items-center hover:bg-gray-50">
+<span class="iconify mr-2" data-icon="mdi:delete"></span>
+              放弃
+            </button>
+<button class="px-6 py-3 bg-pkured text-white rounded-lg flex items-center hover:bg-red-900">
+<span class="iconify mr-2" data-icon="mdi:check"></span>
+              立即发布
+            </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- 自动保存提示 -->
+<div class="autosave-indicator bg-green-50 text-green-800 px-4 py-2 rounded-full shadow flex items-center">
+<span class="iconify mr-2" data-icon="mdi:content-save-check"></span>
+<span>已自动保存草稿 (2025-12-06 10:24)</span>
+</div>
+<!-- 底部页脚 -->
+<footer class="bg-white border-t border-gray-200 py-10 mt-10">
+<div class="container mx-auto px-6">
+<div class="grid grid-cols-4 gap-8">
+<div>
+<h3 class="font-bold text-lg text-gray-800 mb-4">关于我们</h3>
+<ul class="space-y-2">
+<li><a class="text-gray-600 hover:text-pkured" href="#">平台简介</a></li>
+<li><a class="text-gray-600 hover:text-pkured" href="#">团队介绍</a></li>
+<li><a class="text-gray-600 hover:text-pkured" href="#">加入我们</a></li>
+<li><a class="text-gray-600 hover:text-pkured" href="#">联系方式</a></li>
+</ul>
+</div>
+<div>
+<h3 class="font-bold text-lg text-gray-800 mb-4">论坛指南</h3>
+<ul class="space-y-2">
+<li><a class="text-gray-600 hover:text-pkured" href="#">发帖规范</a></li>
+<li><a class="text-gray-600 hover:text-pkured" href="#">精华帖标准</a></li>
+<li><a class="text-gray-600 hover:text-pkured" href="#">社区守则</a></li>
+<li><a class="text gray-600 hover:text-pkured" href="#">举报机制</a></li>
+</ul>
+</div>
+<div>
+<h3 class="font-bold text-lg text-gray-800 mb-4">友情链接</h3>
+<ul class="space-y-2">
+<li><a class="text-gray-600 hover:text-pkured" href="#">北京大学官网</a></li>
+<li><a class="text-gray-600 hover:text-pkured" href="#">课程中心</a></li>
+<li><a class="text-gray-600 hover:text-pkured" href="#">图书馆系统</a></li>
+<li><a class="text-gray-600 hover:text-pkured" href="#">教务部</a></li>
+</ul>
+</div>
+<div>
+<h3 class="font-bold text-lg text-gray-800 mb-4">联系我们</h3>
+<div class="space-y-2">
+<p class="flex items-center text-gray-600">
+<span class="iconify mr-2" data-icon="mdi:email"></span>
+              forum@pku.edu.cn
+            </p>
+<p class="flex items-center text-gray-600">
+<span class="iconify mr-2" data-icon="mdi:phone"></span>
+              010-6275XXXX
+            </p>
+<p class="flex items-start text-gray-600">
+<span class="iconify mr-2 mt-1" data-icon="mdi:map-marker"></span>
+              北京市海淀区颐和园路5号<br/>北京大学新太阳中心
+            </p>
+</div>
+</div>
+</div>
+<div class="border-t border-gray-200 mt-8 pt-6 text-center text-gray-500">
+<p>© 2025 北京大学二手书交易平台 | 京ICP备2025000001号</p>
+</div>
+</div>
+</footer>
+</body>
+</html>
