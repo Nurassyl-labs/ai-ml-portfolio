@@ -20,7 +20,7 @@ A from-scratch 3D warehouse, rendered headlessly with OpenCV, where a virtual dr
 
 <p align="center">
   <a href="https://github.com/Nurassyl-labs/warehouse-drone-simulation">
-    <img src="warehouse-drone-simulation/docs/flythrough.gif" width="65%" alt="Drone fly-through of the 3D warehouse">
+    <img src="warehouse-drone-simulation/docs/demo.gif" width="80%" alt="Live autonomous warehouse drone scanning dashboard">
   </a>
 </p>
 
